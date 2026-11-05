@@ -1,28 +1,25 @@
-# Yubin's curiostory
+# Yubin Park — Product Design
 
-Portfolio site of Yubin Park, product designer in London.
+Portable export of the live portfolio, version 19 (2026-11-05).
 
-Plain static site — no build step. Open `index.html` in a browser, or run a local server:
+## Edit
+All current page content and styles are in `public/`.
+- Home: index.html
+- CTR: ctr.html
+- Catalina: krust.html
+- Admin: system.html
+- Lab: research.html
+- About: info.html
+- Styles: portfolio.css
+- Interactions and language: portfolio.js
 
-```
-python3 -m http.server 8000
-```
+Edit the HTML/CSS/JS directly in VS Code, Claude Code, or another editor. English copy is in data-en attributes; Korean copy is in the HTML. Keep both in sync.
 
-## Structure
+## Preview
+Run `python3 -m http.server 8000 --directory public` and open http://localhost:8000. For local previews, use .html paths.
 
-| File | Page |
-| --- | --- |
-| `index.html` | Selected work |
-| `ctr.html` | CTR Improvement case |
-| `krust.html` | Catalina AI case |
-| `system.html` | DoubleNC Admin case |
-| `research.html` | Lab |
-| `info.html` | Info / About |
-| `portfolio.css` | All styles (shared) |
-| `portfolio.js` | Theme toggle, KR/EN switch and other interactions (shared) |
-| `assets/original/` | Images carried over from the original portfolio |
+## Vercel deployment
+Import the GitHub repository into Vercel. Select Framework Preset: Other, no build command, Output Directory: public. The supplied vercel.json enables clean URLs such as /ctr and /krust. Deploy from main.
 
-## Working on it
-
-This repo is the single source of truth. It's edited from more than one tool (Codex, Claude),
-so always pull the latest `main` before making changes, and commit small.
+## Important
+This is the current working portfolio, including review borders and TODO notes. It has not been editorially finalised. Preserve existing content and ask Yubin before deleting it. The older Python generators are intentionally not used here because regenerating pages would overwrite recent edits. This portable copy does not automatically sync back to ChatGPT Sites.
