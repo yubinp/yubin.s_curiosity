@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current proposed version: **1.3.0 · 논리 전면수정, 케이스별 어필포인트 피봇** (2026-11-06). Built on **v1.2.0 PR #2**, both pending merge. History in [CHANGELOG.md](CHANGELOG.md).
+Current proposed version: **1.4.0 · Evidence & Build Proof — 실제 의사결정·구현·검증 증거 보강** (2026-11-06). Built on the **unmerged v1.3.0 PR #3**, which itself follows v1.2.0 PR #2. All pending merge. History in [CHANGELOG.md](CHANGELOG.md).
 
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.
@@ -32,3 +32,6 @@ Import the GitHub repository into Vercel. Select Framework Preset: Other, no bui
 
 ## Important
 This is the current working portfolio, including review borders and TODO notes. It has not been editorially finalised. Preserve existing content and ask Yubin before deleting it. The older Python generators are intentionally not used here because regenerating pages would overwrite recent edits. This portable copy does not automatically sync back to ChatGPT Sites.
+
+## v1.4 editorial review
+Open a preview URL with `?versions=1` to highlight v1.2 / v1.3 / v1.4 ★ material. Purple v1.4 ★ annotations are only visible in version review mode and identify evidence to verify; normal portfolio visitors do not see them. The version toggle persists in the current browser tab. See [v1.4 Evidence Checklist](docs/V1.4_EVIDENCE_CHECKLIST.md) for the four-point decision narrative rubric and the Figma card-transition specification. The original Figma frames and provenance-safe Framer persona have not been delivered to this branch; do not represent conceptual comparisons as contemporaneous work.
