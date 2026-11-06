@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **1.2.0 · 논리 수정 1: 척추 문장** (2026-11-06). History in [CHANGELOG.md](CHANGELOG.md).
+Current proposed version: **1.3.0 · 논리 전면수정, 케이스별 어필포인트 피봇** (2026-11-06). Built on **v1.2.0 PR #2**, both pending merge. History in [CHANGELOG.md](CHANGELOG.md).
 
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.
