@@ -107,7 +107,7 @@ html[lang=en] .reframe-scene{word-break:normal}
 
 
 /* Editorial version diff; deliberately hidden unless ?versions=1 enables it. */
-.version-toggle{position:fixed;bottom:18px;right:18px;z-index:10000;appearance:none;border:1px solid #929292;border-radius:999px;background:var(--panel,#fff);color:var(--ink,#222);font:600 12px/1.3 inherit;padding:10px 14px;box-shadow:0 3px 18px rgba(0,0,0,.16);cursor:pointer}
+.version-toggle{position:fixed;bottom:18px;right:18px;z-index:10000;appearance:none;border:1px solid #929292;border-radius:999px;background:var(--panel,#fff);color:var(--ink,#222);font-family:inherit;font-size:12px;font-weight:600;line-height:1.3;padding:10px 14px;box-shadow:0 3px 18px rgba(0,0,0,.16);cursor:pointer}
 .version-toggle:hover{filter:brightness(.94)}.version-toggle:focus-visible{outline:3px solid #276c8b;outline-offset:3px}
 body.version-compare [data-change-version]{position:relative;outline:2px dashed var(--version-border);outline-offset:3px;border-radius:8px}
 body.version-compare [data-change-version="v1.2"]{--version-border:#397997;--version-badge:#276984}
