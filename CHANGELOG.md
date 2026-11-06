@@ -1,7 +1,7 @@
 # Changelog
 
-## 1.1.0 — 2026-11-06
-Positioning: "Where people get stuck, I get curious."
+## 1.2.0 · 논리 수정 1: 척추 문장 — 2026-11-06
+Logic pass 1, spine line: "Where people get stuck, I get curious."
 - Home hero line + CTR reframe scene (2% → ~~not interested?~~ → can't see the need yet? → pasta line → 2% → 10%)
 - Home card titles and subtitles rewritten
 - Footer slogan on all pages: "Curious first. Clear next." (Korean version added)
