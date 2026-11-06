@@ -1,6 +1,14 @@
 # Yubin Park — Product Design
 
-Portable export of the live portfolio, version 19 (2026-11-05).
+Current version: **1.1.0** (2026-11-06). History in [CHANGELOG.md](CHANGELOG.md).
+
+## Versioning
+MAJOR.MINOR.PATCH — bump one number per change merged to `main`, then tag the merge as `vX.Y.Z`.
+- **MAJOR** (2.0.0) — big shift: new concept or mood, site structure, or case lineup. 크게 바뀔 때만.
+- **MINOR** (1.1.0) — visible content change: new copy direction, new section, case rewrite. 내용이 눈에 띄게 바뀔 때.
+- **PATCH** (1.1.1) — small fix: typo, link, image swap, spacing. 작은 수정.
+
+Before 1.0.0, numbers (up to "version 19") were ChatGPT Sites save counts, not releases.
 
 ## Edit
 All current page content and styles are in `public/`.
