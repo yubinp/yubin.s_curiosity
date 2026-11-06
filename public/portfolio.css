@@ -167,3 +167,21 @@ body.version-compare .v14-review-note .v14-note-title{display:block;color:#68459
 .v14-build-facts a{display:inline-block;margin-top:10px}
 @media(max-width:720px){.v14-proof-compare,.v14-build-facts{grid-template-columns:1fr}.v14-proof-compare{gap:10px}.v14-build-section{padding:0 16px}}
 @media print{body.version-compare .v14-review-note{display:none!important}}
+
+
+/* v1.4 ★ Image audit: placeholders are editorial ONLY, never public-facing UI */
+.v14-image-slot{display:none!important}
+body.version-compare .v14-image-slot{display:block!important;box-sizing:border-box;max-width:100%;margin:28px 0;padding:clamp(14px,2.5vw,22px);border:2px dashed #7656ad;border-radius:16px;background:var(--panel,#fff);color:var(--ink,#222)}
+body.version-compare .v14-image-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#7656ad;font-size:.76rem;font-weight:750;letter-spacing:.03em}
+body.version-compare .v14-image-head>span:last-child{border:1px solid #7656ad;border-radius:6px;padding:2px 7px;font-variant-numeric:tabular-nums}
+body.version-compare .v14-image-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:105px;margin:14px 0;padding:15px;border:1px dashed #a992c6;border-radius:10px;background:var(--paper,var(--panel));color:var(--muted);text-align:center;font-size:.75rem;letter-spacing:.06em}
+body.version-compare .v14-image-placeholder small{font-size:.68rem;opacity:.7}
+body.version-compare .v14-image-slot h4{margin:12px 0 8px;font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.4}
+body.version-compare .v14-image-slot p{font-size:.9rem;line-height:1.68;margin:0 0 14px}
+body.version-compare .v14-image-slot dl{display:grid;grid-template-columns:1fr;gap:0;margin:0;border-top:1px solid var(--line)}
+body.version-compare .v14-image-slot dl>div{display:grid;grid-template-columns:minmax(105px,26%) 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+body.version-compare .v14-image-slot dt{font-size:.77rem;font-weight:700;color:#7656ad}
+body.version-compare .v14-image-slot dd{font-size:.85rem;line-height:1.6;margin:0;overflow-wrap:anywhere}
+body.version-compare .projects>.v14-image-slot{grid-column:1/-1}
+@media(max-width:650px){body.version-compare .v14-image-slot dl>div{display:block}body.version-compare .v14-image-slot dt{margin-bottom:4px}}
+@media print{body.version-compare .v14-image-slot{display:none!important}}
