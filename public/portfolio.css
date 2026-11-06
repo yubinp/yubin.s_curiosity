@@ -86,3 +86,21 @@ html.dark{--chart-strong:#b0cc8e;--chart-soft:#62764e;--chart-neutral:#353b2f}
 .review-addition figcaption{font-size:13px;line-height:1.6;margin-top:12px;color:var(--muted)}
 .engineering-slot{margin:24px 0;padding:20px;border:1px dashed #47955b;border-radius:8px}
 .engineering-slot dl{display:grid;gap:18px}.engineering-slot dt{font-size:14px;font-weight:600}.engineering-slot dd{margin:10px 0 0;color:var(--muted);overflow:hidden}
+
+/* Curious hero (Nov 2026): positioning line + one reframe scene. Kept compact so the work stays first. */
+.work-first .home-intro{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px 56px;align-items:end}
+.work-first .home-intro>.eyebrow{grid-column:1/-1}
+.work-first .home-intro h1{margin-top:0}
+.reframe-scene{display:grid;gap:2px;width:100%;max-width:500px;justify-self:end;padding:2px 0 2px 20px;border-left:1px solid var(--line);font-size:14px;line-height:1.55;word-break:keep-all}
+.reframe-scene>.eyebrow{margin-bottom:8px}
+.reframe-brief,.reframe-why{color:var(--muted)}
+.reframe-old del{color:var(--muted);text-decoration-thickness:1.5px}
+.reframe-new{font-weight:550}
+.reframe-why{font-size:13px;margin-top:6px}
+.reframe-result{margin-top:12px;font-size:12px;color:var(--muted)}
+.reframe-result b{font-size:15px;font-weight:550;color:var(--ink);margin-right:6px}
+.reframe-scene:hover .reframe-result span{color:var(--ink)}
+html[lang=en] .reframe-scene{word-break:normal}
+@media(min-width:761px){.quick-read dl>div{grid-template-columns:150px 1fr}}
+@media(max-width:760px){.work-first .home-intro{display:block}.reframe-scene{margin-top:20px;max-width:none}}
+@media(max-width:760px){.simple-hero h1 br{display:none}}
