@@ -44,3 +44,44 @@
 (()=>{const h=document.querySelector('.editorial-header'),b=h?.querySelector('.menu-toggle'),n=h?.querySelector('nav');if(!b||!n)return;const close=()=>{h.classList.remove('menu-open');b.setAttribute('aria-expanded','false')};b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')!=='true';h.classList.toggle('menu-open',open);b.setAttribute('aria-expanded',String(open))});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&h.classList.contains('menu-open')){close();b.focus()}});document.addEventListener('click',e=>{if(!h.contains(e.target))close()});matchMedia('(min-width: 761px)').addEventListener('change',close)})();
 
 (()=>{const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced||!('IntersectionObserver'in window))return;const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('motion-shown');o.unobserve(e.target)}}),{threshold:.2});document.querySelectorAll('.motion-reveal').forEach(el=>{el.classList.add('motion-ready');o.observe(el)});document.querySelectorAll('.ai-build-story').forEach(story=>{if(matchMedia('(max-width:650px)').matches)return;story.classList.add('build-enhanced');story.dataset.stage='0';const stages=new IntersectionObserver(es=>{es.filter(e=>e.isIntersecting).forEach(e=>story.dataset.stage=e.target.dataset.buildStep)},{rootMargin:'-25% 0px -35% 0px',threshold:0});story.querySelectorAll('.build-step').forEach(el=>stages.observe(el))})})();
+
+/* Version annotations are editorial overlays only: normal portfolio visitors see no markers. */
+(()=>{
+ const page=(location.pathname.split('/').filter(Boolean).pop()||'index').replace(/\.html$/,'');
+ const v12={
+  index:['.home-intro h1','.reframe-scene','.projects .project:nth-child(1) .project-copy','.projects .project:nth-child(2) .project-copy','.projects .project:nth-child(3) .project-copy'],
+  ctr:['.quick-read'],
+  krust:['.quick-read'],
+  system:['.quick-read'],
+  info:['.simple-hero h1','.simple-hero p'],
+  research:['.research-intro p']
+ };
+ const v13={
+  index:['.projects .project:nth-child(1) .project-copy','.projects .project:nth-child(2) .project-copy'],
+  ctr:['.case-hero','.quick-read','.chapter#overview','.chapter#brief','.chapter#first','.chapter#turn','.chapter#second','.chapter#experience','.chapter#outcome'],
+  krust:['.case-hero','.case-overview','.quick-read','.chapter#overview','.chapter#context','.chapter#question','.chapter#signals','.chapter#loading','.chapter#outcome','.chapter#experience .chapter-heading']
+ };
+ // First mark proven v1.2 regions. Then override only areas rewritten in v1.3.
+ (v12[page]||[]).concat(['footer p']).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.2'));
+ (v13[page]||[]).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.3'));
+ // Versions are reviewed via ?versions=1; clean portfolio pages remain unchanged.
+ let stored=null;
+ try{stored=sessionStorage.getItem('portfolio-version-overlays')}catch{}
+ const params=new URLSearchParams(location.search),query=params.get('versions');
+ const eligible=(query==='1'||query==='0'||stored!==null);
+ if(!eligible||!document.querySelector('[data-change-version]'))return;
+ const button=document.createElement('button');
+ button.type='button';button.className='version-toggle';
+ const update=on=>{
+  document.body.classList.toggle('version-compare',on);
+  button.setAttribute('aria-pressed',String(on));
+  button.textContent=(document.documentElement.lang==='ko'?(on?'버전 테두리 숨기기':'버전 테두리 보기'):(on?'Hide version outlines':'Show version outlines'));
+ };
+ button.addEventListener('click',()=>{
+  const on=!document.body.classList.contains('version-compare');
+  update(on);try{sessionStorage.setItem('portfolio-version-overlays',on?'1':'0')}catch{}
+ });
+ document.body.appendChild(button);
+ document.querySelectorAll('.lang-option').forEach(b=>b.addEventListener('click',()=>update(document.body.classList.contains('version-compare'))));
+ update(query==='1'?true:query==='0'?false:stored==='1');
+})();
