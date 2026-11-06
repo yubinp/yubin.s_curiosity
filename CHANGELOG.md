@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.4.0 ★ · Evidence & Build Proof — 실제 의사결정·구현·검증 증거 보강 — 2026-11-06
+Draft on top of v1.3; no changes merged to main.
+- Added evidence-backed decision cards for CTR, Catalina and Admin: important problem, alternative/trade-off, chosen direction, bounded observable outcome and proposed repeat experiment.
+- Added purple v1.4 ★ editorial annotations under the existing version overlay for provenance and source gaps; hidden from normal portfolio view.
+- CTR: recover-and-classify persona source slot; specification for card-only banner → carousel → categorised carousel Figma scroll transition. Not implemented without three original aligned frames.
+- Catalina: clarified raw output vs mood, staged progress vs truthful processing feedback, and next usability verification.
+- Admin: clarified role-aware IA alternatives, release scope evidence gaps and task verification.
+- Lab: collapsible Problem-Framer Build & Validation ledger with a live link, human-vs-AI contribution audit to complete, and proposed benchmark.
+- [Evidence checklist](docs/V1.4_EVIDENCE_CHECKLIST.md) lists the four ★ criteria and outstanding source requirements.
+- No claim of user studies, product metrics, alternative prototypes or production assets has been fabricated.
+
+
 ## 1.3.0 · 논리 전면수정, 케이스별 어필포인트 피봇 — 2026-11-06
 Case narrative pivot layered on top of v1.2 (PR #2; not yet merged).
 - Catalina AI: shift the central claim from mood/loading UI to **client music-IP opportunity → AI capability → user task → PoC/MVP scope**; move the original wireframe and two discovery routes forward; clarify sole-designer contribution versus team/product decisions; preserve the real search, creation and management screens; separate product delivery from unvalidated business/user outcomes.
