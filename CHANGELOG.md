@@ -9,6 +9,7 @@ Draft on top of v1.3; no changes merged to main.
 - Admin: clarified role-aware IA alternatives, release scope evidence gaps and task verification.
 - Lab: collapsible Problem-Framer Build & Validation ledger with a live link, human-vs-AI contribution audit to complete, and proposed benchmark.
 - [Evidence checklist](docs/V1.4_EVIDENCE_CHECKLIST.md) lists the four ★ criteria and outstanding source requirements.
+- Audited all six visitor pages and added 16 purple v1.4 ★ IMAGE request slots to editor-only version mode, each with original asset, composition, evidence purpose, and provenance cautions. About intentionally gets no new image. See [image placement audit](docs/V1.4_IMAGE_AUDIT.md).
 - No claim of user studies, product metrics, alternative prototypes or production assets has been fabricated.
 
 
