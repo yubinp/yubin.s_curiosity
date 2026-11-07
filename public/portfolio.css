@@ -192,3 +192,27 @@ body.version-compare [data-change-version="v1.5"]{--version-border:#397065;--ver
 #work{scroll-margin-top:110px}
 @media(max-width:760px){.work-first .home-intro.v15-home-intro{display:flex;flex-direction:column;align-items:stretch;gap:22px;padding:42px 0 57px}.work-first .v15-home-intro h1,html[lang=en] .work-first .v15-home-intro h1{font-size:clamp(36px,9vw,56px);line-height:1.15}.v15-hero-copy{gap:18px;padding:0}.v15-hero-copy p{font-size:15px;line-height:1.73}.v15-hero-copy .v15-hero-intro,.v15-hero-copy .v15-hero-method{font-size:14px}.v15-hero-cta{margin-top:2px}}
 @media(prefers-reduced-motion:reduce){.v15-hero-cta{transition:none}}
+
+
+/* v1.5 · Cross-case transferable decisions, paper-like method sequence */
+.v15-shared-method{margin:14px 0 clamp(75px,9vw,128px);padding:clamp(26px,4.5vw,58px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.v15-shared-method>.eyebrow,.v15-method-case>.eyebrow,.v15-transfer>.eyebrow{display:block;color:var(--muted);font-size:11px;letter-spacing:.05em}
+.v15-shared-method h2{font-size:clamp(29px,3.8vw,55px);font-weight:550;line-height:1.25;letter-spacing:-.055em;margin:15px 0 16px;max-width:980px;text-wrap:balance}
+.v15-method-lead{font-size:clamp(15px,1.3vw,19px);line-height:1.7;max-width:720px;margin:0 0 27px}
+.v15-method-steps,.v15-method-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,36px)}
+.v15-method-steps>div,.v15-method-grid>div{min-width:0;border-top:1px solid var(--line);padding-top:18px}
+.v15-method-steps>div>span,.v15-method-grid>div>span{display:block;font-size:11px;font-weight:650;color:var(--muted);letter-spacing:.02em;margin-bottom:11px}
+.v15-method-steps strong{font-size:clamp(16px,1.5vw,21px);line-height:1.45;display:block}
+.v15-method-steps p,.v15-method-grid p{font-size:clamp(13px,1.05vw,15px);line-height:1.73;margin:10px 0 0}
+.v15-method-footnote,.v15-method-caveat{font-size:11px;color:var(--muted);line-height:1.68;margin:28px 0 0;max-width:810px}
+.v15-method-case{margin:clamp(42px,6vw,84px) 0;padding:clamp(22px,3vw,38px);border:1px solid var(--line);border-radius:13px;min-width:0}
+.v15-method-case h3{font-size:clamp(22px,2.2vw,36px);line-height:1.35;letter-spacing:-.035em;margin:14px 0 28px;text-wrap:balance}
+.v15-transfer{margin:clamp(34px,5vw,66px) 0 12px;padding:clamp(20px,2.7vw,34px) 0;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.v15-transfer h3{font-size:clamp(20px,2.15vw,30px);letter-spacing:-.035em;line-height:1.35;margin:13px 0}
+.v15-transfer p{font-size:clamp(14px,1.12vw,16px);line-height:1.75;max-width:890px;margin:0}
+.v15-editor-gap{display:none!important}
+body.version-compare .v15-editor-gap{display:block!important;margin:20px 0 0;padding:17px 20px;border:2px dashed #397065;border-radius:9px;background:var(--panel)}
+body.version-compare .v15-editor-gap-label{display:block;font-weight:700;font-size:11px;letter-spacing:.02em;color:var(--ink)}
+body.version-compare .v15-editor-gap p{font-size:13px;line-height:1.65;margin:8px 0 0}
+@media(max-width:760px){.v15-shared-method{margin-bottom:72px}.v15-method-steps,.v15-method-grid{grid-template-columns:1fr;gap:22px}.v15-method-case{margin:38px 0;padding:21px 17px}.v15-method-case h3{font-size:23px}.v15-transfer{margin-top:30px}.v15-method-footnote{font-size:11px}}
+@media print{body.version-compare .v15-editor-gap{display:none!important}}
