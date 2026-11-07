@@ -66,15 +66,35 @@
  (v13[page]||[]).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.3'));
  if(page==='index')document.querySelectorAll('.v15-home-intro h1,.v15-hero-copy').forEach(el=>el.dataset.changeVersion='v1.5');
  // Versions are reviewed via ?versions=1; clean portfolio pages remain unchanged.
- let stored=null;
- try{stored=sessionStorage.getItem('portfolio-version-overlays')}catch{}
  const params=new URLSearchParams(location.search),query=params.get('versions');
+ let stored=null;
+ try{
+  if(query==='1'||query==='0')sessionStorage.setItem('portfolio-version-overlays',query);
+  stored=sessionStorage.getItem('portfolio-version-overlays');
+ }catch{stored=(query==='1'||query==='0')?query:null}
  const eligible=(query==='1'||query==='0'||stored!==null);
  if(!eligible||!document.querySelector('[data-change-version]'))return;
  const button=document.createElement('button');
  button.type='button';button.className='version-toggle';
+ const originalLinks=new Map();
+ const syncReviewLinks=on=>{
+  // Keep review mode when entering a case, including links opened in a new tab.
+  document.querySelectorAll('a[href]').forEach(link=>{
+   if(!originalLinks.has(link))originalLinks.set(link,link.getAttribute('href'));
+   const raw=originalLinks.get(link);
+   if(!raw||raw.startsWith('#'))return;
+   try{
+    const destination=new URL(raw,location.href);
+    if(destination.origin!==location.origin)return;
+    if(on)destination.searchParams.set('versions','1');
+    else destination.searchParams.delete('versions');
+    link.setAttribute('href',destination.pathname+destination.search+destination.hash);
+   }catch{}
+  });
+ };
  const update=on=>{
   document.body.classList.toggle('version-compare',on);
+  syncReviewLinks(on);
   button.setAttribute('aria-pressed',String(on));
   button.textContent=(document.documentElement.lang==='ko'?(on?'버전 테두리 숨기기':'버전 테두리 보기'):(on?'Hide version outlines':'Show version outlines'));
  };
