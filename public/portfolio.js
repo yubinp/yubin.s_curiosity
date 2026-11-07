@@ -49,7 +49,7 @@
 (()=>{
  const page=(location.pathname.split('/').filter(Boolean).pop()||'index').replace(/\.html$/,'');
  const v12={
-  index:['.home-intro h1','.reframe-scene','.projects .project:nth-child(1) .project-copy','.projects .project:nth-child(2) .project-copy','.projects .project:nth-child(3) .project-copy'],
+  index:['.home-intro h1','.projects .project:nth-child(1) .project-copy','.projects .project:nth-child(2) .project-copy','.projects .project:nth-child(3) .project-copy'],
   ctr:['.quick-read'],
   krust:['.quick-read'],
   system:['.quick-read'],
@@ -61,9 +61,10 @@
   ctr:['.case-hero','.quick-read','.chapter#overview','.chapter#brief','.chapter#first','.chapter#turn','.chapter#second','.chapter#experience','.chapter#outcome'],
   krust:['.case-hero','.case-overview','.quick-read','.chapter#overview','.chapter#context','.chapter#question','.chapter#signals','.chapter#loading','.chapter#outcome','.chapter#experience .chapter-heading']
  };
- // First mark proven v1.2 regions. Then override only areas rewritten in v1.3.
+ // Mark prior versions, then override with approved v1.5 Hero edits.
  (v12[page]||[]).concat(['footer p']).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.2'));
  (v13[page]||[]).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.3'));
+ if(page==='index')document.querySelectorAll('.v15-home-intro h1,.v15-hero-copy').forEach(el=>el.dataset.changeVersion='v1.5');
  // Versions are reviewed via ?versions=1; clean portfolio pages remain unchanged.
  let stored=null;
  try{stored=sessionStorage.getItem('portfolio-version-overlays')}catch{}
