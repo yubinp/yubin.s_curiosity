@@ -8,6 +8,10 @@
 - Remove six identical reader-irrelevant design-rationale notes from Admin and one from Catalina (original revisions preserved in Git).
 - Document six-page **Context → Gap → Question → Evidence → Decision → Result → Contribution** audit, source gaps, required cuts and non-goals in [v1.5 Argument Audit](docs/V1.5_ARGUMENT_AUDIT.md).
 - CTR’s reported 20% carousel movement and 5% click rate remain **unverified together** until original measurement cohorts and definitions are reconciled; no invented conversion funnel.
+- Home: three distinct gaps (observed clicks vs why; AI capability vs use; data existence vs access) connected by an editorial Observe → Question → Decide method; case-card statements sharpened.
+- CTR, Catalina and Admin: concise method origin, real application, bounded outcome and transferable design principle; two editor-only source requests per case.
+- Lab: same method/transfer framing, with two source gaps for actual AI model comparisons and failure/evaluation logs.
+- Fix review navigation: `?versions=1` persists across internal case links and new tabs. `main` v1.4 remains unchanged.
 
 
 ## 1.4.0 ★ · Evidence & Build Proof — 실제 의사결정·구현·검증 증거 보강 — 2026-11-06
