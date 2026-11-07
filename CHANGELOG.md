@@ -1,7 +1,17 @@
 # Changelog
 
+## 1.5.0 · Argument & Editorial Clarity — 전체 논증 점검·문장 간결화 — 2026-11-07
+**Draft; not merged to main.** First editorial pass only. Continued case rewrites are pending original evidence.
+- Home: adopt exact approved English Hero *“What we see is only part of the story.”* with a Korean translation and CTA to Selected Work.
+- Remove duplicate Homepage CTR reframe/pasta metaphor; keep original case cards and screenshots.
+- Adjust desktop/mobile typography and editorial version-compare annotations for the new Hero.
+- Remove six identical reader-irrelevant design-rationale notes from Admin and one from Catalina (original revisions preserved in Git).
+- Document six-page **Context → Gap → Question → Evidence → Decision → Result → Contribution** audit, source gaps, required cuts and non-goals in [v1.5 Argument Audit](docs/V1.5_ARGUMENT_AUDIT.md).
+- CTR’s reported 20% carousel movement and 5% click rate remain **unverified together** until original measurement cohorts and definitions are reconciled; no invented conversion funnel.
+
+
 ## 1.4.0 ★ · Evidence & Build Proof — 실제 의사결정·구현·검증 증거 보강 — 2026-11-06
-Draft on top of v1.3; no changes merged to main.
+Merged into main as PR #4 on 2026-11-07 (following v1.2 and v1.3).
 - Added evidence-backed decision cards for CTR, Catalina and Admin: important problem, alternative/trade-off, chosen direction, bounded observable outcome and proposed repeat experiment.
 - Added purple v1.4 ★ editorial annotations under the existing version overlay for provenance and source gaps; hidden from normal portfolio view.
 - CTR: recover-and-classify persona source slot; specification for card-only banner → carousel → categorised carousel Figma scroll transition. Not implemented without three original aligned frames.
@@ -14,12 +24,12 @@ Draft on top of v1.3; no changes merged to main.
 
 
 ## 1.3.0 · 논리 전면수정, 케이스별 어필포인트 피봇 — 2026-11-06
-Case narrative pivot layered on top of v1.2 (PR #2; not yet merged).
+Case narrative pivot layered on top of v1.2; merged into main as PR #3 on 2026-11-07.
 - Catalina AI: shift the central claim from mood/loading UI to **client music-IP opportunity → AI capability → user task → PoC/MVP scope**; move the original wireframe and two discovery routes forward; clarify sole-designer contribution versus team/product decisions; preserve the real search, creation and management screens; separate product delivery from unvalidated business/user outcomes.
 - CTR: pivot to **business context → as-is diagnosis → carousel iteration (~2%→5%) → behavioural hypothesis → content categorisation/engineering trade-off → observed result (~10%)**; keep original content analysis and UI evidence.
 - Remove contradictory 15% versus 20% interaction percentages from the persuasive result narrative until source definitions can be reconciled. CTR figures remain approximate observations, not causal proof.
 - Update home case positioning, section navigation and responsive case-story diagrams.
-- Original assets and v1.2 positioning remain preserved; no changes to main in this PR.
+- Original assets and v1.2 positioning remain preserved; this PR was subsequently merged into main.
 - **Verification still required:** original analytics date windows and event denominators; questionnaire source/participant context; AI score semantics, precise mappings and original Lottie. Never infer unmeasured business outcomes.
 
 
