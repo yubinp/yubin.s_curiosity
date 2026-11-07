@@ -38,3 +38,6 @@ Open a preview URL with `?versions=1` to highlight v1.2 / v1.3 / v1.4 ★ materi
 
 ## v1.5 editorial review (Draft)
 The approved Home Hero now begins **“What we see is only part of the story.”** The duplicated CTR/pasta reframe is removed; the Hero links to Selected Work. Seven repeated author-facing design-rationale notes were cut from Admin and Catalina. See [v1.5 six-page argument audit](docs/V1.5_ARGUMENT_AUDIT.md) for what still needs evidence and what should be removed or consolidated in subsequent passes. This branch does not merge automatically. `?versions=1` reveals v1.5 and prior editorial annotations.
+
+### Additional v1.5 working changes
+The Home now joins the three cases with an explicit **observation → question → decision** rationale (a retrospective synthesis, not a named historical framework). CTR, Catalina, Admin and Lab each include a concise **why this method → how used → effect/limitations → transferable principle** explanation, with eight explicit source gaps visible **only** under `?versions=1`. The version-review selection persists across internal navigation, including new tabs. Case-specific evidence remains unverified where documented. These modifications are in a working PR, not published `main`.
