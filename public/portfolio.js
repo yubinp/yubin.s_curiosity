@@ -45,7 +45,6 @@
 
 (()=>{const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced||!('IntersectionObserver'in window))return;const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('motion-shown');o.unobserve(e.target)}}),{threshold:.2});document.querySelectorAll('.motion-reveal').forEach(el=>{el.classList.add('motion-ready');o.observe(el)});document.querySelectorAll('.ai-build-story').forEach(story=>{if(matchMedia('(max-width:650px)').matches)return;story.classList.add('build-enhanced');story.dataset.stage='0';const stages=new IntersectionObserver(es=>{es.filter(e=>e.isIntersecting).forEach(e=>story.dataset.stage=e.target.dataset.buildStep)},{rootMargin:'-25% 0px -35% 0px',threshold:0});story.querySelectorAll('.build-step').forEach(el=>stages.observe(el))})})();
 
-
 /* Version annotations are editorial overlays only: normal portfolio visitors see no markers. */
 (()=>{
  const page=(location.pathname.split('/').filter(Boolean).pop()||'index').replace(/\.html$/,'');
@@ -57,8 +56,14 @@
   info:['.simple-hero h1','.simple-hero p'],
   research:['.research-intro p']
  };
- const targets=(v12[page]||[]).concat(['footer p']);
- targets.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.2'));
+ const v13={
+  index:['.projects .project:nth-child(1) .project-copy','.projects .project:nth-child(2) .project-copy'],
+  ctr:['.case-hero','.quick-read','.chapter#overview','.chapter#brief','.chapter#first','.chapter#turn','.chapter#second','.chapter#experience','.chapter#outcome'],
+  krust:['.case-hero','.case-overview','.quick-read','.chapter#overview','.chapter#context','.chapter#question','.chapter#signals','.chapter#loading','.chapter#outcome','.chapter#experience .chapter-heading']
+ };
+ // First mark proven v1.2 regions. Then override only areas rewritten in v1.3.
+ (v12[page]||[]).concat(['footer p']).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.2'));
+ (v13[page]||[]).forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.dataset.changeVersion='v1.3'));
  // Versions are reviewed via ?versions=1; clean portfolio pages remain unchanged.
  let stored=null;
  try{stored=sessionStorage.getItem('portfolio-version-overlays')}catch{}

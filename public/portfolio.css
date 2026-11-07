@@ -106,6 +106,28 @@ html[lang=en] .reframe-scene{word-break:normal}
 @media(max-width:760px){.simple-hero h1 br{display:none}}
 
 
+/* v1.3 · Product-framing and evidence architecture */
+.case-decision-map{margin:clamp(1.5rem,3vw,2.5rem) 0;padding:clamp(1.15rem,2.4vw,2rem);border:1px solid var(--line,#d7d7d7);border-radius:20px;overflow:hidden}
+.case-decision-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.case-decision-inputs>div,.case-decision-output,.case-tradeoff>div,.case-decision-steps>div{min-width:0;border-radius:12px;background:var(--panel,#f2f2f1);padding:clamp(.9rem,1.5vw,1.25rem)}
+.case-decision-map .eyebrow,.case-tradeoff .eyebrow{display:block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;opacity:.72}
+.case-decision-map h3{font-size:clamp(1rem,1.5vw,1.3rem);line-height:1.35;margin:.6rem 0}
+.case-decision-map p,.case-tradeoff p{font-size:.9rem;line-height:1.65;margin:.4rem 0 0;overflow-wrap:anywhere}
+.case-decision-arrow{text-align:center;font-size:1.65rem;line-height:2}
+.case-decision-output{text-align:center}
+.case-decision-output h3{margin:.4rem 0}
+.case-decision-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:1.5rem 0}
+.case-decision-steps>div{display:flex;flex-direction:column;gap:.55rem}
+.case-decision-steps span{font-size:.7rem;letter-spacing:.08em;opacity:.7}
+.case-decision-steps strong{font-size:.95rem;line-height:1.5}
+.case-tradeoff{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:1.5rem 0}
+.case-tradeoff strong{display:block;margin:.5rem 0;font-size:1.08rem;line-height:1.4}
+.case-proof-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:1.5rem 0}
+.case-proof-grid .figure{min-width:0;margin:0}
+.case-proof-grid img{max-width:100%;height:auto}
+.case-proof-note{font-size:.86rem;line-height:1.7;opacity:.76;margin:1rem 0 2rem;max-width:68ch}
+@media(max-width:700px){.case-decision-inputs,.case-decision-steps,.case-tradeoff,.case-proof-grid{grid-template-columns:1fr}.case-decision-map{padding:1rem;border-radius:14px}.case-decision-arrow{line-height:1.5}}
+
 /* Editorial version diff; deliberately hidden unless ?versions=1 enables it. */
 .version-toggle{position:fixed;bottom:18px;right:18px;z-index:10000;appearance:none;border:1px solid #929292;border-radius:999px;background:var(--panel,#fff);color:var(--ink,#222);font-family:inherit;font-size:12px;font-weight:600;line-height:1.3;padding:10px 14px;box-shadow:0 3px 18px rgba(0,0,0,.16);cursor:pointer}
 .version-toggle:hover{filter:brightness(.94)}.version-toggle:focus-visible{outline:3px solid #276c8b;outline-offset:3px}
