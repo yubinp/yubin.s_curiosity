@@ -1,7 +1,12 @@
 # Changelog
 
+## 1.5.1 · 빨간 박스 편집 화면 전용 — 2026-11-09
+- Red TODO boxes no longer show to visitors; they appear only in the edit view (`?versions=1`), alongside version outlines.
+- Edit-view toggle renamed: "Show / Hide edit marks" (편집 표시 보기 / 숨기기). Turning it off shows exactly what visitors see.
+- Not changed: the sentences inside the boxes. Outside the edit view they read as plain text, so internal notes are still visible to visitors until the next pass (1.5.2 · 박스 안 문장 정리).
+
 ## 1.5.0 · Argument & Editorial Clarity — 전체 논증 점검·문장 간결화 — 2026-11-07
-**Draft; not merged to main.** First editorial pass only. Continued case rewrites are pending original evidence.
+Merged into main as PR #5 on 2026-11-09. First editorial pass only. Continued case rewrites are pending original evidence.
 - Home: adopt exact approved English Hero *“What we see is only part of the story.”* with a Korean translation and CTA to Selected Work.
 - Remove duplicate Homepage CTR reframe/pasta metaphor; keep original case cards and screenshots.
 - Adjust desktop/mobile typography and editorial version-compare annotations for the new Hero.

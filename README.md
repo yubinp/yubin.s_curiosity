@@ -1,6 +1,8 @@
 # Yubin Park — Product Design
 
-Current published version on `main`: **1.4.0 · Evidence & Build Proof** (PRs #2, #3 and #4 merged 2026-11-07). Proposed review version: **1.5.0 · Argument & Editorial Clarity — 전체 논증 점검·문장 간결화**, on Draft PR from `feature/v1.5-argument-clarity`. History in [CHANGELOG.md](CHANGELOG.md).
+Current version: **1.5.1 · 빨간 박스 편집 화면 전용** (2026-11-09). Previous: 1.5.0 · Argument & Editorial Clarity, merged as PR #5 on 2026-11-09. History in [CHANGELOG.md](CHANGELOG.md).
+
+Visitors see a clean site. Red TODO boxes and version outlines appear only in the edit view: add `?versions=1` to any page URL. The "Hide edit marks" button switches that tab back to what visitors see.
 
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.
@@ -36,8 +38,8 @@ This is the current working portfolio, including review borders and TODO notes. 
 ## v1.4 editorial review
 Open a preview URL with `?versions=1` to highlight v1.2 / v1.3 / v1.4 ★ material. Purple v1.4 ★ annotations are only visible in version review mode and identify evidence to verify; normal portfolio visitors do not see them. The version toggle persists in the current browser tab. See [v1.4 Evidence Checklist](docs/V1.4_EVIDENCE_CHECKLIST.md) and the [full six-page image placement audit](docs/V1.4_IMAGE_AUDIT.md) for the four-point decision narrative rubric and the Figma card-transition specification. The original Figma frames and provenance-safe Framer persona have not been delivered to this branch; do not represent conceptual comparisons as contemporaneous work.
 
-## v1.5 editorial review (Draft)
-The approved Home Hero now begins **“What we see is only part of the story.”** The duplicated CTR/pasta reframe is removed; the Hero links to Selected Work. Seven repeated author-facing design-rationale notes were cut from Admin and Catalina. See [v1.5 six-page argument audit](docs/V1.5_ARGUMENT_AUDIT.md) for what still needs evidence and what should be removed or consolidated in subsequent passes. This branch does not merge automatically. `?versions=1` reveals v1.5 and prior editorial annotations.
+## v1.5 editorial review (merged 2026-11-09)
+The approved Home Hero now begins **“What we see is only part of the story.”** The duplicated CTR/pasta reframe is removed; the Hero links to Selected Work. Seven repeated author-facing design-rationale notes were cut from Admin and Catalina. See [v1.5 six-page argument audit](docs/V1.5_ARGUMENT_AUDIT.md) for what still needs evidence and what should be removed or consolidated in subsequent passes. `?versions=1` reveals v1.5 and prior editorial annotations.
 
 ### Additional v1.5 working changes
-The Home now joins the three cases with an explicit **observation → question → decision** rationale (a retrospective synthesis, not a named historical framework). CTR, Catalina, Admin and Lab each include a concise **why this method → how used → effect/limitations → transferable principle** explanation, with eight explicit source gaps visible **only** under `?versions=1`. The version-review selection persists across internal navigation, including new tabs. Case-specific evidence remains unverified where documented. These modifications are in a working PR, not published `main`.
+The Home now joins the three cases with an explicit **observation → question → decision** rationale (a retrospective synthesis, not a named historical framework). CTR, Catalina, Admin and Lab each include a concise **why this method → how used → effect/limitations → transferable principle** explanation, with eight explicit source gaps visible **only** under `?versions=1`. The version-review selection persists across internal navigation, including new tabs. Case-specific evidence remains unverified where documented. Merged to `main` as PR #5 on 2026-11-09.
