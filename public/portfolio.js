@@ -96,7 +96,7 @@
   document.body.classList.toggle('version-compare',on);
   syncReviewLinks(on);
   button.setAttribute('aria-pressed',String(on));
-  button.textContent=(document.documentElement.lang==='ko'?(on?'버전 테두리 숨기기':'버전 테두리 보기'):(on?'Hide version outlines':'Show version outlines'));
+  button.textContent=(document.documentElement.lang==='ko'?(on?'편집 표시 숨기기':'편집 표시 보기'):(on?'Hide edit marks':'Show edit marks'));
  };
  button.addEventListener('click',()=>{
   const on=!document.body.classList.contains('version-compare');
