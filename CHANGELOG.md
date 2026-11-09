@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.2 · 박스 안 문장 정리 — 2026-11-09
+Internal notes removed from the visitor view (KR + EN). Visible text on all six pages now has no to-do or source-check language.
+- CTR: 20% replaced by "far more people moved the carousel than clicked" (records disagree: 15% vs 20%); dangling "15% drop-off" line, the v1.3/PR note and "source verification" card text removed; one public limitation kept ("observations, not a controlled test").
+- Catalina: duplicate Lottie disclaimer removed; score/mapping to-dos cut; outcome now says there's no data on how users perceived the feedback.
+- Admin: duplicate "not a production screen" line removed; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; outcome keeps "no measurement of fewer requests or time saved".
+- Lab: Problem-Framer limitation rewritten as "response reliability hasn't been systematically measured yet".
+- Honest captions and public limitations marked `data-public-note` so the TODO detector skips them.
+- Edit view only: three orange **DECISION** boxes — 1 CTR 20%, 2 classification table, 3 first-release vs deferred feature.
+
 ## 1.5.1 · 빨간 박스 편집 화면 전용 — 2026-11-09
 - Red TODO boxes no longer show to visitors; they appear only in the edit view (`?versions=1`), alongside version outlines.
 - Edit-view toggle renamed: "Show / Hide edit marks" (편집 표시 보기 / 숨기기). Turning it off shows exactly what visitors see.

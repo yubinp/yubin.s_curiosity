@@ -216,3 +216,7 @@ body.version-compare .v15-editor-gap-label{display:block;font-weight:700;font-si
 body.version-compare .v15-editor-gap p{font-size:13px;line-height:1.65;margin:8px 0 0}
 @media(max-width:760px){.v15-shared-method{margin-bottom:72px}.v15-method-steps,.v15-method-grid{grid-template-columns:1fr;gap:22px}.v15-method-case{margin:38px 0;padding:21px 17px}.v15-method-case h3{font-size:23px}.v15-transfer{margin-top:30px}.v15-method-footnote{font-size:11px}}
 @media print{body.version-compare .v15-editor-gap{display:none!important}}
+/* 1.5.2 decision points: editor-only, orange so they read as "Yubin decides", not "source needed" */
+body.version-compare .v15-editor-gap.v152-decision{border-color:#b8641f}
+body.version-compare .v152-decision .v15-editor-gap-label{color:#a2541a}
+.dark body.version-compare .v152-decision .v15-editor-gap-label{color:#f0a066}

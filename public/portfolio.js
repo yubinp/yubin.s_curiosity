@@ -13,8 +13,8 @@
   document.querySelectorAll('.work-note').forEach(el=>{el.classList.remove('work-note');el.removeAttribute('data-work-note-label')});
   const mark=el=>{el.classList.add('work-note');el.setAttribute('data-work-note-label',language==='en'?'TODO · Review / replace':'TODO · 확인 / 교체');if(el.tagName==='DETAILS')el.open=true;};
   document.querySelectorAll('.evidence-needed').forEach(mark);
-  document.querySelectorAll('.reading-detail').forEach(el=>{if(terms.test(el.textContent))mark(el)});
-  document.querySelectorAll('main p, main figcaption').forEach(el=>{if(!el.closest('.work-note')&&terms.test(el.textContent))mark(el)});
+  document.querySelectorAll('.reading-detail').forEach(el=>{if(!el.closest('[data-public-note]')&&terms.test(el.textContent))mark(el)});
+  document.querySelectorAll('main p, main figcaption').forEach(el=>{if(!el.closest('.work-note')&&!el.closest('[data-public-note]')&&terms.test(el.textContent))mark(el)});
  }
  function setLanguage(value,persist=false){
   language=value==='en'?'en':'ko';root.lang=language;
