@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.0 · CTR 와이어프레임 — 2026-11-10
+Builds on 1.5.2. Visual evidence for the CTR starting point and both decisions (KR + EN, light/dark, mobile).
+- 01: AS-IS wireframe. A banner in the middle of a purchase-intent product list, which leads to a separate news board.
+- 02, decision 1: "a louder banner" (considered) vs "carousel preview" (chosen).
+- 04, decision 2: a wireframe inside each trade-off card. Automatic classification catches only keyword titles, leaving "?"; manual classification labels every update.
+- 05: ITERATION 2 card and the screen below share a weak border, plus a "Shown below ↓" tag.
+- Screen captions for ITERATION 1 and 2 now say "Reconstructed with a Starbucks example".
+- Wireframes are lo-fi HTML/CSS and labelled explanatory. The dashed box marks the area that changes.
+
 ## 1.5.2 · 박스 안 문장 정리 — 2026-11-10
 Internal notes removed from the visitor view (KR + EN). Visible text on all six pages now has no to-do or source-check language. CTR sentences reviewed line by line with Yubin.
 - CTR 03: ~20% kept as Yubin's recollection, defined as any carousel interaction including clicks. The new hypothesis: irrelevant updates were mixed in, and only some titles ('discount', 'coupon', 'event') signalled value.
