@@ -9,9 +9,9 @@ Internal notes removed from the visitor view (KR + EN). Visible text on all six 
 - CTR 04 image caption: "Reconstructed with a Starbucks example · 4 of the 6 types shown".
 - CTR 06: limitation reworded. Before/after was measured on the same carousel area (defined by Yubin) with the same metrics; it was not an A/B test, so timing and posted content may differ.
 - CTR: removed the v1.3/PR note, the "source verification" card text, the duplicate 06 caveat and the outdated "15%/20% excluded" note.
-- Catalina: duplicate Lottie disclaimer removed; score/mapping to-dos cut; outcome now says there's no data on how users perceived the feedback.
-- Admin: duplicate "not a production screen" line removed; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; outcome keeps "no measurement of fewer requests or time saved".
-- Lab: Problem-Framer limitation rewritten as "response reliability hasn't been systematically measured yet".
+- Catalina: score/mapping to-dos cut; the outcome and mood-count lines state only what was decided. Kept for now: the Lottie disclaimer above the animation, until the original file is found.
+- Admin: duplicate "not a production screen" line removed; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; the 06 outcome paragraph no longer repeats "not measured" (the 06 heading still says it).
+- Lab: Problem-Framer evidence line keeps only what exists (live link + three-model design).
 - Honest captions and public limitations marked `data-public-note` so the TODO detector skips them.
 - Edit view only: three orange **DECISION** boxes. 1: CTR 20% (decided). 2: classification types (provisional). 3: first-release vs deferred feature (open).
 - Figma fixes still needed in `gift-12.png`. They are listed in PR #7.
