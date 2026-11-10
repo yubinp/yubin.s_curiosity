@@ -1,5 +1,30 @@
 # Changelog
 
+## 1.6.0 · CTR 와이어프레임 — 2026-11-10
+Builds on 1.5.2. Visual evidence for the CTR starting point and both decisions (KR + EN, light/dark, mobile).
+- 01: AS-IS wireframe. A banner in the middle of a purchase-intent product list, which leads to a separate news board.
+- 02, decision 1: "a louder banner" (considered) vs "carousel preview" (chosen).
+- 04, decision 2: a wireframe inside each trade-off card. Automatic classification catches only keyword titles, leaving "?"; manual classification labels every update.
+- 05: ITERATION 2 card and the screen below share a weak border, plus a "Shown below ↓" tag.
+- Screen captions for ITERATION 1 and 2 now say "Reconstructed with a Starbucks example".
+- Wireframes are lo-fi HTML/CSS and labelled explanatory. The dashed box marks the area that changes.
+
+## 1.5.2 · 박스 안 문장 정리 — 2026-11-10
+Internal notes removed from the visitor view (KR + EN). Visible text on all six pages now has no to-do or source-check language. CTR sentences reviewed line by line with Yubin.
+- CTR 03: ~20% kept as Yubin's recollection, defined as any carousel interaction including clicks. The new hypothesis: irrelevant updates were mixed in, and only some titles ('discount', 'coupon', 'event') signalled value.
+- CTR 03: "15% drop-off" → Venn reading. The 5% who clicked sit inside the 20% who interacted (same denominator), so the other 15 points are people who could be brought further.
+- CTR: the "CTR ≈ 5%" card and the 06 numbers/chart now say "average across 6 brands" (brands varied).
+- CTR 04: six types from memory (discounts, coupons, new & seasonal, merch, membership, collaborations), provisional until the original table is found. Content constraint added: brand-posted, crawled content couldn't be edited, so the display changed instead.
+- CTR 04 image caption: "Reconstructed with a Starbucks example · 4 of the 6 types shown".
+- CTR 06: limitation reworded. Before/after was measured on the same carousel area (defined by Yubin) with the same metrics; it was not an A/B test, so timing and posted content may differ.
+- CTR: removed the v1.3/PR note, the "source verification" card text, the duplicate 06 caveat and the outdated "15%/20% excluded" note.
+- Catalina: duplicate Lottie disclaimer removed; score/mapping to-dos cut; outcome now says there's no data on how users perceived the feedback.
+- Admin: duplicate "not a production screen" line removed; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; outcome keeps "no measurement of fewer requests or time saved".
+- Lab: Problem-Framer limitation rewritten as "response reliability hasn't been systematically measured yet".
+- Honest captions and public limitations marked `data-public-note` so the TODO detector skips them.
+- Edit view only: three orange **DECISION** boxes. 1: CTR 20% (decided). 2: classification types (provisional). 3: first-release vs deferred feature (open).
+- Figma fixes still needed in `gift-12.png`. They are listed in PR #7.
+
 ## 1.5.1 · 빨간 박스 편집 화면 전용 — 2026-11-09
 - Red TODO boxes no longer show to visitors; they appear only in the edit view (`?versions=1`), alongside version outlines.
 - Edit-view toggle renamed: "Show / Hide edit marks" (편집 표시 보기 / 숨기기). Turning it off shows exactly what visitors see.

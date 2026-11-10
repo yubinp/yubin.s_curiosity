@@ -216,3 +216,57 @@ body.version-compare .v15-editor-gap-label{display:block;font-weight:700;font-si
 body.version-compare .v15-editor-gap p{font-size:13px;line-height:1.65;margin:8px 0 0}
 @media(max-width:760px){.v15-shared-method{margin-bottom:72px}.v15-method-steps,.v15-method-grid{grid-template-columns:1fr;gap:22px}.v15-method-case{margin:38px 0;padding:21px 17px}.v15-method-case h3{font-size:23px}.v15-transfer{margin-top:30px}.v15-method-footnote{font-size:11px}}
 @media print{body.version-compare .v15-editor-gap{display:none!important}}
+/* 1.5.2 decision points: editor-only, orange so they read as "Yubin decides", not "source needed" */
+body.version-compare .v15-editor-gap.v152-decision{border-color:#b8641f}
+body.version-compare .v152-decision .v15-editor-gap-label{color:#a2541a}
+.dark body.version-compare .v152-decision .v15-editor-gap-label{color:#f0a066}
+
+/* 1.6.0 · CTR wireframes (lo-fi phones). The dashed box marks the area that changes between options. */
+.wf-figure{margin:2rem 0 0}
+.wf-row{display:flex;align-items:flex-start;justify-content:center;gap:clamp(14px,3vw,44px);background:var(--panel);border-radius:8px;padding:clamp(18px,3vw,40px)}
+.wf-col{display:flex;flex-direction:column;align-items:center;gap:12px;flex:0 1 230px;min-width:0}
+.wf-label{font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-align:center}
+.wf-col.is-chosen .wf-label{color:var(--ink);font-weight:600}
+.wf-note{margin:0!important;font-size:.82rem;line-height:1.55;color:var(--ink);text-align:center;max-width:230px;word-break:keep-all}
+.wf-arrow{align-self:center;margin-top:-40px;font-size:1.2rem;color:var(--muted)}
+.wf-figure figcaption{padding-top:12px;font-size:10px;color:var(--muted);line-height:1.6}
+.wf-phone{display:flex;flex-direction:column;gap:9px;width:100%;max-width:200px;aspect-ratio:9/12.5;box-sizing:border-box;padding:12px 11px 0;overflow:hidden;background:var(--bg);border:1.5px solid var(--line);border-radius:20px;font-family:var(--font);text-align:left}
+.wf-status{display:block;width:38%;height:5px;border-radius:3px;background:var(--line)}
+.wf-brand{display:block;font-size:12px;font-weight:800;letter-spacing:.01em;color:var(--ink)}
+.wf-zone{display:block;border-radius:8px;outline:1.5px dashed color-mix(in srgb,var(--ink) 38%,transparent);outline-offset:3px}
+.wf-banner{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:9px 9px;border-radius:7px;background:var(--panel);color:var(--ink);font-size:10px}
+.wf-banner b{font-weight:600}
+.wf-banner.is-big{padding:18px 10px;background:var(--ink);color:var(--bg);font-size:11.5px;letter-spacing:.07em}
+.wf-banner small{display:block;margin-top:3px;font-size:8.5px;font-weight:400;letter-spacing:0;opacity:.75}
+.wf-cards{display:flex;gap:6px;overflow:hidden}
+.wf-card{display:flex;flex-direction:column;gap:4px;flex:0 0 64%;box-sizing:border-box;min-height:62px;padding:8px;border-radius:7px;background:var(--panel)}
+.wf-card b{font-size:9.5px;line-height:1.25;font-weight:600;color:var(--ink)}
+.wf-card small{font-size:8px;color:var(--muted)}
+.wf-chip{align-self:flex-start;padding:2px 5px;border-radius:3px;background:var(--ink);color:var(--bg);font-size:7px;font-style:normal;font-weight:700;letter-spacing:.05em}
+.wf-chip.is-unknown{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--muted);padding:2px 7px}
+.wf-list{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+.wf-item{display:flex;align-items:center;gap:7px}
+.wf-item>span:first-child{flex:0 0 22px;height:22px;border-radius:5px;background:var(--line)}
+.wf-item>span:last-child{flex:0 0 55%;height:6px;border-radius:3px;background:var(--line)}
+.wf-board{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.wf-board span{display:block;height:6px;border-radius:3px;background:var(--line)}
+.wf-board span:nth-child(odd){width:85%}.wf-board span:nth-child(even){width:60%}
+.case-tradeoff.has-wf>div>.wf-phone{max-width:190px;aspect-ratio:auto;margin:0 auto 12px;padding-bottom:12px}
+.wf-example{display:block;margin:0 0 14px;font-size:.75rem;line-height:1.5;color:var(--muted);text-align:center;word-break:keep-all}
+/* 05: tie ITERATION 2 to the screen below with the same weak border */
+.case-decision-steps>div.is-shown,.original-figure.is-shown{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 28%,transparent)}
+.step-tag{display:block;font-size:.7rem;color:var(--muted)}
+@media(max-width:760px){
+ .wf-row{gap:10px;padding:16px 10px}
+ .wf-col{flex-basis:160px}
+ .wf-phone{max-width:150px;border-radius:16px;padding:10px 8px 0;gap:7px}
+ .wf-arrow{margin-top:-60px;font-size:1rem}
+ .wf-note{font-size:.75rem}
+ .wf-card{min-height:56px;padding:6px}
+ .wf-card b{font-size:8.5px}
+ .case-tradeoff.has-wf{grid-template-columns:1fr}
+}
+.case-tradeoff.has-wf .wf-cards{flex-direction:column;gap:5px}
+.case-tradeoff.has-wf .wf-card{flex:none;flex-direction:row;align-items:center;gap:7px;min-height:0;padding:6px 7px}
+.case-tradeoff.has-wf .wf-card small{display:none}
+.case-tradeoff.has-wf .wf-chip{flex:0 0 auto}
