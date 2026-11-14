@@ -10,7 +10,7 @@ Internal notes removed from the visitor view (KR + EN). Visible text on all six 
 - CTR 06: limitation reworded. Before/after was measured on the same carousel area (defined by Yubin) with the same metrics; it was not an A/B test, so timing and posted content may differ.
 - CTR: removed the v1.3/PR note, the "source verification" card text, the duplicate 06 caveat and the outdated "15%/20% excluded" note.
 - Catalina: score/mapping to-dos cut; the outcome and mood-count lines state only what was decided. The duplicate Lottie line above the animation is removed (the caption below already says it's a recreation).
-- Admin: duplicate "not a production screen" line removed; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; the 06 outcome paragraph no longer repeats "not measured" (the 06 heading still says it).
+- Admin: duplicate "not a production screen" line removed, and the screen caption now reads "Illustrative UI reconstruction · Charts and data are examples"; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; the 06 outcome paragraph no longer repeats "not measured" (the 06 heading still says it).
 - Lab: Problem-Framer evidence line keeps only what exists (live link + three-model design).
 - Honest captions and public limitations marked `data-public-note` so the TODO detector skips them.
 - Edit view only: three orange **DECISION** boxes. 1: CTR 20% (decided). 2: classification types (provisional). 3: first-release vs deferred feature (open).
