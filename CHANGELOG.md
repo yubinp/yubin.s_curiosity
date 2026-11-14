@@ -4,7 +4,7 @@
 Builds on 1.5.2. Visual evidence for the CTR starting point and both decisions (KR + EN, light/dark, mobile).
 - 01: AS-IS wireframe. A banner in the middle of a purchase-intent product list, which leads to a separate news board.
 - 02, decision 1: "a louder banner" (considered) vs "carousel preview" (chosen).
-- 04, decision 2: a wireframe inside each trade-off card. Automatic classification catches only keyword titles, leaving "?"; manual classification labels every update.
+- 04, decision 2: a wireframe inside each trade-off card. Automatic classification leaves every update unlabelled ("?"); manual classification labels every update.
 - 05: ITERATION 2 card and the screen below share a weak border, plus a "Shown below ↓" tag.
 - Screen captions for ITERATION 1 and 2 now say "Reconstructed with a Starbucks example".
 - Wireframes are lo-fi HTML/CSS and labelled explanatory. The dashed box marks the area that changes.
