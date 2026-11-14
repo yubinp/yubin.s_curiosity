@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.3 · 히어로 문장 — 2026-11-14
+- Home title: "What we see is only part of the story." → **"When people get stuck, I get curious."** (KR: 사람들이 막히는 순간, 나는 궁금해져.)
+- Page descriptions on all six pages use the same line.
+- Title only; the hero interaction is not included.
+
 ## 1.5.2 · 박스 안 문장 정리 — 2026-11-10
 Internal notes removed from the visitor view (KR + EN). Visible text on all six pages now has no to-do or source-check language. CTR sentences reviewed line by line with Yubin.
 - CTR 03: ~20% kept as Yubin's recollection, defined as any carousel interaction including clicks. The new hypothesis: irrelevant updates were mixed in, and only some titles ('discount', 'coupon', 'event') signalled value.
