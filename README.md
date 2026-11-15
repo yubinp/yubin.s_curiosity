@@ -1,8 +1,10 @@
 # Yubin Park — Product Design
 
-Current version: **1.5.1 · 빨간 박스 편집 화면 전용** (2026-11-09). Previous: 1.5.0 · Argument & Editorial Clarity, merged as PR #5 on 2026-11-09. History in [CHANGELOG.md](CHANGELOG.md).
+Current version: **1.5.2 · 박스 안 문장 정리** (2026-11-09). Previous: 1.5.1 · 빨간 박스 편집 화면 전용. History in [CHANGELOG.md](CHANGELOG.md).
 
-Visitors see a clean site. Red TODO boxes and version outlines appear only in the edit view: add `?versions=1` to any page URL. The "Hide edit marks" button switches that tab back to what visitors see.
+Visitors see a clean site. Red TODO boxes, version outlines, source requests and orange decision points appear only in the edit view: add `?versions=1` to any page URL. The "Hide edit marks" button switches that tab back to what visitors see.
+
+Reviewed public limitations and honest captions (e.g. "Not an original production screen") carry `data-public-note`, so the TODO detector skips them. Put internal to-dos in an editor-only `aside.v15-editor-gap`, never in visitor copy.
 
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.

@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.5.2 · 박스 안 문장 정리 — 2026-11-10
+Internal notes removed from the visitor view (KR + EN). Visible text on all six pages now has no to-do or source-check language. CTR sentences reviewed line by line with Yubin.
+- CTR 03: ~20% kept as Yubin's recollection, defined as any carousel interaction including clicks. The new hypothesis: irrelevant updates were mixed in, and only some titles ('discount', 'coupon', 'event') signalled value.
+- CTR 03: "15% drop-off" → Venn reading. The 5% who clicked sit inside the 20% who interacted (same denominator), so the other 15 points are people who could be brought further.
+- CTR: the "CTR ≈ 5%" card and the 06 numbers/chart now say "average across 6 brands" (brands varied).
+- CTR 04: six types from memory (discounts, coupons, new & seasonal, merch, membership, collaborations), provisional until the original table is found. Content constraint added: brand-posted, crawled content couldn't be edited, so the display changed instead.
+- CTR 04 image caption: "Reconstructed with a Starbucks example · 4 of the 6 types shown".
+- CTR 06: limitation reworded. Before/after was measured on the same carousel area (defined by Yubin) with the same metrics; it was not an A/B test, so timing and posted content may differ.
+- CTR: removed the v1.3/PR note, the "source verification" card text, the duplicate 06 caveat and the outdated "15%/20% excluded" note.
+- Catalina: score/mapping to-dos cut; the outcome and mood-count lines state only what was decided. The duplicate Lottie line above the animation is removed (the caption below already says it's a recreation).
+- Admin: duplicate "not a production screen" line removed, and the screen caption now reads "Illustrative UI reconstruction · Charts and data are examples"; "Where the evidence still needs work" box moved out of the visitor view; release-list and priority to-dos cut; "not measured" lines removed from the visitor view (06 heading, summary, figure caption, result box, next-check note); the 06 heading now reads "The admin shipped, in stages."
+- Lab: Problem-Framer evidence line keeps only what exists (live link + three-model design).
+- Honest captions and public limitations marked `data-public-note` so the TODO detector skips them.
+- Edit view only: three orange **DECISION** boxes. 1: CTR 20% (decided). 2: classification types (provisional). 3: first-release vs deferred feature (open).
+- Figma fixes still needed in `gift-12.png`. They are listed in PR #7.
+
 ## 1.5.1 · 빨간 박스 편집 화면 전용 — 2026-11-09
 - Red TODO boxes no longer show to visitors; they appear only in the edit view (`?versions=1`), alongside version outlines.
 - Edit-view toggle renamed: "Show / Hide edit marks" (편집 표시 보기 / 숨기기). Turning it off shows exactly what visitors see.
