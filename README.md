@@ -9,7 +9,7 @@ Reviewed public limitations and honest captions (e.g. "Not an original productio
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.
 Name each version `X.Y.Z · <what changed>` and use the same name in the PR title and CHANGELOG, so it can be searched later.
-With every release, update `SITE_VERSION` and `SITE_UPDATED` at the top of `public/portfolio.js`. The footer on every page reads them.
+With every release, update `SITE_VERSION` at the top of `public/portfolio.js`. The footer on every page reads it.
 - **MAJOR** (1.x → 2.0.0) — big shift: new concept or mood, site structure, or case lineup. 크게 바뀔 때만.
 - **MINOR** (1.2.0 → 1.3.0) — visible content change: new copy direction, new section, case rewrite. 내용이 눈에 띄게 바뀔 때.
 - **PATCH** (1.2.0 → 1.2.1) — small fix: typo, link, image swap, spacing. 작은 수정.
