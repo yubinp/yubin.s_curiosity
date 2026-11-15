@@ -270,3 +270,8 @@ body.version-compare .v152-decision .v15-editor-gap-label{color:#a2541a}
 .case-tradeoff.has-wf .wf-card{flex:none;flex-direction:row;align-items:center;gap:7px;min-height:0;padding:6px 7px}
 .case-tradeoff.has-wf .wf-card small{display:none}
 .case-tradeoff.has-wf .wf-chip{flex:0 0 auto}
+
+/* 1.6.1 · footer version */
+.footer-id{display:flex;flex-direction:column;gap:8px}
+.site-version{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+@media(max-width:760px){.site-version{font-size:9px}}

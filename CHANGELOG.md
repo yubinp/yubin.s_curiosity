@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.1 · 푸터 버전 표시 — 2026-11-15
+- Footer on every page shows the site version and release date (e.g. "v1.6.1 · 2026-11-15"), under the name. Visible on mobile too.
+- One source: `SITE_VERSION` / `SITE_UPDATED` at the top of `public/portfolio.js`.
+
 ## 1.6.0 · CTR 와이어프레임 — 2026-11-10
 Builds on 1.5.2. Visual evidence for the CTR starting point and both decisions (KR + EN, light/dark, mobile).
 - 01: AS-IS wireframe. A banner in the middle of a purchase-intent product list, which leads to a separate news board.
