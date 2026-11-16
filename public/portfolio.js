@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.7.0';
+const SITE_VERSION='1.7.1';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -149,4 +149,26 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const openFor=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f){f.open=true;t.scrollIntoView();}};
  if(document.body.classList.contains('version-compare'))folds.forEach(f=>f.open=true);
  openFor();addEventListener('hashchange',openFor);addEventListener('beforeprint',()=>folds.forEach(f=>f.open=true));
+})();
+
+/* v1.7.1 · question wheel: the card row drifts on its own, can be scrolled or dragged, loops, and curves away at the edges like a wheel */
+(function(){const belt=document.querySelector('.q-belt'),track=belt&&belt.querySelector('.q-track');if(!track)return;
+ if(matchMedia('(max-width:760px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ belt.classList.add('is-wheel');const cards=[...track.children];let hold=false,drag=null,moved=0,pos=0;
+ const half=()=>track.scrollWidth/2;
+ const shape=()=>{const r=belt.getBoundingClientRect(),mid=r.left+r.width/2,span=r.width/2;
+  for(const c of cards){const b=c.getBoundingClientRect();if(b.right<r.left-80||b.left>r.right+80)continue;
+   const d=Math.max(-1,Math.min(1,(b.left+b.width/2-mid)/span)),a=Math.abs(d);
+   c.style.transform='rotateY('+(-d*34).toFixed(2)+'deg) scale('+(1-a*.14).toFixed(3)+')';c.style.opacity=(1-a*.55).toFixed(3);}};
+ const wrap=()=>{const h=half();if(pos>=h)pos-=h;else if(pos<=0)pos+=h;else return;belt.scrollLeft=pos;};
+ const frame=()=>{if(Math.abs(belt.scrollLeft-pos)>1.5)pos=belt.scrollLeft;if(!hold&&!drag&&!document.hidden){pos+=.45;belt.scrollLeft=pos;}wrap();shape();requestAnimationFrame(frame);};
+ belt.scrollLeft=pos=1;
+ belt.addEventListener('mouseenter',()=>hold=true);belt.addEventListener('mouseleave',()=>{hold=false;drag=null;belt.classList.remove('is-drag')});
+ belt.addEventListener('focusin',()=>hold=true);belt.addEventListener('focusout',()=>hold=false);
+ belt.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button)return;drag={x:e.clientX,s:belt.scrollLeft};moved=0;});
+ addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;moved=Math.max(moved,Math.abs(dx));if(moved>4){belt.classList.add('is-drag');belt.scrollLeft=drag.s-dx;}});
+ addEventListener('pointerup',()=>{drag=null;belt.classList.remove('is-drag')});
+ belt.addEventListener('click',e=>{if(moved>4){e.preventDefault();e.stopPropagation();moved=0;}},true);
+ belt.addEventListener('dragstart',e=>e.preventDefault());
+ requestAnimationFrame(frame);
 })();
