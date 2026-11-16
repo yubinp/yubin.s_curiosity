@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.2 · 히어로 소개 — 2026-11-16
+- Two questions under the home title: "What’s really in the way? What did we miss?"
+- Three abstract sentences replaced by three case lines that link to the cases (2% banner, AI model with no screen, sales data behind an engineer).
+- Intro rewritten with specifics: only designer on an AI research team (blank screen to PoC in one month), led admin and B2B projects, pitched and built a design system unasked.
+
 ## 1.6.1 · 푸터 버전 표시 — 2026-11-15
 - Footer on every page shows the site version (e.g. "v1.6.1") under the name. Visible on mobile too.
 - One source: `SITE_VERSION` at the top of `public/portfolio.js`.
