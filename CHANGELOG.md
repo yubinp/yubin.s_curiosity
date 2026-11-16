@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.5 · 메인 타이포 대비 — 2026-11-16
+- Home below the hero now uses the same five type steps as the case pages. Before, 1.6.7 had only reached the case pages and Lab.
+- Case cards: title 24–38px/600, description 14px muted, tag 11px (was 8px on phones).
+- Method section: title 30–50px/600, lead 18–21px, step questions 19–24px, step text 14px muted.
+- Lab teaser: title and text on the same steps.
+
 ## 1.7.4 · 휠 원기둥 — 2026-11-16
 - Home wheel: the cards now sit on a gently curved cylinder instead of a flat row with tilted ends. Each card turns and recedes a little the further it is from the middle.
 - Same behaviour in English and Korean, light and dark, desktop and phone.
