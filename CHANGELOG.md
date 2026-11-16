@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.7 · 타이포 대비 — 2026-11-16
+- Case pages and Lab: one type scale with wider gaps. Section title 50px/600, sub-title 24px, lead 21px, body 15px (muted, key phrases in ink), small 14px. CTR goes from 36 text styles to 27; five sub-title sizes become one.
+- Title-font trial: add `?title=b` to any page to see page and section titles in a display font (Boldonse); `?title=a` turns it off. Not on by default.
+- Home: on wide screens (over 1100px) the hero is centred: eyebrow, title, two questions, then the question chips.
+- Home chips: four questions reworded (2% of users; without asking an engineer every time; what people really need from the AI's data; different users, different views).
+- About: "Working with me" → "When I'm working"; three lines rewritten and numbered; Code Your Future dated Oct 2025—Now.
+
 ## 1.6.6 · 어바웃 문장과 지구본 — 2026-11-16
 - About: title "Curious by default."; "I'm Yubin…" heading replaced by "Working with me" with three lines.
 - Language: one globe button that switches EN ↔ KR (EN default) replaces the KR / EN pair.
