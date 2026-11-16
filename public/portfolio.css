@@ -428,3 +428,10 @@ html.title-b .chapter-heading h2,html.title-b .case-hero h1,html.title-b .simple
 .v15-hero-copy .v15-hero-intro{color:var(--ink);font-size:var(--t3);line-height:1.5;letter-spacing:-.02em}
 .v15-hero-copy .v15-hero-method{color:var(--muted);font-size:var(--t4);line-height:1.75}
 .v15-hero-copy .hero-cases-note{margin:-4px 0 14px}
+
+/* ===== v1.7.3 · hero wash: the colour sits behind the whole hero (title included), softer, with no visible edge ===== */
+.q-belt,.dark .q-belt{background:none}
+.work-first .home-intro.v15-home-intro{position:relative;isolation:isolate}
+.work-first .home-intro.v15-home-intro::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:12%;left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(42% 46% at 28% 46%,color-mix(in srgb,var(--mint) 55%,transparent),transparent 100%),radial-gradient(40% 44% at 54% 62%,color-mix(in srgb,var(--sage) 45%,transparent),transparent 100%),radial-gradient(42% 46% at 76% 40%,color-mix(in srgb,#cdd2ee 45%,transparent),transparent 100%)}
+.dark .work-first .home-intro.v15-home-intro::before{background:radial-gradient(42% 46% at 28% 46%,#26332d,transparent 100%),radial-gradient(40% 44% at 54% 62%,#2b3025,transparent 100%),radial-gradient(42% 46% at 76% 40%,#282a3c,transparent 100%)}
+@media(max-width:760px){.q-belt.is-wheel{perspective:620px;padding:22px 0 30px}.work-first .home-intro.v15-home-intro::before{bottom:30%}}

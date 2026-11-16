@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.3 · 히어로 배경 번짐 — 2026-11-16
+- Home: the colour behind the wheel is now a soft wash behind the whole hero, title included, at about half the strength, fading out with no visible edge.
+- Wheel on phones: stronger curve. Side cards tilt, shrink and drop more.
+
 ## 1.7.2 · 휠 유리 카드 — 2026-11-16
 - Home wheel now moves on phones too (it pauses while a finger is on it and resumes shortly after).
 - Cards show the question only; the case name is removed. Glass look: translucent surface, light edge, soft colour behind.
