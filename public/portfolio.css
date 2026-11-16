@@ -327,3 +327,17 @@ html[lang=en] .q-chip{word-break:normal}
 .ver-list a{grid-row:1;grid-column:3;display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;border-bottom:1px solid currentColor}
 .ver-tag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:var(--muted);vertical-align:middle}
 .ver-tag.is-live{border-color:var(--ink);color:var(--ink)}
+
+/* 1.6.6 · About 'working with me', globe language button, hidden door */
+.with-me{list-style:none;margin:0 0 34px;padding:0;display:grid;gap:0;border-top:1px solid var(--line)}
+.with-me li{padding:16px 0;border-bottom:1px solid var(--line);font-size:clamp(17px,1.5vw,21px);line-height:1.45;letter-spacing:-.01em;word-break:keep-all}
+html[lang=en] .with-me li{word-break:normal}
+.lang-globe{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 6px;border:0;background:none;color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.03em;cursor:pointer}
+.lang-globe svg{width:17px;height:17px;display:block}
+.lang-globe .lang-code::after{content:"EN"}
+html[lang=ko] .lang-globe .lang-code::after{content:"KR"}
+.lang-globe:hover{opacity:.6}
+.brand.is-door{outline:1px dashed var(--ink);outline-offset:6px}
+.ver-list.is-key li{padding:20px 0}
+.ver-all{margin-top:44px}
+.ver-all summary{cursor:pointer;font-size:13px;color:var(--muted);min-height:44px;display:flex;align-items:center}

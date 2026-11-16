@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.6.5';
+const SITE_VERSION='1.6.6';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -120,4 +120,23 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const tick=()=>{if(paused||document.hidden)return;chips[i]?.classList.remove('is-on');i=(i+1)%chips.length;chips[i].classList.add('is-on');};
  tick();setInterval(tick,2600);
+})();
+
+// 1.6.6 · language: one globe button that switches EN <-> KR (EN is the default).
+(()=>{document.querySelectorAll('.language-switch').forEach(sw=>{
+  const opts=[...sw.querySelectorAll('.lang-option')];if(!opts.length)return;opts.forEach(o=>o.hidden=true);
+  const b=document.createElement('button');b.type='button';b.className='lang-globe';
+  const label=()=>b.setAttribute('aria-label',document.documentElement.lang==='ko'?'언어 바꾸기: 지금 한국어, 누르면 English':'Switch language: now English, press for Korean');
+  b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span class="lang-code" aria-hidden="true"></span>';
+  b.addEventListener('click',()=>{(opts.find(o=>o.getAttribute('aria-pressed')==='false')||opts[0]).click();label();});
+  sw.prepend(b);label();});})();
+// 1.6.6 · hidden door: on the Korean About page, drag the footer name onto the logo to open the version list.
+(()=>{if(!/(^|\/)info(\.html)?$/.test(location.pathname))return;
+  const name=document.querySelector('footer .footer-id a'),logo=document.querySelector('.editorial-header .brand');if(!name||!logo)return;
+  let armed=false;name.setAttribute('draggable','true');
+  name.addEventListener('dragstart',()=>{armed=document.documentElement.lang==='ko';});
+  name.addEventListener('dragend',()=>{armed=false;logo.classList.remove('is-door');});
+  logo.addEventListener('dragover',ev=>{if(!armed)return;ev.preventDefault();logo.classList.add('is-door');});
+  logo.addEventListener('dragleave',()=>logo.classList.remove('is-door'));
+  logo.addEventListener('drop',ev=>{if(!armed)return;ev.preventDefault();location.href='versions.html';});
 })();
