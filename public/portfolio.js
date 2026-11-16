@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.7.3';
+const SITE_VERSION='1.7.4';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -157,10 +157,11 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  belt.classList.add('is-wheel');let touchT=0;const rest=()=>{clearTimeout(touchT);touchT=setTimeout(()=>hold=false,1800)};
  belt.addEventListener('touchstart',()=>{clearTimeout(touchT);hold=true},{passive:true});belt.addEventListener('touchend',rest,{passive:true});belt.addEventListener('touchcancel',rest,{passive:true});const cards=[...track.children];let hold=false,drag=null,moved=0,pos=0;
  const half=()=>track.scrollWidth/2;
- const shape=()=>{const r=belt.getBoundingClientRect(),mid=r.left+r.width/2,span=r.width/2;
-  for(const c of cards){const b=c.getBoundingClientRect();if(b.right<r.left-80||b.left>r.right+80)continue;
-   const d=Math.max(-1,Math.min(1,(b.left+b.width/2-mid)/span)),a=Math.abs(d);
-   const k=r.width<700?1.5:1;c.style.transform='translateY('+(a*a*16*k).toFixed(1)+'px) rotateY('+(-d*38*k).toFixed(2)+'deg) scale('+(1-a*.16*k).toFixed(3)+')';c.style.opacity=(1-a*.55).toFixed(3);}};
+ let geo=[];const measure=()=>{geo=cards.map(c=>({c,x:c.offsetLeft+c.offsetWidth/2,w:c.offsetWidth}))};measure();addEventListener('resize',measure);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(measure);
+ const shape=()=>{const W=belt.clientWidth,R=Math.max(W*1.05,430),mid=belt.scrollLeft+W/2;
+  for(const g of geo){const x=g.x-mid;if(Math.abs(x)>W/2+g.w){g.c.style.opacity='0';continue;}
+   const t=Math.max(-1.2,Math.min(1.2,x/R));
+   g.c.style.transform='translateX('+(R*Math.sin(t)-x).toFixed(1)+'px) translateZ('+(R*(Math.cos(t)-1)).toFixed(1)+'px) rotateY('+(t*57.2958).toFixed(2)+'deg)';g.c.style.opacity=Math.max(0,1-Math.abs(t)*1.15).toFixed(3);}};
  const wrap=()=>{const h=half();if(pos>=h)pos-=h;else if(pos<=0)pos+=h;else return;belt.scrollLeft=pos;};
  const frame=()=>{if(Math.abs(belt.scrollLeft-pos)>1.5)pos=belt.scrollLeft;if(!hold&&!drag&&!document.hidden){pos+=.45;belt.scrollLeft=pos;}wrap();shape();requestAnimationFrame(frame);};
  belt.scrollLeft=pos=1;
