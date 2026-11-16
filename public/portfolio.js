@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.6.7';
+const SITE_VERSION='1.6.8';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -119,7 +119,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  cloud.addEventListener('mouseleave',()=>{paused=false;hint(null)});cloud.addEventListener('focusout',()=>{paused=false;hint(null)});
  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const tick=()=>{if(paused||document.hidden)return;chips[i]?.classList.remove('is-on');i=(i+1)%chips.length;chips[i].classList.add('is-on');};
- tick();setInterval(tick,2600);
+ if(!cloud.classList.contains('q-belt')){tick();setInterval(tick,2600);}
 })();
 
 // 1.6.6 · language: one globe button that switches EN <-> KR (EN is the default).
