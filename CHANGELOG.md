@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7.0 · CTR 두 겹 — 2026-11-16
+- CTR case in two layers. Always visible: a short claim as the section title, a question under it, one lead paragraph and the key image. Behind six question buttons: checks, alternatives, trade-offs, limits.
+- Seven section titles rewritten as short claims with a question sub-line (e.g. "A destination, not a reason." / "What was the banner actually telling shoppers?"). Old sentence titles are in 1.6.8.
+- AS-IS wireframe: "AS-IS · One tap, two screens" sits above the panel, the two screens are numbered 1 and 2, and a link under it jumps to what replaced it.
+- Folds open automatically in the edit view, when printing, and when a link points inside one.
+- Title-font trial (`?title=b`): line spacing set to 1.4 with no tracking, as in the old portfolio.
+
 ## 1.6.8 · 질문 컨베이어 — 2026-11-16
 - Home: the nine question chips become cards on a slow belt that passes by. No borders at rest; the card under the pointer gets a border and the belt pauses. Each card names its case and links to it.
 - The one-at-a-time highlight is gone. On phones and with reduced motion the belt is a sideways scroll instead.

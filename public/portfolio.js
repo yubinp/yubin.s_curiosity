@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.6.8';
+const SITE_VERSION='1.7.0';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -143,3 +143,10 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
 
 /* v1.6.7 · title-font trial: ?title=b turns on a display font for h1/h2 in this tab, ?title=a turns it off */
 (function(){try{const q=new URLSearchParams(location.search).get('title');if(q)sessionStorage.setItem('title-trial',q);if(sessionStorage.getItem('title-trial')==='b')document.documentElement.classList.add('title-b');}catch(e){}})();
+
+/* v1.7.0 · two-layer case: folds open in the edit view and when a link points inside one */
+(function(){const folds=[...document.querySelectorAll('details.fold')];if(!folds.length)return;
+ const openFor=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f){f.open=true;t.scrollIntoView();}};
+ if(document.body.classList.contains('version-compare'))folds.forEach(f=>f.open=true);
+ openFor();addEventListener('hashchange',openFor);addEventListener('beforeprint',()=>folds.forEach(f=>f.open=true));
+})();
