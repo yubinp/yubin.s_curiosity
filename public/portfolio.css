@@ -288,20 +288,42 @@ body.version-compare .v152-decision .v15-editor-gap-label{color:#a2541a}
 html[lang=en] .hero-questions,html[lang=en] .hero-cases a{word-break:normal}
 @media(max-width:760px){.hero-cases a{font-size:14px}.hero-questions{font-size:17px}}
 
-/* 1.6.4 · About: 'Off the clock' collage. A paper board that keeps its own colours in dark mode, like a pasted print. */
-.likes{margin:0 5vw 140px;padding:clamp(28px,4vw,56px);border-radius:10px;background:#efe6d2;color:#2a2622}
-.likes-head{display:grid;gap:10px;margin-bottom:clamp(28px,4vw,52px)}
-.likes-head .eyebrow{color:#6b5f4f}
-.likes-head h2{margin:0;max-width:16ch;font-size:clamp(34px,5.4vw,76px);line-height:.98;letter-spacing:-.04em;font-weight:800;text-transform:uppercase;color:#b5381f;word-break:keep-all}
-.likes-head p{margin:0;font-size:14px;color:#5b5145}
-.likes-board{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3.4vw,48px) clamp(18px,3vw,44px)}
-.like{display:grid;gap:6px;align-content:start;position:relative;padding-top:14px;border-top:1px solid #2a2622}
-.like-art{display:block;width:clamp(84px,9vw,128px);margin:4px 0 10px;transform:rotate(var(--tilt));transition:transform .25s cubic-bezier(.3,.7,.2,1);filter:drop-shadow(3px 5px 0 rgba(42,38,34,.14))}
-.like-art svg{display:block;width:100%;height:auto}
-.like:hover .like-art{transform:rotate(0deg) translateY(-4px)}
-.like-no{position:absolute;top:14px;right:0;font-size:11px;letter-spacing:.06em;color:#6b5f4f}
-.like b{font-size:15px;font-weight:650;letter-spacing:-.01em}
-.like-why{font-size:13px;line-height:1.6;color:#4d443a;word-break:keep-all}
-html[lang=en] .like-why,html[lang=en] .likes-head h2{word-break:normal}
-@media(max-width:760px){.likes{margin:0 9px 80px;padding:24px 18px}.likes-board{grid-template-columns:repeat(2,minmax(0,1fr))}.like-art{width:76px}}
-@media(prefers-reduced-motion:reduce){.like-art{transition:none}}
+/* 1.6.5 · home question chips */
+.v15-hero-copy .q-label{font-size:12px;color:var(--muted);margin:0}
+.q-cloud{display:flex;flex-wrap:wrap;gap:15px 10px;align-items:flex-start;width:100%;padding-bottom:10px}
+.q-chip{display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;padding:9px 16px;border:1px solid var(--line);border-radius:999px;font-size:14px;line-height:1.35;color:var(--muted);text-decoration:none;transform:translateY(var(--y)) rotate(var(--r));transition:color .5s,border-color .5s,background-color .5s,transform .5s cubic-bezier(.3,.7,.2,1);word-break:keep-all}
+html[lang=en] .q-chip{word-break:normal}
+.q-chip.is-on,.q-chip:hover,.q-chip:focus-visible,.q-chip.is-kin{color:var(--ink);border-color:var(--ink)}
+.q-chip.is-on,.q-chip:hover,.q-chip:focus-visible{background:var(--panel);transform:translateY(calc(var(--y) - 3px)) rotate(0deg) scale(1.04)}
+.project.is-hinted{outline:1px solid var(--ink);outline-offset:10px}
+@media(max-width:760px){.q-cloud{flex-direction:column;gap:8px}.q-chip{font-size:13.5px;transform:none;border-radius:14px}.q-chip.is-on,.q-chip:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.q-chip{transition:none}}
+/* 1.6.5 · About scraps: scattered, no panel, uses site colours */
+.scraps{margin:0 5vw 140px}
+.scraps-head{display:grid;gap:12px;margin-bottom:10px}
+.scraps-head h2{margin:0;font-size:42px;letter-spacing:-.04em;line-height:1.1;font-weight:500}
+.scrap-board{list-style:none;margin:0;padding:0;position:relative;height:350px}
+.scrap{position:absolute;left:var(--x);top:var(--y);width:150px;transform:rotate(var(--r));transition:transform .3s cubic-bezier(.3,.7,.2,1)}
+.scrap:hover,.scrap:focus-within{transform:rotate(0deg) translateY(-6px);z-index:2}
+.scrap-in{display:grid;gap:4px;color:var(--ink);text-decoration:none}
+.scrap-art{display:block;width:calc(92px*var(--s));color:var(--ink)}
+.scrap-art svg{display:block;width:100%;height:auto}
+.scrap b{font-size:13px;font-weight:600;margin-top:6px}
+.scrap-why{font-size:12px;line-height:1.5;color:var(--muted);opacity:0;transform:translateY(-3px);transition:opacity .25s,transform .25s;word-break:keep-all}
+.scrap:hover .scrap-why,.scrap:focus-within .scrap-why{opacity:1;transform:none}
+@media(hover:none),(max-width:760px){.scrap-why{opacity:1;transform:none}}
+@media(max-width:760px){.scraps{margin:0 9px 80px}.scraps-head h2{font-size:34px}.scrap-board{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:34px 18px;padding-top:24px}.scrap{position:static;width:auto}.scrap:nth-child(even){margin-top:28px}}
+@media(prefers-reduced-motion:reduce){.scrap,.scrap-why{transition:none}}
+
+/* 1.6.5 · private version index (versions.html) */
+.ver-page{max-width:880px;margin:0 auto;padding:70px 20px 120px}
+.ver-page h1{font-size:34px;letter-spacing:-.03em;font-weight:500;margin:10px 0 8px}
+.ver-page>p{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 34px}
+.ver-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ver-list li{display:grid;grid-template-columns:74px 1fr auto;gap:6px 18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.ver-list b{font-size:15px;font-variant-numeric:tabular-nums}
+.ver-list span{font-size:14px}
+.ver-list small{grid-column:2;font-size:12px;color:var(--muted);line-height:1.6}
+.ver-list a{grid-row:1;grid-column:3;display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:600;border-bottom:1px solid currentColor}
+.ver-tag{display:inline-block;margin-left:8px;padding:2px 7px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:var(--muted);vertical-align:middle}
+.ver-tag.is-live{border-color:var(--ink);color:var(--ink)}

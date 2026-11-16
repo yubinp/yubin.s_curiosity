@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.5 · 질문에서 시작하는 메인 — 2026-11-16
+- Home: nine question chips (three per case) replace the three case lines. One lights up at a time; hovering one highlights its sibling questions and the case card; each links to its case.
+- Home intro: "I do my best work before anyone has written the brief" → "I don't wait to be told what to fix. I look for what would help users, the team and the business, and bring it to the table."
+- About: collage rebuilt as a scattered board with no panel, site colours, six new placeholder items (cooking, cycling, interiors, design objects, tinkering with AI, good food); captions appear on hover.
+- `versions.html`: private, unlinked index of every version with a link to that version's own preview address. Branches `v/1.2.0`…`v/1.6.0` hold the released versions.
+
 ## 1.6.4 · 어바웃 콜라주 — 2026-11-16
 - About: "Off the clock" board under the timeline. Six things Yubin likes, each with a one-line reason, on a paper-coloured panel with tilted cut-out illustrations (straighten on hover).
 - Items and illustrations are placeholders to swap for Yubin's own picks and photos.
