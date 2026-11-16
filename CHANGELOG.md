@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.0 · 제목 폰트 — 2026-11-16
+- Page titles and section titles use the display font from the old portfolio (Boldonse), line spacing 1.4 with no tracking. Body text, card titles and labels stay in Geist.
+- English titles are set smaller than before because the font is wide. Korean titles fall back to Noto Sans KR at weight 600, since Boldonse has no Korean.
+- `?title=a` shows the previous Geist titles in that tab for comparison; `?title=b` switches back.
+
 ## 1.7.5 · 메인 타이포 대비 — 2026-11-16
 - Home below the hero now uses the same five type steps as the case pages. Before, 1.6.7 had only reached the case pages and Lab.
 - Case cards: title 24–38px/600, description 14px muted, tag 11px (was 8px on phones).
