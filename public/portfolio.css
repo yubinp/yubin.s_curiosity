@@ -414,3 +414,17 @@ html.title-b .chapter-heading h2,html.title-b .case-hero h1,html.title-b .simple
 .q-belt.is-wheel .q-track{animation:none}
 .q-belt.is-wheel .q-chip{transition:color .25s,border-color .25s;will-change:transform}
 .q-belt.is-wheel .q-chip:hover,.q-belt.is-wheel .q-chip:focus-visible{opacity:1!important}
+
+/* ===== v1.7.2 · wheel on phones too, question-only glass cards, hero intro as lead ===== */
+.q-belt{position:relative;padding:18px 0}
+.q-belt{background:radial-gradient(30% 85% at 20% 50%,color-mix(in srgb,var(--mint) 90%,transparent),transparent 72%),radial-gradient(28% 85% at 50% 55%,color-mix(in srgb,var(--sage) 85%,transparent),transparent 72%),radial-gradient(30% 85% at 80% 45%,color-mix(in srgb,#cdd2ee 80%,transparent),transparent 72%)}
+.dark .q-belt{background:radial-gradient(30% 85% at 20% 50%,#2c3a33,transparent 72%),radial-gradient(28% 85% at 50% 55%,#33382b,transparent 72%),radial-gradient(30% 85% at 80% 45%,#2e3046,transparent 72%)}
+.q-belt .q-track{position:relative;z-index:1}
+.q-belt .q-chip,.q-belt .q-chip.is-kin,.q-belt .q-chip.is-on{justify-content:center;width:264px;min-height:112px;padding:18px 20px;font-size:17px;border-radius:18px;color:var(--ink);border:1px solid color-mix(in srgb,#fff 70%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--tile) 78%,transparent),color-mix(in srgb,var(--tile) 34%,transparent));-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);box-shadow:0 10px 30px -18px rgba(36,36,32,.35),inset 0 1px 0 color-mix(in srgb,#fff 80%,transparent)}
+.dark .q-belt .q-chip,.dark .q-belt .q-chip.is-kin{border-color:color-mix(in srgb,#fff 16%,transparent);box-shadow:0 10px 30px -18px #000,inset 0 1px 0 color-mix(in srgb,#fff 14%,transparent)}
+.q-belt .q-chip:hover,.q-belt .q-chip:focus-visible{border-color:color-mix(in srgb,var(--ink) 55%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--tile) 95%,transparent),color-mix(in srgb,var(--tile) 55%,transparent))}
+@media(max-width:760px){.q-belt.is-wheel{scroll-snap-type:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);margin:0 -9px;width:calc(100% + 18px)}.q-belt.is-wheel .q-dup{display:flex}.q-belt .q-chip{width:230px;min-height:104px;font-size:15.5px}}
+/* hero intro: who I am is the lead, the proof is the body */
+.v15-hero-copy .v15-hero-intro{color:var(--ink);font-size:var(--t3);line-height:1.5;letter-spacing:-.02em}
+.v15-hero-copy .v15-hero-method{color:var(--muted);font-size:var(--t4);line-height:1.75}
+.v15-hero-copy .hero-cases-note{margin:-4px 0 14px}

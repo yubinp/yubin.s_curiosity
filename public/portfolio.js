@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.7.1';
+const SITE_VERSION='1.7.2';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -153,8 +153,9 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
 
 /* v1.7.1 · question wheel: the card row drifts on its own, can be scrolled or dragged, loops, and curves away at the edges like a wheel */
 (function(){const belt=document.querySelector('.q-belt'),track=belt&&belt.querySelector('.q-track');if(!track)return;
- if(matchMedia('(max-width:760px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- belt.classList.add('is-wheel');const cards=[...track.children];let hold=false,drag=null,moved=0,pos=0;
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ belt.classList.add('is-wheel');let touchT=0;const rest=()=>{clearTimeout(touchT);touchT=setTimeout(()=>hold=false,1800)};
+ belt.addEventListener('touchstart',()=>{clearTimeout(touchT);hold=true},{passive:true});belt.addEventListener('touchend',rest,{passive:true});belt.addEventListener('touchcancel',rest,{passive:true});const cards=[...track.children];let hold=false,drag=null,moved=0,pos=0;
  const half=()=>track.scrollWidth/2;
  const shape=()=>{const r=belt.getBoundingClientRect(),mid=r.left+r.width/2,span=r.width/2;
   for(const c of cards){const b=c.getBoundingClientRect();if(b.right<r.left-80||b.left>r.right+80)continue;

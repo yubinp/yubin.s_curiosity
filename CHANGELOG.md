@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.7.2 · 휠 유리 카드 — 2026-11-16
+- Home wheel now moves on phones too (it pauses while a finger is on it and resumes shortly after).
+- Cards show the question only; the case name is removed. Glass look: translucent surface, light edge, soft colour behind.
+- Removed "Questions I've asked. Pick the one you're curious about." The line under the wheel now reads "Questions I asked while working on these projects."
+- Hero intro: "I'm Yubin…" is the lead (ink, larger); the proof paragraph is the body (smaller, muted). Before, the two were the same size and differed only in colour.
+
 ## 1.7.1 · 질문 휠 — 2026-11-16
 - Home: the question cards now behave like a wheel. The row drifts slowly, loops, can be scrolled sideways or dragged, and the cards curve away and fade toward the edges. It stops while the pointer is on it.
 - Phones and reduced motion keep the plain sideways scroll.
