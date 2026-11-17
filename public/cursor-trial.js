@@ -1,26 +1,68 @@
-/* Design trial (not for release): circle cursor candidates.
-   ?cursor=a|b|c|d picks one, ?cursor=0 turns it off; the choice is kept for this tab.
-   A small switcher sits bottom-left so the four can be compared on any page.
-   Mouse and trackpad only: touch screens and keyboard use are unchanged. Reduced motion: no trailing, no easing. */
+/* Design trial (not for release): circle cursor candidates + whole-card folds.
+   Cursor: ?cursor=a|b|c|d|e|f picks one, ?cursor=0 turns it off; the choice is kept for this tab.
+   Folds: a folded card opens from anywhere on it; an open card closes from its question, from "Close" at the bottom,
+   and, while ?foldclose=1 (default), from anywhere on the card. ?foldclose=0 compares without that.
+   A small switcher sits bottom-left on desktop. Touch screens keep the normal cursor; reduced motion: no trailing. */
 (() => {
- if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
  const root = document.documentElement;
+ const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
- const KEY = 'cursor-trial';
+ const KEY = 'cursor-trial', FKEY = 'foldclose-trial';
  const LOOKS = {
   a: { en: 'Snap ring', ko: '스냅 링' },
   b: { en: 'Invert lens', ko: '반전 렌즈' },
   c: { en: 'Glass bubble', ko: '유리 방울' },
-  d: { en: 'Light', ko: '빛' }
+  d: { en: 'Light', ko: '빛' },
+  e: { en: 'Glass + light', ko: '유리 + 빛' },
+  f: { en: 'Glass + room light', ko: '유리 + 주변 빛' }
  };
- let look = 'a';
+ let look = 'e', wholeClose = true;
  try {
-  const q = new URLSearchParams(location.search).get('cursor');
-  if (q) sessionStorage.setItem(KEY, q);
-  look = sessionStorage.getItem(KEY) || 'a';
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('cursor')) sessionStorage.setItem(KEY, qs.get('cursor'));
+  if (qs.get('foldclose')) sessionStorage.setItem(FKEY, qs.get('foldclose'));
+  look = sessionStorage.getItem(KEY) || 'e';
+  wholeClose = (sessionStorage.getItem(FKEY) || '1') !== '0';
  } catch (e) {}
+ const lang = () => (root.lang === 'en' ? 'en' : 'ko');
+ const L = (en, ko) => (lang() === 'en' ? en : ko);
+
+ /* ---------- folds: whole card opens, open card closes ---------- */
+ const folds = [...document.querySelectorAll('details.fold.is-enhanced:not(.is-plain)')];
+ const isOpenFold = d => !!d && d.classList.contains('is-enhanced') && !d.classList.contains('is-plain') && !d.classList.contains('is-teaser');
+ const isTeaser = d => !!d && d.classList.contains('is-teaser');
+ const skip = t => t.closest('a,button:not(.fold-close),input,textarea,select,label,video,audio,[role=button]');
+ folds.forEach(d => {
+  const sum = d.querySelector('summary');
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'fold-close';
+  close.innerHTML = '<span class="en">Close</span><span class="ko">접기</span><span aria-hidden="true">↑</span>';
+  close.addEventListener('click', e => { e.stopPropagation(); if (isOpenFold(d)) sum.click(); });
+  d.appendChild(close);
+  let downAt = null;
+  d.addEventListener('pointerdown', e => { downAt = { x: e.clientX, y: e.clientY }; });
+  d.addEventListener('click', e => {
+   const t = e.target;
+   if (t.closest('summary') || skip(t)) return; // the question and buttons already do their own thing
+   const moved = downAt && Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y) > 6;
+   const selecting = String(getSelection()).length > 0;
+   if (moved || selecting) return; // a drag or a text selection is not a click on the card
+   if (isTeaser(d)) { d._expand && d._expand(); return; }
+   if (wholeClose && isOpenFold(d)) sum.click();
+  });
+ });
 
  const css = `
+ /* folds trial */
+ .fold.is-teaser{cursor:pointer}
+ html.fold-whole .fold.is-enhanced:not(.is-plain):not(.is-teaser)>.fold-body{cursor:pointer}
+ .fold-close{display:none;align-items:center;gap:8px;margin:6px auto 22px;padding:9px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);background:none;font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
+ .fold-close:hover,.fold-close:focus-visible{border-color:var(--ink)}
+ .fold.is-enhanced:not(.is-plain):not(.is-teaser)>.fold-close{display:flex}
+ html:not([lang=ko]) .fold-close .ko,html[lang=ko] .fold-close .en{display:none}
+
+ /* cursor */
  html.cur-on,html.cur-on *{cursor:none!important}
  html.cur-on :is(input,textarea,[contenteditable=true]){cursor:text!important}
  /* the wrapper is display:contents so each layer blends with the page itself (a fixed wrapper would isolate mix-blend-mode) */
@@ -31,36 +73,43 @@
  .cur-label{position:fixed;left:0;top:0;font:600 11px/1 var(--font);letter-spacing:.02em;white-space:nowrap;color:var(--ink);transform:translate(-50%,-50%);z-index:2147483001}
  html.cur-in .cur:not(.has-label) .cur-label{opacity:0}
 
- /* A · snap ring: a dot that follows exactly, and a ring that trails it. On links and buttons the ring wraps the element. */
+ /* A · snap ring */
  .cur-a .cur-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--ink)}
  .cur-a .cur-ring{width:34px;height:34px;border:1px solid color-mix(in srgb,var(--ink) 55%,transparent);transition:border-radius .2s,background .2s,border-color .2s}
  .cur-a.is-hover .cur-ring{background:color-mix(in srgb,var(--ink) 7%,transparent);border-color:color-mix(in srgb,var(--ink) 35%,transparent)}
- .cur-a.is-hover .cur-dot{opacity:0}
+ html.cur-in .cur-a.is-hover .cur-dot{opacity:0}
  .cur-a.is-down .cur-ring{background:color-mix(in srgb,var(--ink) 14%,transparent)}
- .cur-a .cur-label{display:none}
 
- /* B · invert lens: one white circle that inverts what is under it. Grows on links, becomes a text bar over text. */
- .cur-b .cur-dot{display:none}
- .cur-b .cur-ring{width:18px;height:18px;background:#fff;mix-blend-mode:difference;transition:border-radius .18s}
- .cur-b.is-text .cur-ring{border-radius:2px}
- .cur-b .cur-label{display:none}
+ /* B · invert lens */
+ .cur-b .cur-ring{background:#fff;mix-blend-mode:difference;transition:border-radius .18s}
 
- /* C · glass bubble: a small frosted circle. On links it grows and says what the click does. */
- .cur-c .cur-dot{width:4px;height:4px;margin:-2px 0 0 -2px;background:var(--ink);transition:opacity .15s}
- .cur-c .cur-ring{width:30px;height:30px;background:color-mix(in srgb,var(--glass,rgba(255,255,255,.4)) 100%,transparent);border:1px solid var(--glass-edge,rgba(255,255,255,.6));-webkit-backdrop-filter:blur(6px) saturate(1.8);backdrop-filter:blur(6px) saturate(1.8);box-shadow:0 8px 24px -10px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
- .cur-c.has-label .cur-dot{opacity:0}
+ /* C · glass bubble (and the glass of E and F) */
+ .cur-c .cur-dot{width:4px;height:4px;margin:-2px 0 0 -2px;background:var(--ink)}
+ .cur-c .cur-ring,.cur-e .cur-ring,.cur-f .cur-ring{background:var(--glass,rgba(255,255,255,.4));border:1px solid var(--glass-edge,rgba(255,255,255,.6));-webkit-backdrop-filter:blur(6px) saturate(1.8);backdrop-filter:blur(6px) saturate(1.8);box-shadow:0 8px 24px -10px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+ html.cur-in .cur-c.has-label .cur-dot{opacity:0}
 
- /* D · light: a soft light in the page's own colour follows the pointer and lights the glass; a small dot marks the point. */
- .cur-d .cur-glow{width:420px;height:420px;margin:-210px 0 0 -210px;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 34%,transparent) 0,color-mix(in srgb,var(--g2) 14%,transparent) 38%,transparent 70%);mix-blend-mode:soft-light;transition:opacity .3s}
- html.dark .cur-d .cur-glow{mix-blend-mode:screen;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 22%,transparent) 0,color-mix(in srgb,var(--g2) 9%,transparent) 40%,transparent 70%)}
+ /* D · light */
+ .cur-glow{width:420px;height:420px;margin:-210px 0 0 -210px;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 34%,transparent) 0,color-mix(in srgb,var(--g2) 14%,transparent) 38%,transparent 70%);mix-blend-mode:soft-light}
+ html.dark .cur-glow{mix-blend-mode:screen;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 22%,transparent) 0,color-mix(in srgb,var(--g2) 9%,transparent) 40%,transparent 70%)}
  .cur-d .cur-dot{width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--ink);transition:width .2s,height .2s,margin .2s,background .2s,box-shadow .2s}
  .cur-d.is-hover .cur-dot{width:16px;height:16px;margin:-8px 0 0 -8px;background:var(--g1);box-shadow:0 0 0 6px color-mix(in srgb,var(--g1) 25%,transparent)}
- .cur-d .cur-ring,.cur-d .cur-label{display:none}
- .cur:not(.cur-d) .cur-glow{display:none}
 
- .cur-switch{position:fixed;left:16px;bottom:16px;z-index:2147483001;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:var(--glass-solid,#fff);border:1px solid var(--glass-edge,#ddd);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);font:500 12px/1 var(--font);color:var(--ink)}
- .cur-switch span{padding:0 8px 0 6px;color:var(--muted)}
- .cur-switch button{font:inherit;color:inherit;background:none;border:0;border-radius:999px;padding:8px 11px}
+ /* E · glass + light: C's glass with no centre dot, the page's colour lit inside the glass; B's moves (grows on links, a bar over text).
+    F · the same, plus D's wide soft light in the page's colour around it. */
+ .cur-e .cur-ring,.cur-f .cur-ring{background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--g1) 30%,transparent) 0,color-mix(in srgb,var(--g2) 10%,transparent) 55%,transparent 75%),var(--glass,rgba(255,255,255,.4));box-shadow:0 8px 24px -10px rgba(0,0,0,.35),0 0 22px -6px color-mix(in srgb,var(--g1) 55%,transparent),inset 0 1px 0 rgba(255,255,255,.5);transition:background .2s,border-color .2s,box-shadow .2s,border-radius .15s}
+ .cur-e.is-text .cur-ring,.cur-f.is-text .cur-ring{background:color-mix(in srgb,var(--ink) 78%,transparent);border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:2px}
+ html.cur-in .cur-f .cur-glow{opacity:.75}
+
+ /* which layers each look uses */
+ .cur:not(.cur-a):not(.cur-c):not(.cur-d) .cur-dot{display:none}
+ .cur:not(.cur-d):not(.cur-f) .cur-glow{display:none}
+ .cur-d .cur-ring{display:none}
+ .cur:not(.cur-c):not(.cur-e):not(.cur-f) .cur-label{display:none}
+
+ .cur-switch{position:fixed;left:16px;bottom:16px;z-index:2147483001;display:flex;flex-wrap:wrap;align-items:center;gap:4px;max-width:calc(100vw - 32px);padding:6px;border-radius:22px;background:var(--glass-solid,#fff);border:1px solid var(--glass-edge,#ddd);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);font:500 12px/1 var(--font);color:var(--ink)}
+ .cur-switch span{padding:0 6px 0 8px;color:var(--muted)}
+ .cur-switch i{width:1px;height:20px;background:var(--line);margin:0 6px}
+ .cur-switch button{font:inherit;color:inherit;background:none;border:0;border-radius:999px;padding:8px 10px}
  .cur-switch button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
  .cur-switch button:focus-visible{outline:2px solid var(--g1);outline-offset:1px}
  @media(max-width:760px){.cur-switch{display:none}}
@@ -68,30 +117,42 @@
  const style = document.createElement('style');
  style.textContent = css;
  document.head.append(style);
+ root.classList.toggle('fold-whole', wholeClose);
 
- // switcher
- const lang = () => (root.lang === 'en' ? 'en' : 'ko');
+ /* ---------- switcher ---------- */
  const sw = document.createElement('div');
  sw.className = 'cur-switch';
  sw.setAttribute('role', 'group');
- sw.setAttribute('aria-label', 'Cursor trial');
+ sw.setAttribute('aria-label', 'Design trial');
  const drawSwitch = () => {
   const l = lang();
-  sw.innerHTML = `<span>${l === 'en' ? 'Cursor trial' : '커서 시안'}</span>`
-   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()} · ${LOOKS[k][l]}</button>`).join('')
-   + `<button type="button" data-look="0" aria-pressed="${!LOOKS[look]}">${l === 'en' ? 'Off' : '끄기'}</button>`;
+  sw.innerHTML = `<span>${L('Cursor', '커서')}</span>`
+   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()}${'ef'.includes(k) ? ' · ' + LOOKS[k][l] : ''}</button>`).join('')
+   + `<button type="button" data-look="0" aria-pressed="${!LOOKS[look]}">${L('Off', '끄기')}</button>`
+   + (folds.length ? `<i></i><span>${L('Close an open card from anywhere', '펼친 카드 아무 데나 눌러 접기')}</span>`
+     + `<button type="button" data-fold="1" aria-pressed="${wholeClose}">${L('On', '켬')}</button>`
+     + `<button type="button" data-fold="0" aria-pressed="${!wholeClose}">${L('Off', '끔')}</button>` : '');
  };
  sw.addEventListener('click', e => {
   const b = e.target.closest('button');
   if (!b) return;
+  if (b.dataset.fold) {
+   wholeClose = b.dataset.fold === '1';
+   root.classList.toggle('fold-whole', wholeClose);
+   try { sessionStorage.setItem(FKEY, b.dataset.fold); } catch (err) {}
+   drawSwitch();
+   return;
+  }
   look = b.dataset.look;
   try { sessionStorage.setItem(KEY, look); } catch (err) {}
   apply();
  });
- document.body.append(sw);
+ if (fine) document.body.append(sw);
  new MutationObserver(drawSwitch).observe(root, { attributes: true, attributeFilter: ['lang'] });
+ drawSwitch();
+ if (!fine) return; // touch screens: folds trial only
 
- // cursor
+ /* ---------- cursor ---------- */
  const cur = document.createElement('div');
  cur.className = 'cur';
  cur.setAttribute('aria-hidden', 'true');
@@ -102,55 +163,63 @@
  const INTERACTIVE = 'a[href],button,summary,[role=button],label,select,.q-card,.q-track';
  const TEXT = 'p,li,h1,h2,h3,h4,dd,dt,blockquote,figcaption,td,th';
  const caseLink = /(^|\/)(ctr|krust|system)(\.html)?([?#]|$)/;
- const labelFor = el => {
-  if (!el) return '';
-  const en = lang() === 'en';
-  if (el.matches('.q-track')) return en ? 'Drag' : '끌기';
-  if (el.matches('a[target=_blank]')) return en ? 'Open ↗' : '열기 ↗';
-  if (el.matches('summary,.fold-more,[class*=continue],[class*=read-more]')) return en ? 'Read' : '읽기';
-  const href = el.getAttribute('href') || '';
-  if (el.matches('a') && caseLink.test(href) && !el.closest('nav,header,footer')) return en ? 'View case' : '케이스 보기';
-  return '';
- };
 
- const P = { x: -100, y: -100 }; // pointer
- const R = { x: -100, y: -100, w: 34, h: 34, r: 999 }; // ring (eased)
- let target = null, overText = false, down = false, raf = 0;
-
- const sizes = () => ({
-  a: { w: 34, h: 34 },
-  b: { w: 18, h: 18 },
-  c: { w: 30, h: 30 }
- }[look] || { w: 0, h: 0 });
-
- function goal() {
-  const base = sizes();
-  if (look === 'a' && target) {
-   const b = target.getBoundingClientRect();
-   const small = b.width < 260 && b.height < 90;
-   if (small) { // wrap the link or button
-    const pad = 8, cs = getComputedStyle(target);
-    const r = parseFloat(cs.borderTopLeftRadius) || 0;
-    return { x: b.left + b.width / 2, y: b.top + b.height / 2, w: b.width + pad * 2, h: b.height + pad * 2, r: Math.max(r + pad, 10) };
-   }
-   return { x: P.x, y: P.y, w: 64, h: 64, r: 999 };
+ // what the pointer is over: { el, label, soft } or null
+ function hitFor(el) {
+  if (!el || el.closest('.cur-switch')) return null;
+  const fold = el.closest('details.fold');
+  if (fold && isTeaser(fold) && !skip(el)) return { el: fold, label: L('Read', '읽기') };
+  if (fold && isOpenFold(fold)) {
+   const c = el.closest('summary,.fold-close');
+   if (c) return { el: c, label: L('Close', '접기') };
+   if (wholeClose && !skip(el) && el.closest('.fold-body')) return { el: fold, label: L('Close', '접기'), soft: true };
   }
-  if (look === 'b') {
-   if (target) return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
-   if (overText) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
-  }
-  if (look === 'c' && target) {
-   const t = labelFor(target);
-   return t ? { x: P.x, y: P.y, w: Math.max(76, t.length * 7.5 + 30), h: 76, r: 999 } : { x: P.x, y: P.y, w: 52, h: 52, r: 999 };
-  }
-  return { x: P.x, y: P.y, w: base.w, h: base.h, r: 999 };
+  const h = el.closest(INTERACTIVE);
+  if (!h) return null;
+  let t = '';
+  if (h.matches('.q-track')) t = L('Drag', '끌기');
+  else if (h.matches('a[target=_blank]')) t = L('Open ↗', '열기 ↗');
+  else if (h.matches('.fold-more')) t = L('Read', '읽기');
+  else if (h.matches('a') && caseLink.test(h.getAttribute('href') || '') && !h.closest('nav,header,footer')) t = L('View case', '케이스 보기');
+  return { el: h, label: t };
  }
 
- function frame() {
+ const P = { x: -100, y: -100 };
+ const R = { x: -100, y: -100, w: 28, h: 28, r: 999 };
+ let hit = null, overText = false, down = false, raf = 0, lastEl = null, last = 0;
+ const base = () => ({ a: [34, 34], b: [18, 18], c: [30, 30], e: [28, 28], f: [28, 28] }[look] || [0, 0]);
+
+ function goal() {
+  const [bw, bh] = base();
+  if (hit) {
+   if (look === 'a') {
+    const b = hit.el.getBoundingClientRect();
+    if (b.width < 260 && b.height < 90) {
+     const pad = 8, r = parseFloat(getComputedStyle(hit.el).borderTopLeftRadius) || 0;
+     return { x: b.left + b.width / 2, y: b.top + b.height / 2, w: b.width + pad * 2, h: b.height + pad * 2, r: Math.max(r + pad, 10) };
+    }
+    return { x: P.x, y: P.y, w: 64, h: 64, r: 999 };
+   }
+   if (look === 'b') return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
+   if (look === 'c') return hit.label ? { x: P.x, y: P.y, w: Math.max(76, hit.label.length * 7.5 + 30), h: 76, r: 999 } : { x: P.x, y: P.y, w: 52, h: 52, r: 999 };
+   if (look === 'e' || look === 'f') {
+    if (hit.soft) return { x: P.x, y: P.y, w: 48, h: 48, r: 999 }; // anywhere on an open card: a quieter "Close"
+    return { x: P.x, y: P.y, w: hit.label ? Math.max(58, hit.label.length * 7.5 + 30) : 58, h: 58, r: 999 };
+   }
+  }
+  if (overText && 'bef'.includes(look)) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
+  return { x: P.x, y: P.y, w: bw, h: bh, r: 999 };
+ }
+
+ function frame(now) {
   raf = 0;
+  // easing is per 60fps frame, scaled by real elapsed time so a slow screen catches up at the same speed
+  const dt = Math.min(64, last ? now - last : 16.7) / 16.7;
+  last = now;
   const g = goal();
-  const k = reduced ? 1 : (look === 'b' ? 0.35 : look === 'd' ? 0.12 : 0.2);
-  const ks = reduced ? 1 : 0.22;
+  const ease = k => (reduced ? 1 : 1 - Math.pow(1 - k, dt));
+  const k = ease({ b: 0.35, d: 0.12, e: 0.16, f: 0.16 }[look] || 0.2);
+  const ks = ease(0.22);
   R.x += (g.x - R.x) * k; R.y += (g.y - R.y) * k;
   R.w += (g.w - R.w) * ks; R.h += (g.h - R.h) * ks;
   R.r = g.r;
@@ -163,44 +232,43 @@
   glow.style.transform = `translate3d(${R.x}px,${R.y}px,0)`;
   label.style.left = R.x + 'px';
   label.style.top = R.y + 'px';
-  const moving = Math.abs(g.x - R.x) + Math.abs(g.y - R.y) + Math.abs(g.w - R.w) + Math.abs(g.h - R.h) > 0.3;
-  if (moving) raf = requestAnimationFrame(frame);
+  if (Math.abs(g.x - R.x) + Math.abs(g.y - R.y) + Math.abs(g.w - R.w) + Math.abs(g.h - R.h) > 0.3) raf = requestAnimationFrame(frame);
+  else last = 0;
  }
  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
- function onMove(e) {
-  P.x = e.clientX; P.y = e.clientY;
-  root.classList.add('cur-in');
-  const el = e.target instanceof Element ? e.target : null;
-  const hit = el && !el.closest('.cur-switch') ? el.closest(INTERACTIVE) : null;
-  if (hit !== target) {
-   target = hit;
-   const t = look === 'c' ? labelFor(target) : '';
-   label.textContent = t;
-   cur.classList.toggle('has-label', !!t);
-   cur.classList.toggle('is-hover', !!target);
-  }
-  overText = !target && !!(el && el.closest(TEXT));
+ function refresh(el) {
+  hit = hitFor(el);
+  const t = hit && 'cef'.includes(look) ? hit.label : '';
+  label.textContent = t;
+  cur.classList.toggle('has-label', !!t);
+  cur.classList.toggle('is-hover', !!hit);
+  overText = !hit && !!(el && el.closest(TEXT));
   cur.classList.toggle('is-text', overText);
   kick();
  }
+ addEventListener('pointermove', e => {
+  P.x = e.clientX; P.y = e.clientY;
+  root.classList.add('cur-in');
+  lastEl = e.target instanceof Element ? e.target : null;
+  refresh(lastEl);
+ }, { passive: true });
+ // after a card opens or closes, what is under the pointer changes, so read it again
+ addEventListener('click', () => setTimeout(() => { lastEl = document.elementFromPoint(P.x, P.y); refresh(lastEl); }, 0));
+ addEventListener('pointerdown', () => { down = true; cur.classList.add('is-down'); kick(); });
+ addEventListener('pointerup', () => { down = false; cur.classList.remove('is-down'); kick(); });
+ document.addEventListener('mouseout', e => { if (!e.relatedTarget) root.classList.remove('cur-in'); });
+ addEventListener('blur', () => root.classList.remove('cur-in'));
+ addEventListener('scroll', () => { if (hit) kick(); }, { passive: true });
 
  function apply() {
   const on = !!LOOKS[look];
   root.classList.toggle('cur-on', on);
   cur.className = 'cur' + (on ? ' cur-' + look : '');
   cur.hidden = !on;
-  target = null; label.textContent = '';
-  if (on) { const s = sizes(); R.w = s.w; R.h = s.h; }
+  const [w, h] = base(); R.w = w; R.h = h;
   drawSwitch();
-  kick();
+  refresh(lastEl);
  }
-
- addEventListener('pointermove', onMove, { passive: true });
- addEventListener('pointerdown', () => { down = true; cur.classList.add('is-down'); kick(); });
- addEventListener('pointerup', () => { down = false; cur.classList.remove('is-down'); kick(); });
- document.addEventListener('mouseout', e => { if (!e.relatedTarget) root.classList.remove('cur-in'); });
- addEventListener('blur', () => root.classList.remove('cur-in'));
- addEventListener('scroll', () => { if (target) kick(); }, { passive: true });
  apply();
 })();
