@@ -508,3 +508,37 @@ html .chapter-body .chapter-lead,html .v15-hero-copy .v15-hero-intro,html .v15-m
 html[lang=ko] .chapter-body .chapter-lead,html[lang=ko] .v15-hero-copy .v15-hero-intro,html[lang=ko] .v15-method-lead{line-height:1.7}
 html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,html .fold-body li,html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .v15-hero-copy .v15-hero-method,html .research-teaser p,html .work-first .project-copy p,html .story-addition>p,html .evidence-addition p,html .evidence-addition li,html .design-question>p:not(.eyebrow){line-height:1.7}
 html .story-addition p:not(.growth-summary),html .story-addition .chart-caption{line-height:1.7}
+
+/* ===== v2.0.0 · glass mood =====
+   Colour lives in the light behind the page, not in fills. Surfaces are frosted glass; text is black (light) or white (dark).
+   The backdrop is one fixed layer, so a cinematic version can swap it for imagery or video without touching the surfaces.
+   Each case has its own light: CTR teal/blue/green, Catalina violet/pink, Admin amber/coral. */
+:root{--g1:#36d1b0;--g2:#4f7dff;--g3:#c38bff;--g4:#ffb08a}
+html[data-gpage=ctr]{--g1:#25d39f;--g2:#3a78ff;--g3:#a6e35a;--g4:#6fd6ff}
+html[data-gpage=krust]{--g1:#a66bff;--g2:#ff5fcf;--g3:#5a63ff;--g4:#ffa6df}
+html[data-gpage=system]{--g1:#ffad3d;--g2:#ff6e55;--g3:#53cfff;--g4:#ffd86b}
+html:not(.dark){--bg:#f2f3f7;--ink:#0e1014;--muted:#545964;--line:rgba(14,16,20,.12);--panel:rgba(255,255,255,.45);--tile:rgba(255,255,255,.6);--glass:rgba(255,255,255,.5);--glass-solid:rgba(255,255,255,.94);--glass-edge:rgba(255,255,255,.8);--glass-shadow:0 12px 40px -14px rgba(20,24,44,.22),inset 0 1px 0 rgba(255,255,255,.9);--wash:52%}
+html.dark{--bg:#06070b;--ink:#f3f4f8;--muted:rgba(243,244,248,.62);--line:rgba(255,255,255,.13);--panel:rgba(255,255,255,.05);--tile:rgba(255,255,255,.08);--glass:rgba(255,255,255,.06);--glass-solid:rgba(20,22,28,.96);--glass-edge:rgba(255,255,255,.14);--glass-shadow:0 24px 60px -24px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12);--wash:62%}
+html{background:var(--bg)}
+body{background:transparent}
+body::before{content:"";position:fixed;inset:-12vh -12vw;z-index:-1;pointer-events:none;filter:blur(40px);background:radial-gradient(38vw 38vw at 10% 16%,color-mix(in srgb,var(--g1) var(--wash),transparent),transparent 70%),radial-gradient(36vw 36vw at 92% 26%,color-mix(in srgb,var(--g2) var(--wash),transparent),transparent 70%),radial-gradient(40vw 40vw at 72% 94%,color-mix(in srgb,var(--g3) var(--wash),transparent),transparent 70%),radial-gradient(30vw 30vw at 16% 86%,color-mix(in srgb,var(--g4) var(--wash),transparent),transparent 70%)}
+html.dark body::before{opacity:.75}
+.work-first .home-intro.v15-home-intro::before{content:none}
+header.editorial-header,.editorial-header nav{background:color-mix(in srgb,var(--bg) 55%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4)}
+.case-decision-map{border:0;padding:0;background:none}
+html :is(.case-hero,.project-art,.case-decision-inputs>div,.case-decision-output,.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case,.wf-row,.original-figure,.story-addition,.fold,.research-teaser,.figure-stage,.mint,.violet,.sage),html .work-first .project-art.violet:has(.original-cover){background:var(--glass);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);box-shadow:var(--glass-shadow);color:var(--ink)}
+html .fold[open]{background:var(--glass);border-color:var(--glass-edge)}
+html .fold-body :is(.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case){background:color-mix(in srgb,var(--glass) 70%,transparent);box-shadow:none}
+html .fold-more{background:var(--ink);color:var(--bg);border-color:transparent;font-weight:600}
+html .chapter-heading>.eyebrow{color:var(--ink);font-weight:600}
+html .wf-row .wf-label,html .wf-row .wf-note,html .original-figure figcaption{color:var(--muted)}
+html .wf-col.is-chosen .wf-label{color:var(--ink)}
+html .wf-zone{outline-color:var(--g1)}
+html .wf-phone{background:color-mix(in srgb,var(--bg) 80%,transparent)}
+html .growth-track{border-color:var(--line)}
+html .growth-track i{background:color-mix(in srgb,var(--ink) 25%,transparent)}
+html .growth-row:last-child .growth-track i{background:linear-gradient(90deg,var(--g2),var(--g1))}
+html .case-tradeoff>div:last-child,html .v14-proof-compare>div.v14-selected{box-shadow:inset 0 0 0 1.5px var(--ink)}
+@media(max-width:760px){html :is(.case-hero,.project-art,.case-decision-inputs>div,.case-decision-output,.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case,.wf-row,.original-figure,.story-addition,.fold,.research-teaser,.figure-stage,.mint,.violet,.sage){-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}}
+@media(prefers-reduced-transparency:reduce){html :is(.case-hero,.project-art,.case-decision-inputs>div,.case-decision-output,.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case,.wf-row,.original-figure,.story-addition,.fold,.research-teaser,.figure-stage,.mint,.violet,.sage),header.editorial-header,.editorial-header nav{background:var(--glass-solid);-webkit-backdrop-filter:none;backdrop-filter:none}}
+html .independent-art,html .independent-art.pf,html .independent-art.garden,html .independent-art.baton,html .lab-art{background:var(--glass);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);box-shadow:var(--glass-shadow);color:var(--ink)}
