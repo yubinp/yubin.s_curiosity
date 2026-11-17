@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.6.4';
+const SITE_VERSION='1.6.5';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -108,4 +108,16 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  document.body.appendChild(button);
  document.querySelectorAll('.lang-option').forEach(b=>b.addEventListener('click',()=>update(document.body.classList.contains('version-compare'))));
  update(query==='1'?true:query==='0'?false:stored==='1');
+})();
+
+// 1.6.5 · home question chips: one question lights up at a time; hovering one shows its case.
+(()=>{const cloud=document.querySelector('[data-q-cloud]');if(!cloud)return;
+ const chips=[...cloud.querySelectorAll('.q-chip')];let i=-1,paused=false;
+ const card=c=>document.querySelector('.project a[href="'+c+'.html"]')?.closest('.project');
+ const hint=c=>{chips.forEach(x=>x.classList.toggle('is-kin',!!c&&x.dataset.case===c));document.querySelectorAll('.project.is-hinted').forEach(p=>p.classList.remove('is-hinted'));if(c)card(c)?.classList.add('is-hinted');};
+ chips.forEach(ch=>{ch.addEventListener('mouseenter',()=>{paused=true;chips.forEach(x=>x.classList.remove('is-on'));hint(ch.dataset.case)});ch.addEventListener('focus',()=>{paused=true;hint(ch.dataset.case)});});
+ cloud.addEventListener('mouseleave',()=>{paused=false;hint(null)});cloud.addEventListener('focusout',()=>{paused=false;hint(null)});
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const tick=()=>{if(paused||document.hidden)return;chips[i]?.classList.remove('is-on');i=(i+1)%chips.length;chips[i].classList.add('is-on');};
+ tick();setInterval(tick,2600);
 })();
