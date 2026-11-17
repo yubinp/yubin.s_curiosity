@@ -613,3 +613,25 @@ html.hdrt-d.hdr-scrolled .editorial-header .language-switch{margin-left:6px}
  html.hdrt-d.hdr-scrolled .editorial-header .menu-toggle{margin-left:0}
  html.hdrt-d.hdr-scrolled .editorial-header nav{position:fixed;top:62px;left:12px;right:12px;border-radius:18px}
 }
+
+/* ===== design trial v2 · compact header by default, smaller + transparent on scroll, four ways to keep the text readable ===== */
+html.hdrn header.editorial-header{padding-top:10px;padding-bottom:10px}
+html.hdrn .editorial-header .brand{font-size:18px}
+html.hdrn .editorial-header nav a{font-size:12px}
+html.hdrn.hdr-scrolled header.editorial-header{padding-top:6px;padding-bottom:6px;background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+html.hdrn.hdr-scrolled .editorial-header .brand{font-size:16px}
+html.hdrn.hdr-scrolled .editorial-header nav a{font-size:11.5px}
+html.hdrn header.editorial-header,html.hdrn .editorial-header *{transition:padding .35s ease,font-size .3s ease,background-color .35s,border-color .35s,color .35s,text-shadow .35s,opacity .35s}
+@media(max-width:760px){html.hdrn .editorial-header .brand{font-size:18px}html.hdrn .editorial-header .menu-toggle{width:36px;height:36px;padding:9px}html.hdrn.hdr-scrolled .editorial-header .brand{font-size:16px}html.hdrn.hdr-scrolled .editorial-header .menu-toggle{width:34px;height:34px;border-color:transparent}}
+/* 1 · invert: white text with difference blending — light where the page is dark, dark where it is light */
+html.hdrl-inv.hdr-scrolled header.editorial-header{mix-blend-mode:difference;color:#fff;--ink:#fff;--muted:#fff;--line:transparent}
+html.hdrl-inv.hdr-scrolled .editorial-header .brand,html.hdrl-inv.hdr-scrolled .editorial-header a,html.hdrl-inv.hdr-scrolled .editorial-header button{color:#fff}
+/* 2 · soft invert: exclusion is gentler than difference on mid tones */
+html.hdrl-soft.hdr-scrolled header.editorial-header{mix-blend-mode:exclusion;color:#fff;--ink:#fff;--muted:#fff;--line:transparent}
+html.hdrl-soft.hdr-scrolled .editorial-header .brand,html.hdrl-soft.hdr-scrolled .editorial-header a,html.hdrl-soft.hdr-scrolled .editorial-header button{color:#fff}
+/* 3 · halo: text keeps its colour and carries a soft glow of the page colour around it */
+html.hdrl-halo.hdr-scrolled .editorial-header :is(.brand,nav a,.lang-globe,button){text-shadow:0 0 2px color-mix(in srgb,var(--bg) 85%,transparent),0 0 10px color-mix(in srgb,var(--bg) 80%,transparent),0 0 22px color-mix(in srgb,var(--bg) 60%,transparent)}
+html.hdrl-halo.hdr-scrolled .editorial-header svg,html.hdrl-halo.hdr-scrolled .editorial-header .menu-toggle span{filter:drop-shadow(0 0 3px color-mix(in srgb,var(--bg) 85%,transparent)) drop-shadow(0 0 8px color-mix(in srgb,var(--bg) 70%,transparent))}
+/* 4 · fade: no box, but the page colour fades in behind the top edge */
+html.hdrl-fade header.editorial-header::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 82%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 55%,transparent 100%)}
+html.hdrl-fade.hdr-scrolled header.editorial-header::before{opacity:1}
