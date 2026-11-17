@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.6.6';
+const SITE_VERSION='1.6.7';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -140,3 +140,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
   logo.addEventListener('dragleave',()=>logo.classList.remove('is-door'));
   logo.addEventListener('drop',ev=>{if(!armed)return;ev.preventDefault();location.href='versions.html';});
 })();
+
+/* v1.6.7 · title-font trial: ?title=b turns on a display font for h1/h2 in this tab, ?title=a turns it off */
+(function(){try{const q=new URLSearchParams(location.search).get('title');if(q)sessionStorage.setItem('title-trial',q);if(sessionStorage.getItem('title-trial')==='b')document.documentElement.classList.add('title-b');}catch(e){}})();
