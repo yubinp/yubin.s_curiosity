@@ -189,3 +189,10 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
+
+/* design trial (not for release): ?bg=a|b|c|d tries calmer, slowly moving backdrop light; ?bg=0 turns it off */
+(function(){let v='';try{const q=new URLSearchParams(location.search).get('bg');if(q)sessionStorage.setItem('bg-trial',q);v=sessionStorage.getItem('bg-trial')||'';}catch(e){}
+ if(!v)return;if('abcd'.includes(v)&&v.length===1){const h=document.documentElement;h.classList.add('bgt','bgt-'+v);
+ const f=document.createElement('div');f.className='bg-field';f.setAttribute('aria-hidden','true');f.innerHTML='<i></i><i></i><i></i><i></i>';document.body.prepend(f);}
+ const names={a:'A · 숨쉬기',b:'B · 떠다니기',c:'C · 번갈아 밝아짐',d:'D · 더 차분하게'};const bar=document.createElement('nav');bar.className='bg-bar';bar.innerHTML=Object.keys(names).map(k=>'<a href="?bg='+k+'"'+(k===v?' class="is-on"':'')+'>'+names[k]+'</a>').join('')+'<a href="?bg=0"'+(v==='0'?' class="is-on"':'')+'>지금</a>';document.body.appendChild(bar);
+})();

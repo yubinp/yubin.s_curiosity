@@ -557,3 +557,44 @@ html.dark body::before,html.dark body::after{opacity:.72;filter:blur(40px) satur
 @keyframes breathe-b{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2vw,2.5vh,0) scale(.97)}}
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 html .chapter-body .chapter-lead{max-width:36em}
+
+/* ===== design trial · calmer, moving backdrop (?bg=a|b|c|d) =====
+   Each light is its own layer and moves with transform or opacity only, so it stays smooth on phones. */
+html.bgt body::before{content:none}
+html.bgt{--mute:72%;--grey:#8b909a;--alpha:1}
+html.bgt-d{--mute:55%;--alpha:.8}
+html.bgt.dark{--grey:#5a5f6b}
+.bg-field{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;opacity:var(--alpha)}
+.bg-field i{position:absolute;border-radius:50%;will-change:transform,opacity;background:radial-gradient(circle,color-mix(in srgb,color-mix(in oklab,var(--c) var(--mute),var(--grey)) var(--wash),transparent) 0%,transparent 68%)}
+.bg-field i:nth-child(1){--c:var(--g1);width:80vw;height:80vw;left:calc(10% - 40vw);top:calc(16% - 40vw)}
+.bg-field i:nth-child(2){--c:var(--g2);width:74vw;height:74vw;left:calc(92% - 37vw);top:calc(26% - 37vw)}
+.bg-field i:nth-child(3){--c:var(--g3);width:82vw;height:82vw;left:calc(72% - 41vw);top:calc(94% - 41vw)}
+.bg-field i:nth-child(4){--c:var(--g4);width:62vw;height:62vw;left:calc(16% - 31vw);top:calc(86% - 31vw)}
+html.dark .bg-field{opacity:calc(var(--alpha)*.8)}
+/* A · breathe: each light swells and settles, out of step */
+@keyframes bg-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+html.bgt-a .bg-field i{animation:bg-breathe 13s ease-in-out infinite}
+html.bgt-a .bg-field i:nth-child(2){animation-duration:16s;animation-delay:-5s}
+html.bgt-a .bg-field i:nth-child(3){animation-duration:15s;animation-delay:-9s}
+html.bgt-a .bg-field i:nth-child(4){animation-duration:12s;animation-delay:-3s}
+/* B · drift: each light wanders a little around its spot */
+@keyframes bg-drift1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(5vw,4vh) scale(1.06)}66%{transform:translate(-3vw,6vh) scale(.97)}}
+@keyframes bg-drift2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-6vw,5vh) scale(.96)}66%{transform:translate(-2vw,-4vh) scale(1.05)}}
+@keyframes bg-drift3{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-5vw,-6vh) scale(1.05)}66%{transform:translate(4vw,-3vh) scale(.98)}}
+@keyframes bg-drift4{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(6vw,-4vh) scale(1.07)}66%{transform:translate(2vw,3vh) scale(.96)}}
+html.bgt-b .bg-field i:nth-child(1),html.bgt-d .bg-field i:nth-child(1){animation:bg-drift1 24s ease-in-out infinite}
+html.bgt-b .bg-field i:nth-child(2),html.bgt-d .bg-field i:nth-child(2){animation:bg-drift2 29s ease-in-out infinite}
+html.bgt-b .bg-field i:nth-child(3),html.bgt-d .bg-field i:nth-child(3){animation:bg-drift3 27s ease-in-out infinite}
+html.bgt-b .bg-field i:nth-child(4),html.bgt-d .bg-field i:nth-child(4){animation:bg-drift4 32s ease-in-out infinite}
+html.bgt-d .bg-field i{animation-duration:38s!important}
+/* C · glow in turn: the lights brighten and dim one after another */
+@keyframes bg-glow{0%,100%{opacity:.55}50%{opacity:1}}
+html.bgt-c .bg-field i{animation:bg-glow 11s ease-in-out infinite}
+html.bgt-c .bg-field i:nth-child(2){animation-delay:-2.75s}
+html.bgt-c .bg-field i:nth-child(3){animation-delay:-5.5s}
+html.bgt-c .bg-field i:nth-child(4){animation-delay:-8.25s}
+@media(prefers-reduced-motion:reduce){.bg-field i{animation:none!important}}
+.bg-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:80;display:flex;gap:3px;max-width:calc(100vw - 20px);overflow-x:auto;padding:5px;border-radius:999px;background:color-mix(in srgb,#14161c 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);scrollbar-width:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.45)}
+.bg-bar::-webkit-scrollbar{display:none}
+.bg-bar a{flex:none;padding:8px 12px;border-radius:999px;font-size:12.5px;line-height:1.2;color:#f3f4f8;text-decoration:none;white-space:nowrap;opacity:.72}
+.bg-bar a.is-on{background:#f3f4f8;color:#14161c;opacity:1;font-weight:600}
