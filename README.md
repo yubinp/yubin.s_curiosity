@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.1.0 · 연락처와 방문 기록** (2026-11-17). Previous: 2.0.3 · 좌우 끝선 통일.
+Current version: **2.2.0 · 만든 것 기록** (2026-11-17). Previous: 2.1.0 · 연락처와 방문 기록.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -42,6 +42,9 @@ Both are set in one file, `public/site-config.js`. An empty value keeps that par
 - `next` — next-project card clicked
 
 One company is usually one or two visits, so reading time per company is a hint, not a pattern. Patterns across all visits are what to use for portfolio changes.
+
+## Build log
+The table at the bottom of Lab lists everything built, newest first. Add a row to `BUILD_LOG` in `public/build-log.js` (English and Korean copy, `started: 'YYYY-MM'`, status, tone) and it appears on Lab. Rows that should stay off the public site go in `public/build-log-private.js`: only `versions.html` loads that file and shows every row with a "Lab 노출" column. Move a row from one file to the other to show or hide it.
 
 ## Edit
 All current page content and styles are in `public/`.
