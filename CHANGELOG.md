@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.6 · 어바웃 문장과 지구본 — 2026-11-16
+- About: title "Curious by default."; "I'm Yubin…" heading replaced by "Working with me" with three lines.
+- Language: one globe button that switches EN ↔ KR (EN default) replaces the KR / EN pair.
+- Hidden door: on the Korean About page, dragging the footer name onto the logo opens the version list (desktop).
+- Version list shows the six major versions first; all versions sit under a fold.
+
 ## 1.6.5 · 질문에서 시작하는 메인 — 2026-11-16
 - Home: nine question chips (three per case) replace the three case lines. One lights up at a time; hovering one highlights its sibling questions and the case card; each links to its case.
 - Home intro: "I do my best work before anyone has written the brief" → "I don't wait to be told what to fix. I look for what would help users, the team and the business, and bring it to the table."
