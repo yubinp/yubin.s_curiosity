@@ -592,11 +592,12 @@ html[lang=ko] :is(.chapter-body>p:not(.chapter-lead),.fold-body p,.v15-hero-copy
 
 /* ===== v2.0.5 · header behaviour ===== */
 html.hdr-js body{padding-top:var(--hdr-h,58px)}
-html.hdr-js header.editorial-header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:10px;padding-bottom:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1),padding .35s ease,background-color .35s,border-color .35s,box-shadow .35s}
+html.hdr-js header.editorial-header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:10px;padding-bottom:10px;transition:transform .22s ease-out,opacity .18s ease-out,padding .35s ease,background-color .35s,border-color .35s,box-shadow .35s}
 html.hdr-js .editorial-header .brand{font-size:18px;transition:font-size .3s ease}
 html.hdr-js .editorial-header nav a{font-size:12px;transition:font-size .3s ease}
 /* hidden while reading down */
-html.hdr-js.hdr-hidden header.editorial-header{transform:translateY(-110%)}
+html.hdr-js header.editorial-header{opacity:1}
+html.hdr-js.hdr-hidden header.editorial-header{transform:translateY(-100%);opacity:0;transition:transform 1.1s cubic-bezier(.45,0,.25,1),opacity .9s ease,padding .35s ease}
 /* back on the way up: smaller, no box, with the page colour fading in behind the top edge so the text never sits on bare content */
 html.hdr-js.hdr-scrolled header.editorial-header{padding-top:6px;padding-bottom:6px;background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
 html.hdr-js.hdr-scrolled .editorial-header .brand{font-size:16px}
