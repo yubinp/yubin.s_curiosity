@@ -189,3 +189,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
+
+/* design trial (not for release): ?pal=a|b|c|d tries a two-colour point combo on black, white and grey; ?pal=0 turns it off */
+(function(){try{const q=new URLSearchParams(location.search).get('pal');if(q)sessionStorage.setItem('pal-trial',q);const v=sessionStorage.getItem('pal-trial');if(v&&'abcd'.includes(v))document.documentElement.classList.add('pal','pal-'+v);}catch(e){}})();
