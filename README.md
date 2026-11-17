@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.1 · 섹션 첫머리 타이포** (2026-11-17). Previous: 2.0.0 · 글래스 무드.
+Current version: **2.0.2 · 메뉴 뒤 상자 제거** (2026-11-17). Previous: 2.0.1 · 섹션 첫머리 타이포.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 

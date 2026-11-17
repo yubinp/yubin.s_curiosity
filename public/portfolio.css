@@ -598,3 +598,5 @@ html.bgt-c .bg-field i:nth-child(4){animation-delay:-8.25s}
 .bg-bar::-webkit-scrollbar{display:none}
 .bg-bar a{flex:none;padding:8px 12px;border-radius:999px;font-size:12.5px;line-height:1.2;color:#f3f4f8;text-decoration:none;white-space:nowrap;opacity:.72}
 .bg-bar a.is-on{background:#f3f4f8;color:#14161c;opacity:1;font-weight:600}
+/* v2.0.2 · desktop nav sits on the glass header itself, no second box behind it */
+@media(min-width:761px){.editorial-header nav{background:none;-webkit-backdrop-filter:none;backdrop-filter:none}}
