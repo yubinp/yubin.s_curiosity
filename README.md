@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **1.6.1 · 푸터 버전 표시** (2026-11-15). Previous: 1.6.0 · CTR 와이어프레임. History in [CHANGELOG.md](CHANGELOG.md).
+Current version: **1.6.2 · 히어로 소개** (2026-11-16). Previous: 1.6.1 · 푸터 버전 표시. History in [CHANGELOG.md](CHANGELOG.md).
 
 Visitors see a clean site. Red TODO boxes, version outlines, source requests and orange decision points appear only in the edit view: add `?versions=1` to any page URL. The "Hide edit marks" button switches that tab back to what visitors see.
 
