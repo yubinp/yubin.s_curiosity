@@ -489,3 +489,22 @@ html.dark .fold{--fold-tint:color-mix(in srgb,var(--mint) 7%,var(--bg))}
 @media(max-width:760px){.fold[open]{margin-left:-9px;margin-right:-9px;border-radius:14px}.fold[open]>summary{padding:18px 16px 6px}.fold[open]>.fold-body{padding:6px 16px 24px}}
 /* Korean: break lines between words, not inside them */
 html[lang=ko] body{word-break:keep-all;overflow-wrap:break-word}
+
+/* ===== v1.8.2 · fold as a teaser ===== */
+.fold.is-teaser>.fold-body{max-height:200px;overflow:hidden;padding-bottom:0;-webkit-mask-image:linear-gradient(#000 30%,transparent);mask-image:linear-gradient(#000 30%,transparent)}
+.fold.is-enhanced>summary::after{content:"−";transform:none}
+.fold.is-enhanced.is-teaser>summary::after,.fold.is-plain>summary::after{content:none}
+.fold.is-plain>summary{cursor:default}
+.fold-more{display:flex;align-items:center;gap:8px;margin:4px auto 26px;padding:10px 20px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);background:var(--bg);font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .2s}
+.fold-more:hover,.fold-more:focus-visible{border-color:var(--ink)}
+html:not([lang=ko]) .fold-more .ko,html[lang=ko] .fold-more .en{display:none}
+.fold:not(.is-teaser)>.fold-more{display:none}
+@media(max-width:760px){.fold.is-teaser>.fold-body{max-height:230px}.fold-more{margin-bottom:22px}}
+@media print{.fold.is-teaser>.fold-body{max-height:none;-webkit-mask-image:none;mask-image:none}.fold-more{display:none}}
+
+/* ===== v1.8.2 · line spacing in four steps: titles 1.4 (Korean 1.3) · questions and buttons 1.4 · lead 1.6 (Korean 1.7) · body 1.7 ===== */
+html .chapter-heading .chapter-q,html .fold>summary{line-height:1.4}
+html .chapter-body .chapter-lead,html .v15-hero-copy .v15-hero-intro,html .v15-method-lead{line-height:1.6}
+html[lang=ko] .chapter-body .chapter-lead,html[lang=ko] .v15-hero-copy .v15-hero-intro,html[lang=ko] .v15-method-lead{line-height:1.7}
+html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,html .fold-body li,html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .v15-hero-copy .v15-hero-method,html .research-teaser p,html .work-first .project-copy p,html .story-addition>p,html .evidence-addition p,html .evidence-addition li,html .design-question>p:not(.eyebrow){line-height:1.7}
+html .story-addition p:not(.growth-summary),html .story-addition .chart-caption{line-height:1.7}

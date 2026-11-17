@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.8.1';
+const SITE_VERSION='1.8.2';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -173,4 +173,19 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  belt.addEventListener('click',e=>{if(moved>4){e.preventDefault();e.stopPropagation();moved=0;}},true);
  belt.addEventListener('dragstart',e=>e.preventDefault());
  requestAnimationFrame(frame);
+})();
+
+/* v1.8.2 · folds open as teasers: the first lines show and "Continue reading" reveals the rest. The question toggles between the two. Without JS they stay plain folds. */
+(function(){const folds=[...document.querySelectorAll('details.fold')];if(!folds.length)return;
+ const edit=document.body.classList.contains('version-compare'),cap=matchMedia('(max-width:760px)').matches?230:200;
+ folds.forEach(d=>{d.open=true;d.classList.add('is-enhanced');const sum=d.querySelector('summary'),body=d.querySelector('.fold-body');
+  if(edit||body.scrollHeight<=cap+80){d.classList.add('is-plain');sum.addEventListener('click',e=>e.preventDefault());return;}
+  const btn=document.createElement('button');btn.type='button';btn.className='fold-more';btn.innerHTML='<span class="en">Continue reading</span><span class="ko">계속 읽기</span><span aria-hidden="true">↓</span>';
+  const set=t=>{d.classList.toggle('is-teaser',t);btn.setAttribute('aria-expanded',String(!t));sum.setAttribute('aria-expanded',String(!t))};
+  btn.addEventListener('click',()=>set(false));
+  sum.addEventListener('click',e=>{e.preventDefault();const t=!d.classList.contains('is-teaser');set(t);if(t&&sum.getBoundingClientRect().top<0)sum.scrollIntoView({block:'start'})});
+  d.appendChild(btn);set(true);d._expand=()=>set(false);
+ });
+ const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
+ reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
