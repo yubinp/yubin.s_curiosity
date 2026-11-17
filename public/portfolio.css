@@ -559,3 +559,25 @@ html.dark body::before,html.dark body::after{opacity:.72;filter:blur(40px) satur
 html .chapter-body .chapter-lead{max-width:36em}
 /* v2.0.2 · desktop nav sits on the glass header itself, no second box behind it */
 @media(min-width:761px){.editorial-header nav{background:none;-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+/* ===== v2.0.3 · one page edge =====
+   Every page-level block lines up to the same left and right edge: header content, cards, case boxes, lines and footer.
+   --page is the widest the content gets; --gutter is the smallest side margin. Nothing else sets its own side margin. */
+:root{--page:1440px;--gutter:clamp(16px,3.2vw,48px);--edge:max(var(--gutter),calc((100% - var(--page))/2))}
+header.editorial-header,main,.work-first main,.research-page main,footer{max-width:none;margin-left:0;margin-right:0;padding-left:var(--edge);padding-right:var(--edge)}
+main>*,.story-layout,.case-evidence,.scraps,.next-case,.case-hero{margin-left:0;margin-right:0}
+.story-layout,.case-evidence{padding-left:0;padding-right:0;max-width:none}
+html main>.quick-read,html main>.info-grid,html main>.v14-build-section,html main>.scraps,html main>.design-question{margin-left:0;margin-right:0;max-width:none}
+html main>.v14-build-section{padding-left:0;padding-right:0}
+html .design-question{background:var(--glass);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);box-shadow:var(--glass-shadow);border-radius:14px}
+html main>.v14-build-section{width:auto;max-width:none!important}
+/* left rail: contents list, "At a glance" and "Evidence & limits" share one label column and one content start */
+:root{--rail:clamp(150px,14vw,240px);--rail-gap:clamp(28px,4.5vw,88px)}
+@media(min-width:761px){
+ html .story-layout,html .quick-read,html .case-evidence{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);column-gap:var(--rail-gap);justify-content:stretch;max-width:none}
+ html .quick-read dl{max-width:none}
+}
+/* boxes share one inner padding, and the Role / Scope / Result row starts where the box text starts */
+:root{--box-pad:clamp(20px,4.4vw,72px)}
+html .case-hero,html .next-case{padding-left:var(--box-pad);padding-right:var(--box-pad)}
+html main>.case-overview{margin-left:0;margin-right:0;padding-left:var(--box-pad);padding-right:var(--box-pad);max-width:none}

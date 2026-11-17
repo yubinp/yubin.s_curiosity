@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.3 · 좌우 끝선 통일 — 2026-11-17
+- One page edge for everything: header content, case boxes, lines, the next-project card and the footer start and end at the same left and right edge on every page and screen width. Content tops out at 1440px wide; the side margin is 16–48px.
+- Before, the header capped at 1600px, the footer and case pages ran full width, the home page capped at 1600px, and sections set their own 5vw or 2vw margins. On screens wider than 1600px the edges drifted apart; the glass header made it visible.
+- Case pages: the contents list, "At a glance" and "Evidence & limits" share one label column and one content start. Case hero, next-project card and the Role / Scope / Result row share one inner padding.
+- Lab: the design-question box is glass and full width.
+- `scripts/check-edges.js` checks all six pages at five widths; run it before every PR.
+- Dark is now the default for first-time visitors (set in the page itself, so there is no light flash while loading). A visitor who picks light with the theme button keeps light.
+
 ## 2.0.2 · 메뉴 뒤 상자 제거 — 2026-11-17
 - Desktop header: the menu (Work · Lab · About · language · theme) no longer has its own glass box on top of the glass header. The phone menu panel keeps its glass.
 

@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.2 · 메뉴 뒤 상자 제거** (2026-11-17). Previous: 2.0.1 · 섹션 첫머리 타이포.
+Current version: **2.0.3 · 좌우 끝선 통일** (2026-11-17). Previous: 2.0.2 · 메뉴 뒤 상자 제거.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -17,6 +17,9 @@ With every release, update `SITE_VERSION` in `public/portfolio.js` (the footer o
 - **PATCH** (1.2.0 → 1.2.1) — small fix: typo, link, image swap, spacing. 작은 수정.
 
 Before 1.0.0, numbers (up to "version 19") were ChatGPT Sites save counts, not releases.
+
+## Layout rule
+Every page-level block uses the same edge: `--page` (max content width, 1440px) and `--gutter` (smallest side margin) in `portfolio.css`. Do not give a section its own side margin. Before every PR, run `node scripts/check-edges.js` with the local server on port 8765; it must print `blocks off the edge: 0`. Check wide screens (1920, 2560) as well as phone and laptop.
 
 ## Edit
 All current page content and styles are in `public/`.
