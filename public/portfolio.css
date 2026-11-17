@@ -581,3 +581,35 @@ html main>.v14-build-section{width:auto;max-width:none!important}
 :root{--box-pad:clamp(20px,4.4vw,72px)}
 html .case-hero,html .next-case{padding-left:var(--box-pad);padding-right:var(--box-pad)}
 html main>.case-overview{margin-left:0;margin-right:0;padding-left:var(--box-pad);padding-right:var(--box-pad);max-width:none}
+
+/* ===== design trial · header on scroll (?hdr=a|b|c|d) ===== */
+html.hdrt body{padding-top:var(--hdr-h)}
+html.hdrt header.editorial-header{position:fixed;top:0;left:0;right:0;transition:padding .35s ease,background-color .35s,border-color .35s,transform .45s cubic-bezier(.2,.7,.2,1),top .35s,border-radius .35s,box-shadow .35s}
+html.hdrt .editorial-header .brand,html.hdrt .editorial-header nav a,html.hdrt .editorial-header .lang-globe{transition:font-size .3s ease}
+/* A, B, C share the compact size */
+html.hdrt-a.hdr-scrolled header.editorial-header,html.hdrt-b.hdr-scrolled header.editorial-header,html.hdrt-c.hdr-scrolled header.editorial-header{padding-top:9px;padding-bottom:9px}
+html.hdrt-a.hdr-scrolled .editorial-header .brand,html.hdrt-b.hdr-scrolled .editorial-header .brand,html.hdrt-c.hdr-scrolled .editorial-header .brand{font-size:18px}
+html.hdrt-a.hdr-scrolled .editorial-header nav a,html.hdrt-b.hdr-scrolled .editorial-header nav a,html.hdrt-c.hdr-scrolled .editorial-header nav a{font-size:12px}
+/* B · no background once scrolled */
+html.hdrt-b.hdr-scrolled header.editorial-header{background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+/* C · slides away while reading down, comes back compact on the way up */
+html.hdrt-c.hdr-down header.editorial-header{transform:translateY(-110%)}
+/* D · collapses into a floating glass pill */
+html.hdrt-d.hdr-scrolled header.editorial-header{top:12px;left:50%;right:auto;transform:translateX(-50%);width:auto;max-width:calc(100% - 24px);gap:22px;padding:7px 10px 7px 22px;border:1px solid var(--glass-edge);border-radius:999px;background:color-mix(in srgb,var(--bg) 45%,transparent);box-shadow:var(--glass-shadow)}
+html.hdrt-d.hdr-scrolled .editorial-header .brand{font-size:16px}
+html.hdrt-d.hdr-scrolled .editorial-header nav{margin-left:0;gap:16px}
+html.hdrt-d.hdr-scrolled .editorial-header nav a{font-size:12px}
+html.hdrt-d.hdr-scrolled .editorial-header .language-switch{margin-left:6px}
+.hdr-bar{z-index:120}
+@media(prefers-reduced-motion:reduce){html.hdrt header.editorial-header{transition:none}}
+.hdr-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:3px;max-width:calc(100vw - 20px);overflow-x:auto;padding:5px;border-radius:999px;background:color-mix(in srgb,#14161c 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);scrollbar-width:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.45)}
+.hdr-bar::-webkit-scrollbar{display:none}
+.hdr-bar a{flex:none;padding:8px 12px;border-radius:999px;font-size:12.5px;line-height:1.2;color:#f3f4f8;text-decoration:none;white-space:nowrap;opacity:.72}
+.hdr-bar a.is-on{background:#f3f4f8;color:#14161c;opacity:1;font-weight:600}
+@media(max-width:760px){
+ html.hdrt.hdr-scrolled .editorial-header .menu-toggle{width:36px;height:36px}
+ html.hdrt-a.hdr-scrolled header.editorial-header,html.hdrt-b.hdr-scrolled header.editorial-header,html.hdrt-c.hdr-scrolled header.editorial-header{padding-top:8px;padding-bottom:8px}
+ html.hdrt-d.hdr-scrolled header.editorial-header{flex-wrap:nowrap;gap:14px;padding:6px 6px 6px 18px;top:10px}
+ html.hdrt-d.hdr-scrolled .editorial-header .menu-toggle{margin-left:0}
+ html.hdrt-d.hdr-scrolled .editorial-header nav{position:fixed;top:62px;left:12px;right:12px;border-radius:18px}
+}

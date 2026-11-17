@@ -189,3 +189,15 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
+
+/* design trial (not for release): ?hdr=a|b|c|d tries header behaviours on scroll; ?hdr=0 turns it off */
+(function(){let v='';try{const q=new URLSearchParams(location.search).get('hdr');if(q)sessionStorage.setItem('hdr-trial',q);v=sessionStorage.getItem('hdr-trial')||'';}catch(e){}
+ if(!v)return;const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
+ const names={a:'A · 작아지기',b:'B · 작아지고 투명',c:'C · 내리면 숨기',d:'D · 떠 있는 알약'};
+ const bar=document.createElement('nav');bar.className='bg-bar hdr-bar';bar.innerHTML=Object.keys(names).map(k=>'<a href="?hdr='+k+'"'+(k===v?' class="is-on"':'')+'>'+names[k]+'</a>').join('')+'<a href="?hdr=0"'+(v==='0'?' class="is-on"':'')+'>지금</a>';document.body.appendChild(bar);
+ if(!'abcd'.includes(v)||v.length!==1)return;
+ const setH=()=>{if(!r.classList.contains('hdr-scrolled'))r.style.setProperty('--hdr-h',h.offsetHeight+'px')};setH();
+ r.classList.add('hdrt','hdrt-'+v);addEventListener('resize',setH);
+ let last=scrollY;const on=()=>{const y=scrollY;if(y>80)r.classList.add('hdr-scrolled');else if(y<30)r.classList.remove('hdr-scrolled');if(Math.abs(y-last)>6){r.classList.toggle('hdr-down',y>last&&y>140);r.classList.toggle('hdr-up',y<last);last=y}};
+ addEventListener('scroll',on,{passive:true});on();
+})();
