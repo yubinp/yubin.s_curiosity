@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.2 · 이어 읽기 — 2026-11-17
+- CTR folds now open as teasers: the question and the first few lines show, fading out, with a "Continue reading" button. Tapping the question switches between the teaser and the full text.
+- Short folds show in full with no button. Links into a fold, the edit view and printing show the full text.
+- Without JavaScript the folds stay plain open/close folds.
+
 ## 1.8.1 · 본문 타이포와 펼침 배경 — 2026-11-17
 - Reading text no longer uses tight tracking: lead −0.01em on desktop, 0 on phones; body 0.
 - Phones get their own steps: question sub-line 17px/500, lead 16px (line spacing 1.62, Korean 1.72), body 15px, fold buttons 16px/500. Before, the desktop sizes (19/18/18px, all regular) came down to phones unchanged.
