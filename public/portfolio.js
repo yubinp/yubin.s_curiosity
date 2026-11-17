@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.7.5';
+const SITE_VERSION='1.8.0';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -141,8 +141,8 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
   logo.addEventListener('drop',ev=>{if(!armed)return;ev.preventDefault();location.href='versions.html';});
 })();
 
-/* v1.6.7 · title-font trial: ?title=b turns on a display font for h1/h2 in this tab, ?title=a turns it off */
-(function(){try{const q=new URLSearchParams(location.search).get('title');if(q)sessionStorage.setItem('title-trial',q);if(sessionStorage.getItem('title-trial')==='b')document.documentElement.classList.add('title-b');}catch(e){}})();
+/* v1.8.0 · the display title font is on by default; ?title=a turns it off in this tab (for comparing), ?title=b turns it back on */
+(function(){try{const q=new URLSearchParams(location.search).get('title');if(q)sessionStorage.setItem('title-trial',q);if(sessionStorage.getItem('title-trial')==='a')document.documentElement.classList.add('title-a');}catch(e){}})();
 
 /* v1.7.0 · two-layer case: folds open in the edit view and when a link points inside one */
 (function(){const folds=[...document.querySelectorAll('details.fold')];if(!folds.length)return;
