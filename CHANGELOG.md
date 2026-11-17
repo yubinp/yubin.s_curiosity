@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0 · 글래스 무드 — 2026-11-17
+New mood, so a major version.
+- Colour moves from flat fills into light: one fixed backdrop of soft colour fields sits behind every page, and surfaces (cards, folds, evidence panels, case heroes, Lab cards, header) are frosted glass. Text is black in light mode and white in dark mode.
+- Each case has its own light: CTR teal, blue and green; Catalina violet and pink; Admin amber and coral. Home, Lab and About share a mixed set.
+- Dark mode is the same system on near-black: smoked glass and stronger colour light. The existing theme button switches between the two.
+- Beige paper, mint, sage and lavender fills are gone. The only solid accent is the "Continue reading" button (black in light, white in dark); the final result bar uses the case's light as a gradient.
+- Phones use a lighter blur. With "reduce transparency" turned on, surfaces become solid.
+- The backdrop is a single layer, so a later cinematic version can swap it for imagery or video without touching the surfaces.
+
 ## 1.8.2 · 이어 읽기 — 2026-11-17
 - CTR folds now open as teasers: the question and the first few lines show, fading out, with a "Continue reading" button. Tapping the question switches between the teaser and the full text.
 - Short folds show in full with no button. Links into a fold, the edit view and printing show the full text.
