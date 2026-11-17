@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **1.8.0 · 제목 폰트** (2026-11-16). Previous: 1.7.5 · 메인 타이포 대비.
+Current version: **1.8.1 · 본문 타이포와 펼침 배경** (2026-11-17). Previous: 1.8.0 · 제목 폰트.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
