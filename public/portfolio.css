@@ -557,3 +557,5 @@ html.dark body::before,html.dark body::after{opacity:.72;filter:blur(40px) satur
 @keyframes breathe-b{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2vw,2.5vh,0) scale(.97)}}
 @media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
 html .chapter-body .chapter-lead{max-width:36em}
+/* v2.0.2 · desktop nav sits on the glass header itself, no second box behind it */
+@media(min-width:761px){.editorial-header nav{background:none;-webkit-backdrop-filter:none;backdrop-filter:none}}
