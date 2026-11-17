@@ -194,11 +194,11 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
    The four options differ only in how the text stays readable over light and dark content. ?hdr=0 turns it off */
 (function(){let v='';try{const q=new URLSearchParams(location.search).get('hdr');if(q)sessionStorage.setItem('hdr-trial',q);v=sessionStorage.getItem('hdr-trial')||'';}catch(e){}
  if(!v)return;const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
- const names={inv:'반전',soft:'부드러운 반전',halo:'그림자',fade:'위쪽 그라데이션'};
+ const names={inv:'B+ 반전',soft:'B+ 부드러운 반전',halo:'B+ 그림자',fade:'B+ 그라데이션',a:'A · 작아지기',b:'B · 작아지고 투명',c:'C · 내리면 숨기',d:'D · 떠 있는 알약'};const first={a:1,b:1,c:1,d:1};
  const bar=document.createElement('nav');bar.className='hdr-bar';bar.innerHTML=Object.keys(names).map(k=>'<a href="?hdr='+k+'"'+(k===v?' class="is-on"':'')+'>'+names[k]+'</a>').join('')+'<a href="?hdr=0"'+(v==='0'?' class="is-on"':'')+'>지금</a>';document.body.appendChild(bar);
  if(!names[v])return;
- r.classList.add('hdrt','hdrn','hdrl-'+v);
+ if(first[v])r.classList.add('hdrt','hdrt-'+v);else r.classList.add('hdrt','hdrn','hdrl-'+v);
  const setH=()=>{if(!r.classList.contains('hdr-scrolled'))r.style.setProperty('--hdr-h',h.offsetHeight+'px')};setH();addEventListener('resize',setH);
- let last=scrollY;const on=()=>{const y=scrollY;if(y>60)r.classList.add('hdr-scrolled');else if(y<20)r.classList.remove('hdr-scrolled');if(Math.abs(y-last)>6){r.classList.toggle('hdr-down',y>last);r.classList.toggle('hdr-up',y<last);last=y}};
+ let last=scrollY;const on=()=>{const y=scrollY;const t=first[v]?80:60;if(y>t)r.classList.add('hdr-scrolled');else if(y<20)r.classList.remove('hdr-scrolled');if(Math.abs(y-last)>6){r.classList.toggle('hdr-down',y>last&&(!first[v]||y>140));r.classList.toggle('hdr-up',y<last);last=y}};
  addEventListener('scroll',on,{passive:true});on();
 })();
