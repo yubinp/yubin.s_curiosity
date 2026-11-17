@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.4 · 행간 좁히기 — 2026-11-17
+- Short text in cards and panels (method steps, Lab teaser, case cards, hero summary, project descriptions): line spacing 1.7–1.85 → 1.5 (Korean 1.6).
+- Long reading paragraphs (section body, fold body, home proof paragraph, At a glance): 1.7 → 1.6 (Korean 1.7).
+- Leads (section lead, home intro, method lead): 1.6 → 1.5 (Korean 1.6).
+
 ## 2.0.3 · 좌우 끝선 통일 — 2026-11-17
 - One page edge for everything: header content, case boxes, lines, the next-project card and the footer start and end at the same left and right edge on every page and screen width. Content tops out at 1440px wide; the side margin is 16–48px.
 - Before, the header capped at 1600px, the footer and case pages ran full width, the home page capped at 1600px, and sections set their own 5vw or 2vw margins. On screens wider than 1600px the edges drifted apart; the glass header made it visible.

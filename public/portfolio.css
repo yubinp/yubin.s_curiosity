@@ -581,3 +581,11 @@ html main>.v14-build-section{width:auto;max-width:none!important}
 :root{--box-pad:clamp(20px,4.4vw,72px)}
 html .case-hero,html .next-case{padding-left:var(--box-pad);padding-right:var(--box-pad)}
 html main>.case-overview{margin-left:0;margin-right:0;padding-left:var(--box-pad);padding-right:var(--box-pad);max-width:none}
+
+/* ===== v2.0.4 · tighter line spacing. Short text in cards and panels 1.5; long reading paragraphs 1.6; lead 1.5 (Korean +0.1) ===== */
+html .chapter-body .chapter-lead,html .v15-hero-copy .v15-hero-intro,html .v15-method-lead{line-height:1.5}
+html[lang=ko] .chapter-body .chapter-lead,html[lang=ko] .v15-hero-copy .v15-hero-intro,html[lang=ko] .v15-method-lead{line-height:1.6}
+html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,html .fold-body li,html .v15-hero-copy .v15-hero-method,html .story-addition p:not(.growth-summary),html .evidence-addition p,html .evidence-addition li,html .design-question>p:not(.eyebrow),html .quick-read dl>div{line-height:1.6}
+html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .research-teaser p,html .work-first .project-copy p,html .case-hero p,html .independent-card p,html .case-decision-steps p,html .case-overview p,html .wf-note,html .v15-method-steps,html .story-addition .chart-caption{line-height:1.5}
+html[lang=ko] :is(.case-decision-map p,.case-tradeoff p,.v14-proof-compare p,.v14-next-test p,.v15-method-steps p,.research-teaser p,.work-first .project-copy p,.case-hero p,.independent-card p,.case-decision-steps p,.case-overview p){line-height:1.6}
+html[lang=ko] :is(.chapter-body>p:not(.chapter-lead),.fold-body p,.v15-hero-copy .v15-hero-method){line-height:1.7}
