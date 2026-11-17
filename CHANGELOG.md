@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.4 · 어바웃 콜라주 — 2026-11-16
+- About: "Off the clock" board under the timeline. Six things Yubin likes, each with a one-line reason, on a paper-coloured panel with tilted cut-out illustrations (straighten on hover).
+- Items and illustrations are placeholders to swap for Yubin's own picks and photos.
+
 ## 1.6.3 · 자신 있는 문장 — 2026-11-16
 Defensive sentences removed from the visitor view, in English and Korean together (43 → 0; what remains are rhetorical "not X, but Y" lines and two honest captions).
 - Each case keeps one place for limits: CTR 06 (before/after, not an A/B test), Catalina "What I'd test next", Lab "what remains to prove".

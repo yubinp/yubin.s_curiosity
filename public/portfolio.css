@@ -287,3 +287,21 @@ body.version-compare .v152-decision .v15-editor-gap-label{color:#a2541a}
 .v15-hero-copy .hero-cases{width:100%;margin:0}
 html[lang=en] .hero-questions,html[lang=en] .hero-cases a{word-break:normal}
 @media(max-width:760px){.hero-cases a{font-size:14px}.hero-questions{font-size:17px}}
+
+/* 1.6.4 · About: 'Off the clock' collage. A paper board that keeps its own colours in dark mode, like a pasted print. */
+.likes{margin:0 5vw 140px;padding:clamp(28px,4vw,56px);border-radius:10px;background:#efe6d2;color:#2a2622}
+.likes-head{display:grid;gap:10px;margin-bottom:clamp(28px,4vw,52px)}
+.likes-head .eyebrow{color:#6b5f4f}
+.likes-head h2{margin:0;max-width:16ch;font-size:clamp(34px,5.4vw,76px);line-height:.98;letter-spacing:-.04em;font-weight:800;text-transform:uppercase;color:#b5381f;word-break:keep-all}
+.likes-head p{margin:0;font-size:14px;color:#5b5145}
+.likes-board{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,3.4vw,48px) clamp(18px,3vw,44px)}
+.like{display:grid;gap:6px;align-content:start;position:relative;padding-top:14px;border-top:1px solid #2a2622}
+.like-art{display:block;width:clamp(84px,9vw,128px);margin:4px 0 10px;transform:rotate(var(--tilt));transition:transform .25s cubic-bezier(.3,.7,.2,1);filter:drop-shadow(3px 5px 0 rgba(42,38,34,.14))}
+.like-art svg{display:block;width:100%;height:auto}
+.like:hover .like-art{transform:rotate(0deg) translateY(-4px)}
+.like-no{position:absolute;top:14px;right:0;font-size:11px;letter-spacing:.06em;color:#6b5f4f}
+.like b{font-size:15px;font-weight:650;letter-spacing:-.01em}
+.like-why{font-size:13px;line-height:1.6;color:#4d443a;word-break:keep-all}
+html[lang=en] .like-why,html[lang=en] .likes-head h2{word-break:normal}
+@media(max-width:760px){.likes{margin:0 9px 80px;padding:24px 18px}.likes-board{grid-template-columns:repeat(2,minmax(0,1fr))}.like-art{width:76px}}
+@media(prefers-reduced-motion:reduce){.like-art{transition:none}}
