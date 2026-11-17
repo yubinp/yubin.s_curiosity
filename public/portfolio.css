@@ -589,3 +589,27 @@ html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,htm
 html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .research-teaser p,html .work-first .project-copy p,html .case-hero p,html .independent-card p,html .case-decision-steps p,html .case-overview p,html .wf-note,html .v15-method-steps,html .story-addition .chart-caption{line-height:1.5}
 html[lang=ko] :is(.case-decision-map p,.case-tradeoff p,.v14-proof-compare p,.v14-next-test p,.v15-method-steps p,.research-teaser p,.work-first .project-copy p,.case-hero p,.independent-card p,.case-decision-steps p,.case-overview p){line-height:1.6}
 html[lang=ko] :is(.chapter-body>p:not(.chapter-lead),.fold-body p,.v15-hero-copy .v15-hero-method){line-height:1.7}
+
+/* ===== v2.0.5 · header behaviour ===== */
+html.hdr-js body{padding-top:var(--hdr-h,58px)}
+html.hdr-js header.editorial-header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:10px;padding-bottom:10px;transition:transform .45s cubic-bezier(.2,.7,.2,1),padding .35s ease,background-color .35s,border-color .35s,box-shadow .35s}
+html.hdr-js .editorial-header .brand{font-size:18px;transition:font-size .3s ease}
+html.hdr-js .editorial-header nav a{font-size:12px;transition:font-size .3s ease}
+/* hidden while reading down */
+html.hdr-js.hdr-hidden header.editorial-header{transform:translateY(-110%)}
+/* back on the way up: smaller, no box, with the page colour fading in behind the top edge so the text never sits on bare content */
+html.hdr-js.hdr-scrolled header.editorial-header{padding-top:6px;padding-bottom:6px;background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+html.hdr-js.hdr-scrolled .editorial-header .brand{font-size:16px}
+html.hdr-js.hdr-scrolled .editorial-header nav a{font-size:11.5px}
+html.hdr-js header.editorial-header::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 82%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 55%,transparent 100%)}
+html.hdr-js.hdr-scrolled header.editorial-header::before{opacity:1}
+@media(max-width:760px){
+ html.hdr-js .editorial-header .brand{font-size:18px}
+ html.hdr-js .editorial-header .menu-toggle{width:36px;height:36px;padding:9px}
+ html.hdr-js.hdr-scrolled .editorial-header .brand{font-size:16px}
+ html.hdr-js.hdr-scrolled .editorial-header .menu-toggle{width:34px;height:34px;border-color:transparent}
+ html.hdr-js.hdr-scrolled .editorial-header.menu-open{background:var(--glass-solid,var(--bg))}
+}
+@media(prefers-reduced-motion:reduce){html.hdr-js header.editorial-header,html.hdr-js .editorial-header *{transition:none}}
+html.hdr-js header.editorial-header{height:auto;min-height:0}
+html.hdr-init header.editorial-header,html.hdr-init .editorial-header *{transition:none!important}

@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='2.0.4';
+const SITE_VERSION='2.0.5';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -188,4 +188,17 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  });
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
+})();
+
+/* v2.0.5 · header: compact at the top; hides while reading down; comes back smaller and see-through on the way up.
+   The header is fixed so its size changes never move the page; body keeps its space with --hdr-h. */
+(function(){const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
+ const setH=()=>{if(!r.classList.contains('hdr-scrolled'))r.style.setProperty('--hdr-h',h.offsetHeight+'px')};
+ r.classList.add('hdr-js','hdr-init');setH();requestAnimationFrame(()=>requestAnimationFrame(()=>r.classList.remove('hdr-init')));addEventListener('resize',setH);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setH);
+ let last=scrollY,ticking=false;
+ const on=()=>{ticking=false;const y=scrollY,busy=h.classList.contains('menu-open')||h.contains(document.activeElement);
+  if(y>60)r.classList.add('hdr-scrolled');else if(y<20){r.classList.remove('hdr-scrolled','hdr-hidden');}
+  const d=y-last;if(Math.abs(d)>6){r.classList.toggle('hdr-hidden',d>0&&y>120&&!busy);last=y}};
+ addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(on)}},{passive:true});
+ h.addEventListener('focusin',()=>r.classList.remove('hdr-hidden'));on();
 })();
