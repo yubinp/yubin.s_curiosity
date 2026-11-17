@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 · 섹션 첫머리 타이포 — 2026-11-17
+- Section titles larger: 37 → 48px on desktop, 21 → 28px on phones (English); Korean up to 52px.
+- Question line smaller: 24 → 19px desktop, 17 → 16px phones; line spacing 1.35.
+- Lead paragraph smaller and tighter: 21 → 17px desktop, 16 → 15px phones; line spacing 1.5 (Korean 1.6).
+- Section labels ("02 / FIRST ITERATION") unchanged.
+
 ## 2.0.0 · 글래스 무드 — 2026-11-17
 New mood, so a major version.
 - Colour moves from flat fills into light: one fixed backdrop of soft colour fields sits behind every page, and surfaces (cards, folds, evidence panels, case heroes, Lab cards, header) are frosted glass. Text is black in light mode and white in dark mode.

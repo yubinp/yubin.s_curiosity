@@ -542,3 +542,18 @@ html .case-tradeoff>div:last-child,html .v14-proof-compare>div.v14-selected{box-
 @media(max-width:760px){html :is(.case-hero,.project-art,.case-decision-inputs>div,.case-decision-output,.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case,.wf-row,.original-figure,.story-addition,.fold,.research-teaser,.figure-stage,.mint,.violet,.sage){-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3)}}
 @media(prefers-reduced-transparency:reduce){html :is(.case-hero,.project-art,.case-decision-inputs>div,.case-decision-output,.case-decision-steps>div,.case-tradeoff>div,.v14-proof,.v14-next-test,.v15-method-case,.wf-row,.original-figure,.story-addition,.fold,.research-teaser,.figure-stage,.mint,.violet,.sage),header.editorial-header,.editorial-header nav{background:var(--glass-solid);-webkit-backdrop-filter:none;backdrop-filter:none}}
 html .independent-art,html .independent-art.pf,html .independent-art.garden,html .independent-art.baton,html .lab-art{background:var(--glass);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);box-shadow:var(--glass-shadow);color:var(--ink)}
+
+/* ===== v2.0.1 · section opening: bigger title, smaller and tighter question and lead ===== */
+html:not(.title-a)[lang=en] .chapter-heading h2{font-size:clamp(28px,3.3vw,48px)}
+html .chapter-heading .chapter-q{font-size:clamp(16px,1.35vw,20px);line-height:1.35}
+html .chapter-body .chapter-lead{font-size:clamp(15px,1.2vw,18px);line-height:1.5}
+html[lang=ko] .chapter-body .chapter-lead{line-height:1.6}
+@media(max-width:760px){html .chapter-heading .chapter-q{font-size:16px}html .chapter-body .chapter-lead{font-size:15px}}
+/* ===== v2.0.1 · backdrop: softer colour, slow breathing. Two layers drift at different speeds so the light never moves in step. ===== */
+body::before{background:radial-gradient(38vw 38vw at 10% 16%,color-mix(in srgb,var(--g1) var(--wash),transparent),transparent 70%),radial-gradient(40vw 40vw at 72% 94%,color-mix(in srgb,var(--g3) var(--wash),transparent),transparent 70%);filter:blur(40px) saturate(.6);animation:breathe-a 18s ease-in-out infinite alternate;will-change:transform}
+body::after{content:"";position:fixed;inset:-12vh -12vw;z-index:-1;pointer-events:none;background:radial-gradient(36vw 36vw at 92% 26%,color-mix(in srgb,var(--g2) var(--wash),transparent),transparent 70%),radial-gradient(30vw 30vw at 16% 86%,color-mix(in srgb,var(--g4) var(--wash),transparent),transparent 70%);filter:blur(40px) saturate(.6);animation:breathe-b 23s ease-in-out infinite alternate;will-change:transform}
+html.dark body::before,html.dark body::after{opacity:.72;filter:blur(40px) saturate(.7)}
+@keyframes breathe-a{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(2.5vw,-2vh,0) scale(1.08)}}
+@keyframes breathe-b{from{transform:translate3d(0,0,0) scale(1.04)}to{transform:translate3d(-2vw,2.5vh,0) scale(.97)}}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
+html .chapter-body .chapter-lead{max-width:36em}
