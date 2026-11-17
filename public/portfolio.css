@@ -440,3 +440,16 @@ html.title-b .chapter-heading h2,html.title-b .case-hero h1,html.title-b .simple
 .q-belt.is-wheel{perspective:1400px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
 .q-belt.is-wheel .q-track{transform-style:preserve-3d}
 @media(max-width:760px){.q-belt.is-wheel{perspective:900px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);padding:20px 0 26px}}
+
+/* ===== v1.7.5 · home type contrast: the same five steps as the case pages (T1 title · T2 sub-title · T3 lead · T4 body · T5 small) ===== */
+html .work-first .project-copy h2{font-size:clamp(24px,2.5vw,38px);font-weight:600;line-height:1.2;letter-spacing:-.04em}
+html .work-first .project-copy p{font-size:var(--t5);line-height:1.6;color:var(--muted);max-width:320px}
+html .work-first .project-copy>.eyebrow,html .work-first .work-index{font-size:11px}
+html .v15-shared-method h2{font-size:var(--t1);font-weight:600;line-height:1.2;letter-spacing:-.045em}
+html .v15-method-lead{font-size:var(--t3);line-height:1.55;letter-spacing:-.02em;color:var(--ink)}
+html .v15-method-steps strong{font-size:var(--t2);font-weight:500;line-height:1.35;letter-spacing:-.03em}
+html .v15-method-steps p{font-size:var(--t5);line-height:1.65;color:var(--muted)}
+html .research-teaser h2{font-size:var(--t1);font-weight:600;line-height:1.2;letter-spacing:-.045em}
+html .research-teaser p{font-size:var(--t4);line-height:1.7;color:var(--muted)}
+html .research-teaser .text-link{font-size:13px}
+@media(max-width:760px){html .work-first .project-copy{display:block}html .work-first .project-copy>.eyebrow{display:block;margin-bottom:10px}html .work-first .project-copy h2{margin:0 0 10px}}
