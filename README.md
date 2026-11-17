@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **1.6.0 · CTR 와이어프레임** (2026-11-10). Previous: 1.5.3 · 히어로 문장. History in [CHANGELOG.md](CHANGELOG.md).
+Current version: **1.6.1 · 푸터 버전 표시** (2026-11-15). Previous: 1.6.0 · CTR 와이어프레임. History in [CHANGELOG.md](CHANGELOG.md).
 
 Visitors see a clean site. Red TODO boxes, version outlines, source requests and orange decision points appear only in the edit view: add `?versions=1` to any page URL. The "Hide edit marks" button switches that tab back to what visitors see.
 
@@ -9,6 +9,7 @@ Reviewed public limitations and honest captions (e.g. "Not an original productio
 ## Versioning
 MAJOR.MINOR.PATCH — bump one number per change merged to `main`.
 Name each version `X.Y.Z · <what changed>` and use the same name in the PR title and CHANGELOG, so it can be searched later.
+With every release, update `SITE_VERSION` at the top of `public/portfolio.js`. The footer on every page reads it.
 - **MAJOR** (1.x → 2.0.0) — big shift: new concept or mood, site structure, or case lineup. 크게 바뀔 때만.
 - **MINOR** (1.2.0 → 1.3.0) — visible content change: new copy direction, new section, case rewrite. 내용이 눈에 띄게 바뀔 때.
 - **PATCH** (1.2.0 → 1.2.1) — small fix: typo, link, image swap, spacing. 작은 수정.
