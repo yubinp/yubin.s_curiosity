@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.3 · 자신 있는 문장 — 2026-11-16
+Defensive sentences removed from the visitor view, in English and Korean together (43 → 0; what remains are rhetorical "not X, but Y" lines and two honest captions).
+- Each case keeps one place for limits: CTR 06 (before/after, not an A/B test), Catalina "What I'd test next", Lab "what remains to prove".
+- "From the previous portfolio" labels removed; reconstruction captions shortened.
+- CTR 01: "The earlier portfolio records…" → "In a quick internal check, four of five colleagues took the banner for an advert."
+- Catalina: result and closing heading now say "PoC in one month"; "Delivered & unverified" → "Delivered"; "Not yet validated" → "What I'd test next".
+- Admin: role is "Project lead · UX/UI designer"; "contributed to" → "As project lead, I … took it through a phased release".
+- Case numbers removed everywhere. Each case carries a tag instead (5× click-through · Two iterations / 0→1 · Sole designer · PoC in one month / Project lead · B2B operations), so case order can change per company link.
+- About: timeline adds Independent projects (Lab, 2025—Now) and Code Your Future.
+
 ## 1.6.2 · 히어로 소개 — 2026-11-16
 - Two questions under the home title: "What’s really in the way? What did we miss?"
 - Three abstract sentences replaced by three case lines that link to the cases (2% banner, AI model with no screen, sales data behind an engineer).
