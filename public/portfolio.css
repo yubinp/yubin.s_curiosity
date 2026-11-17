@@ -589,3 +589,52 @@ html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,htm
 html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .research-teaser p,html .work-first .project-copy p,html .case-hero p,html .independent-card p,html .case-decision-steps p,html .case-overview p,html .wf-note,html .v15-method-steps,html .story-addition .chart-caption{line-height:1.5}
 html[lang=ko] :is(.case-decision-map p,.case-tradeoff p,.v14-proof-compare p,.v14-next-test p,.v15-method-steps p,.research-teaser p,.work-first .project-copy p,.case-hero p,.independent-card p,.case-decision-steps p,.case-overview p){line-height:1.6}
 html[lang=ko] :is(.chapter-body>p:not(.chapter-lead),.fold-body p,.v15-hero-copy .v15-hero-method){line-height:1.7}
+
+/* ===== v2.0.5 · header behaviour ===== */
+html.hdr-js body{padding-top:var(--hdr-h,58px)}
+html.hdr-js header.editorial-header{position:fixed;top:0;left:0;right:0;z-index:100;padding-top:10px;padding-bottom:10px;transition:transform .22s ease-out,opacity .18s ease-out,padding .35s ease,background-color .35s,border-color .35s,box-shadow .35s}
+html.hdr-js .editorial-header .brand{font-size:18px;transition:font-size .3s ease}
+html.hdr-js .editorial-header nav a{font-size:12px;transition:font-size .3s ease}
+/* hidden while reading down */
+html.hdr-js header.editorial-header{opacity:1}
+html.hdr-js.hdr-hidden header.editorial-header{transform:translateY(-100%);opacity:0;transition:transform 1.1s cubic-bezier(.45,0,.25,1),opacity .9s ease,padding .35s ease}
+/* back on the way up: smaller, no box, with the page colour fading in behind the top edge so the text never sits on bare content */
+html.hdr-js.hdr-scrolled header.editorial-header{padding-top:6px;padding-bottom:6px;background:transparent;border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
+html.hdr-js.hdr-scrolled .editorial-header .brand{font-size:16px}
+html.hdr-js.hdr-scrolled .editorial-header nav a{font-size:11.5px}
+html.hdr-js header.editorial-header::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 82%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 55%,transparent 100%)}
+html.hdr-js.hdr-scrolled header.editorial-header::before{opacity:1}
+@media(max-width:760px){
+ html.hdr-js .editorial-header .brand{font-size:18px}
+ html.hdr-js .editorial-header .menu-toggle{width:36px;height:36px;padding:9px}
+ html.hdr-js.hdr-scrolled .editorial-header .brand{font-size:16px}
+ html.hdr-js.hdr-scrolled .editorial-header .menu-toggle{width:34px;height:34px;border-color:transparent}
+ html.hdr-js.hdr-scrolled .editorial-header.menu-open{background:var(--glass-solid,var(--bg))}
+}
+@media(prefers-reduced-motion:reduce){html.hdr-js header.editorial-header,html.hdr-js .editorial-header *{transition:none}}
+html.hdr-js header.editorial-header{height:auto;min-height:0}
+html.hdr-init header.editorial-header,html.hdr-init .editorial-header *{transition:none!important}
+/* v2.0.5 · header glass at the top; when see-through, the content behind the top edge is blurred (fading out) instead of darkened */
+html.hdr-js header.editorial-header{background:var(--glass);border-bottom:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
+html.hdr-js.hdr-scrolled header.editorial-header{background:transparent;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+html.hdr-js header.editorial-header::before{background:color-mix(in srgb,var(--bg) 14%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);-webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent);mask-image:linear-gradient(to bottom,#000 45%,transparent);inset:0 0 -26px 0}
+
+/* v2.0.5 · see-through state: a separate blur veil sits behind the header, and the header text inverts against whatever is under it,
+   so it reads as light on dark content and dark on light images, without a dark band */
+html.hdr-js header.editorial-header::before{content:none}
+.hdr-veil{display:none}
+html.hdr-js .hdr-veil{display:block;position:fixed;top:0;left:0;right:0;height:calc(var(--hdr-h,58px) + 18px);z-index:99;pointer-events:none;opacity:0;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);-webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent);transition:opacity .22s ease-out}
+html.hdr-js.hdr-scrolled .hdr-veil{opacity:1}
+html.hdr-js.hdr-hidden .hdr-veil{opacity:0;transition:opacity .9s ease}
+html.hdr-js.hdr-scrolled header.editorial-header:not(.menu-open){mix-blend-mode:difference;--ink:#fff;--muted:#fff;color:#fff}
+html.hdr-js.hdr-scrolled header.editorial-header:not(.menu-open) :is(.brand,a,button,.lang-code){color:#fff}
+html.hdr-js.hdr-scrolled header.editorial-header:not(.menu-open) .menu-toggle{border-color:transparent}
+html.hdr-js.hdr-scrolled header.editorial-header.menu-open{background:var(--glass-solid,var(--bg));-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px)}
+
+/* see-through header: no blending; ink follows what is underneath */
+html.hdr-js.hdr-scrolled header.editorial-header:not(.menu-open){mix-blend-mode:normal}
+html.hdr-js.hdr-scrolled header.editorial-header:not(.menu-open) :is(.brand,nav,nav a,.lang-code,button,.menu-toggle){transition:color .25s ease,font-size .3s ease}
+html.hdr-js.hdr-scrolled .editorial-header .ink-light,html.hdr-js.hdr-scrolled .editorial-header .ink-light :is(a,button,.lang-code){color:#f3f4f8!important;--ink:#f3f4f8}
+html.hdr-js.hdr-scrolled .editorial-header .ink-dark,html.hdr-js.hdr-scrolled .editorial-header .ink-dark :is(a,button,.lang-code){color:#0e1014!important;--ink:#0e1014}
+html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-dark span{background:#0e1014}
+html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-light span{background:#f3f4f8}

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.5 · 헤더 숨김 — 2026-11-17
+- Header is compact by default (logo 18px, menu 12px, slimmer bar) and is glass at the top instead of near-black.
+- Once you scroll, it becomes smaller (logo 16px) with no box and no dark band. A soft blur sits behind the top edge, and each item (logo, each menu link, language, theme) checks what is underneath — background colour or image brightness — and switches between light and dark text with a short fade.
+- After a sixth of the page, scrolling down lets it slip away slowly (about one second) to keep the reader in the content. Scrolling up brings it back at once.
+- Back at the top it returns to the compact glass bar. It stays visible while the phone menu is open or a header link has keyboard focus.
+- The header is fixed, so its size changes never move the page.
+
 ## 2.0.4 · 행간 좁히기 — 2026-11-17
 - Short text in cards and panels (method steps, Lab teaser, case cards, hero summary, project descriptions): line spacing 1.7–1.85 → 1.5 (Korean 1.6).
 - Long reading paragraphs (section body, fold body, home proof paragraph, At a glance): 1.7 → 1.6 (Korean 1.7).
