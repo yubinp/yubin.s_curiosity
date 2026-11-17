@@ -190,7 +190,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
 
-/* v2.0.5 · header: compact at the top; smaller and see-through once you scroll; after a quarter of the page it slips away while reading down, and returns at once on the way up.
+/* v2.0.5 · header: compact at the top; smaller and see-through once you scroll; after a sixth of the page it slips away while reading down, and returns at once on the way up.
    The header is fixed so its size changes never move the page; body keeps its space with --hdr-h. */
 (function(){const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
  const setH=()=>{if(!r.classList.contains('hdr-scrolled'))r.style.setProperty('--hdr-h',h.offsetHeight+'px')};
@@ -199,7 +199,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  let last=scrollY,ticking=false;
  const on=()=>{ticking=false;const y=scrollY,busy=h.classList.contains('menu-open')||h.contains(document.activeElement);
   if(y>60)r.classList.add('hdr-scrolled');else if(y<20){r.classList.remove('hdr-scrolled','hdr-hidden');}
-  const d=y-last,lim=Math.max(240,(r.scrollHeight-innerHeight)*.25);
+  const d=y-last,lim=Math.max(240,(r.scrollHeight-innerHeight)/6);
   if(d<-2){r.classList.remove('hdr-hidden');last=y}else if(d>6){r.classList.toggle('hdr-hidden',y>lim&&!busy);last=y}};
  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(on)}},{passive:true});
  h.addEventListener('focusin',()=>r.classList.remove('hdr-hidden'));on();
