@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.8.1 · 본문 타이포와 펼침 배경 — 2026-11-17
+- Reading text no longer uses tight tracking: lead −0.01em on desktop, 0 on phones; body 0.
+- Phones get their own steps: question sub-line 17px/500, lead 16px (line spacing 1.62, Korean 1.72), body 15px, fold buttons 16px/500. Before, the desktop sizes (19/18/18px, all regular) came down to phones unchanged.
+- Fewer one-word last lines where the browser supports it.
+- An opened fold, button included, sits on a light tint of the case colour; boxes inside it turn white so they stand off the tint.
+- Korean text breaks lines between words instead of inside them (e.g. "어려웠어" no longer splits as "어 / 려웠어").
+- Version list: "머지 대기" labels removed.
+
 ## 1.8.0 · 제목 폰트 — 2026-11-16
 - Page titles and section titles use the display font from the old portfolio (Boldonse), line spacing 1.4 with no tracking. Body text, card titles and labels stay in Geist.
 - English titles are set smaller than before because the font is wide. Korean titles fall back to Noto Sans KR at weight 600, since Boldonse has no Korean.

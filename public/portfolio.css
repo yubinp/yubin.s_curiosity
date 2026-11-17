@@ -464,3 +464,28 @@ html:not(.title-a)[lang=en] .case-hero h1{font-size:clamp(24px,3.4vw,50px)}
 html:not(.title-a)[lang=en] .simple-hero h1{font-size:clamp(30px,6vw,88px)}
 html:not(.title-a)[lang=en] .research-intro h1{font-size:clamp(22px,2.6vw,36px)}
 html:not(.title-a)[lang=en] .scraps-head h2{font-size:clamp(20px,2.4vw,34px)}
+
+/* ===== v1.8.1 · reading type: no tight tracking at reading sizes, smaller steps on phones; tinted fold content ===== */
+html .chapter-body .chapter-lead{letter-spacing:-.01em}
+html .chapter-heading .chapter-q{letter-spacing:-.015em}
+html .chapter-body>p:not(.chapter-lead),html .fold-body p,html .fold-body li{letter-spacing:0}
+main p,main li,.fold>summary{text-wrap:pretty}
+@media(max-width:760px){
+ html .chapter-heading .chapter-q{font-size:17px;font-weight:500;line-height:1.4;letter-spacing:-.01em}
+ html .chapter-body .chapter-lead{font-size:16px;line-height:1.62;letter-spacing:0}
+ html[lang=ko] .chapter-body .chapter-lead{line-height:1.72}
+ html .chapter-body>p:not(.chapter-lead),html .fold-body p{font-size:15px;line-height:1.7}
+ .fold>summary{font-size:16px;font-weight:500;letter-spacing:-.005em;padding:16px 4px}
+ .fold>summary::after{font-size:22px}
+}
+/* folds: the opened content sits on a light tint of the case colour */
+.fold{--fold-tint:color-mix(in srgb,var(--mint) 55%,var(--bg))}
+html.dark .fold{--fold-tint:color-mix(in srgb,var(--mint) 7%,var(--bg))}
+.fold[open]{background:var(--fold-tint);border-radius:16px;border-color:transparent}
+.fold[open]>summary{padding:20px clamp(18px,3vw,34px) 8px}
+.fold[open]>summary:hover,.fold[open]>summary:focus-visible{background:none}
+.fold[open]>.fold-body{padding:8px clamp(18px,3vw,34px) 30px}
+.fold-body .case-decision-steps>div,.fold-body .case-tradeoff>div,.fold-body .v14-proof-compare>div,.fold-body .v14-proof,.fold-body .v14-next-test,.fold-body .v15-method-case{background:var(--tile)}
+@media(max-width:760px){.fold[open]{margin-left:-9px;margin-right:-9px;border-radius:14px}.fold[open]>summary{padding:18px 16px 6px}.fold[open]>.fold-body{padding:6px 16px 24px}}
+/* Korean: break lines between words, not inside them */
+html[lang=ko] body{word-break:keep-all;overflow-wrap:break-word}
