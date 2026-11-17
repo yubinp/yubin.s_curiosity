@@ -189,3 +189,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
+
+/* design trial (not for release): circle cursor candidates, see cursor-trial.js. ?cursor=a|b|c|d, ?cursor=0 off */
+(()=>{const s=document.createElement('script');s.src='cursor-trial.js';s.defer=true;document.head.append(s)})();
