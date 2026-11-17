@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 · 만든 것 기록 — 2026-11-17
+- Lab: a build log at the bottom of the page. One glass panel with a table of everything built, newest first: project, where I got stuck, what I built, tools, start month and status. Seven rows: Brain Garden, this portfolio, the stock zone screener, Problem-Framer, the brain-dump inbox, the life-ops coaches and Baton. Problem-Framer links to the live tool.
+- Each row opens with the moment I got stuck, so the table carries the same line as the Home hero.
+- Phones and tablets (900px and below): each row stacks into its own block with small labels.
+- Rows live in `public/build-log.js`. Record-only rows (job-search tools and others) live in `public/build-log-private.js`, which only `versions.html` loads; the versions page now ends with the full record and a "Lab 노출" column.
+
 ## 2.1.0 · 연락처와 방문 기록 — 2026-11-17
 - Contact links: Email, LinkedIn and CV in the footer of every page, and a "Get in touch" row on About that shows the address itself. Before, the site had no way to reach Yubin. The links appear once their values are filled in `public/site-config.js`; until then nothing shows.
 - Visit tracking with Umami Cloud (free, no cookies), off until a Website ID is set in `public/site-config.js`. Each visit is tagged with the company code from `?ref=` (or "none"), and the code is kept on every link inside the site, so the whole visit and forwarded links carry it. Records: pages visited; reading time per section at 10, 30 and 60 seconds (counted only while the tab is visible and someone scrolled or moved in the last 45 seconds, so a tab left open does not count); opened folds, "Continue reading" and design rationale; Home question cards; contact clicks; next-project clicks. Not counted: the edit view, previews, localhost, and a browser opened once with `?me=1`. See README › Contact and visits.
