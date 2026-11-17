@@ -4,6 +4,7 @@
 - CTR folds now open as teasers: the question and the first few lines show, fading out, with a "Continue reading" button. Tapping the question switches between the teaser and the full text.
 - Short folds show in full with no button. Links into a fold, the edit view and printing show the full text.
 - Without JavaScript the folds stay plain open/close folds.
+- Line spacing in four steps: titles 1.4 (Korean 1.3), questions and buttons 1.4, lead 1.6 (Korean 1.7), body and card text 1.7. Before, values ranged from 1.5 to 1.8 for the same roles.
 
 ## 1.8.1 · 본문 타이포와 펼침 배경 — 2026-11-17
 - Reading text no longer uses tight tracking: lead −0.01em on desktop, 0 on phones; body 0.

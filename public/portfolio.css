@@ -501,3 +501,10 @@ html:not([lang=ko]) .fold-more .ko,html[lang=ko] .fold-more .en{display:none}
 .fold:not(.is-teaser)>.fold-more{display:none}
 @media(max-width:760px){.fold.is-teaser>.fold-body{max-height:230px}.fold-more{margin-bottom:22px}}
 @media print{.fold.is-teaser>.fold-body{max-height:none;-webkit-mask-image:none;mask-image:none}.fold-more{display:none}}
+
+/* ===== v1.8.2 · line spacing in four steps: titles 1.4 (Korean 1.3) · questions and buttons 1.4 · lead 1.6 (Korean 1.7) · body 1.7 ===== */
+html .chapter-heading .chapter-q,html .fold>summary{line-height:1.4}
+html .chapter-body .chapter-lead,html .v15-hero-copy .v15-hero-intro,html .v15-method-lead{line-height:1.6}
+html[lang=ko] .chapter-body .chapter-lead,html[lang=ko] .v15-hero-copy .v15-hero-intro,html[lang=ko] .v15-method-lead{line-height:1.7}
+html .chapter-body,html .chapter-body>p:not(.chapter-lead),html .fold-body p,html .fold-body li,html .case-decision-map p,html .case-tradeoff p,html .v14-proof-compare p,html .v14-proof-result,html .v14-next-test p,html .v15-transfer p,html .v15-method-grid p,html .v15-method-steps p,html .v15-hero-copy .v15-hero-method,html .research-teaser p,html .work-first .project-copy p,html .story-addition>p,html .evidence-addition p,html .evidence-addition li,html .design-question>p:not(.eyebrow){line-height:1.7}
+html .story-addition p:not(.growth-summary),html .story-addition .chart-caption{line-height:1.7}
