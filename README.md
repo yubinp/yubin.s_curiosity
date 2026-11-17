@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.3 · 좌우 끝선 통일** (2026-11-17). Previous: 2.0.2 · 메뉴 뒤 상자 제거.
+Current version: **2.0.4 · 행간 좁히기** (2026-11-17). Previous: 2.0.3 · 좌우 끝선 통일.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
