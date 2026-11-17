@@ -635,3 +635,6 @@ html.hdrl-halo.hdr-scrolled .editorial-header svg,html.hdrl-halo.hdr-scrolled .e
 /* 4 · fade: no box, but the page colour fades in behind the top edge */
 html.hdrl-fade header.editorial-header::before{content:"";position:absolute;inset:0 0 -34px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .35s;background:linear-gradient(to bottom,color-mix(in srgb,var(--bg) 82%,transparent) 0%,color-mix(in srgb,var(--bg) 55%,transparent) 55%,transparent 100%)}
 html.hdrl-fade.hdr-scrolled header.editorial-header::before{opacity:1}
+/* soft invert, revised: same difference blend but with light-grey text, so the flip is less stark (exclusion with pure white looked identical) */
+html.hdrl-soft.hdr-scrolled header.editorial-header{mix-blend-mode:difference;color:#c8c8c8;--ink:#c8c8c8;--muted:#c8c8c8}
+html.hdrl-soft.hdr-scrolled .editorial-header .brand,html.hdrl-soft.hdr-scrolled .editorial-header a,html.hdrl-soft.hdr-scrolled .editorial-header button{color:#c8c8c8}
