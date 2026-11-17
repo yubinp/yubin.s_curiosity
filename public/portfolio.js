@@ -28,7 +28,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
   markWorkNotes();
   if(persist){try{localStorage.setItem('yubin-language',language)}catch{}}
  }
- try{root.classList.toggle('dark',localStorage.getItem('yubin-theme-v2')==='dark');language=localStorage.getItem('yubin-language')==='ko'?'ko':'en'}catch{}
+ try{{const t=localStorage.getItem('yubin-theme-v2');root.classList.toggle('dark',t?t==='dark':true);}language=localStorage.getItem('yubin-language')==='ko'?'ko':'en'}catch{}
  setLanguage(language);
  document.querySelectorAll('.lang-option').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang,true)));
  theme?.addEventListener('click',()=>{root.classList.toggle('dark');labels();try{localStorage.setItem('yubin-theme-v2',root.classList.contains('dark')?'dark':'light')}catch{}});

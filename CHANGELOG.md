@@ -6,6 +6,7 @@
 - Case pages: the contents list, "At a glance" and "Evidence & limits" share one label column and one content start. Case hero, next-project card and the Role / Scope / Result row share one inner padding.
 - Lab: the design-question box is glass and full width.
 - `scripts/check-edges.js` checks all six pages at five widths; run it before every PR.
+- Dark is now the default for first-time visitors (set in the page itself, so there is no light flash while loading). A visitor who picks light with the theme button keeps light.
 
 ## 2.0.2 · 메뉴 뒤 상자 제거 — 2026-11-17
 - Desktop header: the menu (Work · Lab · About · language · theme) no longer has its own glass box on top of the glass header. The phone menu panel keeps its glass.
