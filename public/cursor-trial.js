@@ -1,5 +1,5 @@
 /* Design trial (not for release): circle cursor candidates + whole-card folds.
-   Cursor: ?cursor=a|b|c|d|e|f picks one, ?cursor=0 turns it off; the choice is kept for this tab.
+   Cursor: ?cursor=a|b|c|d|e|f|g picks one, ?cursor=0 turns it off; the choice is kept for this tab.
    Folds: a folded card opens from anywhere on it; an open card closes from its question, from "Close" at the bottom,
    and, while ?foldclose=1 (default), from anywhere on the card. ?foldclose=0 compares without that.
    A small switcher sits bottom-left on desktop. Touch screens keep the normal cursor; reduced motion: no trailing. */
@@ -14,7 +14,8 @@
   c: { en: 'Glass bubble', ko: '유리 방울' },
   d: { en: 'Light', ko: '빛' },
   e: { en: 'Glass + light', ko: '유리 + 빛' },
-  f: { en: 'Glass + room light', ko: '유리 + 주변 빛' }
+  f: { en: 'Glass + room light', ko: '유리 + 주변 빛' },
+  g: { en: 'Lens + light', ko: '렌즈 + 빛' }
  };
  let look = 'e', wholeClose = true;
  try {
@@ -80,8 +81,8 @@
  html.cur-in .cur-a.is-hover .cur-dot{opacity:0}
  .cur-a.is-down .cur-ring{background:color-mix(in srgb,var(--ink) 14%,transparent)}
 
- /* B · invert lens */
- .cur-b .cur-ring{background:#fff;mix-blend-mode:difference;transition:border-radius .18s}
+ /* B · invert lens (and G's lens) */
+ .cur-b .cur-ring,.cur-g .cur-ring{background:#fff;mix-blend-mode:difference;transition:border-radius .18s}
 
  /* C · glass bubble (and the glass of E and F) */
  .cur-c .cur-dot{width:4px;height:4px;margin:-2px 0 0 -2px;background:var(--ink)}
@@ -102,7 +103,10 @@
 
  /* which layers each look uses */
  .cur:not(.cur-a):not(.cur-c):not(.cur-d) .cur-dot{display:none}
- .cur:not(.cur-d):not(.cur-f) .cur-glow{display:none}
+ /* G · B's lens with D's light trailing slowly behind it */
+ /* the light sits over the lens, so the lens is lit in the page's colour instead of inverting the light into its opposite colour */
+ .cur-g .cur-glow{z-index:2147483001}
+ .cur:not(.cur-d):not(.cur-f):not(.cur-g) .cur-glow{display:none}
  .cur-d .cur-ring{display:none}
  .cur:not(.cur-c):not(.cur-e):not(.cur-f) .cur-label{display:none}
 
@@ -127,7 +131,7 @@
  const drawSwitch = () => {
   const l = lang();
   sw.innerHTML = `<span>${L('Cursor', '커서')}</span>`
-   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()}${'ef'.includes(k) ? ' · ' + LOOKS[k][l] : ''}</button>`).join('')
+   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()}${'efg'.includes(k) ? ' · ' + LOOKS[k][l] : ''}</button>`).join('')
    + `<button type="button" data-look="0" aria-pressed="${!LOOKS[look]}">${L('Off', '끄기')}</button>`
    + (folds.length ? `<i></i><span>${L('Close an open card from anywhere', '펼친 카드 아무 데나 눌러 접기')}</span>`
      + `<button type="button" data-fold="1" aria-pressed="${wholeClose}">${L('On', '켬')}</button>`
@@ -186,8 +190,9 @@
 
  const P = { x: -100, y: -100 };
  const R = { x: -100, y: -100, w: 28, h: 28, r: 999 };
+ const G = { x: -100, y: -100 }; // the light trails on its own, slower than the cursor
  let hit = null, overText = false, down = false, raf = 0, lastEl = null, last = 0;
- const base = () => ({ a: [34, 34], b: [18, 18], c: [30, 30], e: [28, 28], f: [28, 28] }[look] || [0, 0]);
+ const base = () => ({ a: [34, 34], b: [18, 18], c: [30, 30], e: [28, 28], f: [28, 28], g: [18, 18] }[look] || [0, 0]);
 
  function goal() {
   const [bw, bh] = base();
@@ -200,14 +205,14 @@
     }
     return { x: P.x, y: P.y, w: 64, h: 64, r: 999 };
    }
-   if (look === 'b') return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
+   if (look === 'b' || look === 'g') return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
    if (look === 'c') return hit.label ? { x: P.x, y: P.y, w: Math.max(76, hit.label.length * 7.5 + 30), h: 76, r: 999 } : { x: P.x, y: P.y, w: 52, h: 52, r: 999 };
    if (look === 'e' || look === 'f') {
     if (hit.soft) return { x: P.x, y: P.y, w: 48, h: 48, r: 999 }; // anywhere on an open card: a quieter "Close"
     return { x: P.x, y: P.y, w: hit.label ? Math.max(58, hit.label.length * 7.5 + 30) : 58, h: 58, r: 999 };
    }
   }
-  if (overText && 'bef'.includes(look)) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
+  if (overText && 'befg'.includes(look)) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
   return { x: P.x, y: P.y, w: bw, h: bh, r: 999 };
  }
 
@@ -218,7 +223,9 @@
   last = now;
   const g = goal();
   const ease = k => (reduced ? 1 : 1 - Math.pow(1 - k, dt));
-  const k = ease({ b: 0.35, d: 0.12, e: 0.16, f: 0.16 }[look] || 0.2);
+  const k = ease({ b: 0.35, d: 0.12, e: 0.16, f: 0.16, g: 0.35 }[look] || 0.2);
+  const kg = ease(0.1);
+  G.x += (P.x - G.x) * kg; G.y += (P.y - G.y) * kg;
   const ks = ease(0.22);
   R.x += (g.x - R.x) * k; R.y += (g.y - R.y) * k;
   R.w += (g.w - R.w) * ks; R.h += (g.h - R.h) * ks;
@@ -229,10 +236,10 @@
   ring.style.borderRadius = R.r >= 999 ? '50%' : R.r + 'px';
   ring.style.transform = `translate3d(${R.x - R.w / 2}px,${R.y - R.h / 2}px,0) scale(${press})`;
   dot.style.transform = `translate3d(${P.x}px,${P.y}px,0)`;
-  glow.style.transform = `translate3d(${R.x}px,${R.y}px,0)`;
+  glow.style.transform = `translate3d(${G.x}px,${G.y}px,0)`;
   label.style.left = R.x + 'px';
   label.style.top = R.y + 'px';
-  if (Math.abs(g.x - R.x) + Math.abs(g.y - R.y) + Math.abs(g.w - R.w) + Math.abs(g.h - R.h) > 0.3) raf = requestAnimationFrame(frame);
+  if (Math.abs(g.x - R.x) + Math.abs(g.y - R.y) + Math.abs(g.w - R.w) + Math.abs(g.h - R.h) + Math.abs(P.x - G.x) + Math.abs(P.y - G.y) > 0.3) raf = requestAnimationFrame(frame);
   else last = 0;
  }
  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
