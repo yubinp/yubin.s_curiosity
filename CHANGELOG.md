@@ -4,7 +4,7 @@
 - Reading text no longer uses tight tracking: lead −0.01em on desktop, 0 on phones; body 0.
 - Phones get their own steps: question sub-line 17px/500, lead 16px (line spacing 1.62, Korean 1.72), body 15px, fold buttons 16px/500. Before, the desktop sizes (19/18/18px, all regular) came down to phones unchanged.
 - Fewer one-word last lines where the browser supports it.
-- Opened folds sit on a light tint of the case colour; boxes inside them turn white so they stand off the tint.
+- An opened fold, button included, sits on a light tint of the case colour; boxes inside it turn white so they stand off the tint.
 - Korean text breaks lines between words instead of inside them (e.g. "어려웠어" no longer splits as "어 / 려웠어").
 - Version list: "머지 대기" labels removed.
 

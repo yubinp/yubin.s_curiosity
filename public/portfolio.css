@@ -481,8 +481,11 @@ main p,main li,.fold>summary{text-wrap:pretty}
 /* folds: the opened content sits on a light tint of the case colour */
 .fold{--fold-tint:color-mix(in srgb,var(--mint) 55%,var(--bg))}
 html.dark .fold{--fold-tint:color-mix(in srgb,var(--mint) 7%,var(--bg))}
-.fold[open]>.fold-body{background:var(--fold-tint);border-radius:16px;padding:24px clamp(18px,3vw,34px) 30px;margin:0 0 20px}
+.fold[open]{background:var(--fold-tint);border-radius:16px;border-color:transparent}
+.fold[open]>summary{padding:20px clamp(18px,3vw,34px) 8px}
+.fold[open]>summary:hover,.fold[open]>summary:focus-visible{background:none}
+.fold[open]>.fold-body{padding:8px clamp(18px,3vw,34px) 30px}
 .fold-body .case-decision-steps>div,.fold-body .case-tradeoff>div,.fold-body .v14-proof-compare>div,.fold-body .v14-proof,.fold-body .v14-next-test,.fold-body .v15-method-case{background:var(--tile)}
-@media(max-width:760px){.fold[open]>.fold-body{margin:0 -9px 18px;padding:20px 16px 24px;border-radius:14px}}
+@media(max-width:760px){.fold[open]{margin-left:-9px;margin-right:-9px;border-radius:14px}.fold[open]>summary{padding:18px 16px 6px}.fold[open]>.fold-body{padding:6px 16px 24px}}
 /* Korean: break lines between words, not inside them */
 html[lang=ko] body{word-break:keep-all;overflow-wrap:break-word}
