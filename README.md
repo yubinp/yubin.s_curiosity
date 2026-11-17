@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **1.7.2 · 휠 유리 카드** (2026-11-16). Previous: 1.7.1 · 질문 휠.
+Current version: **1.7.3 · 히어로 배경 번짐** (2026-11-16). Previous: 1.7.2 · 휠 유리 카드.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 

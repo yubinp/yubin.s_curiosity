@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='1.7.2';
+const SITE_VERSION='1.7.3';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -160,7 +160,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const shape=()=>{const r=belt.getBoundingClientRect(),mid=r.left+r.width/2,span=r.width/2;
   for(const c of cards){const b=c.getBoundingClientRect();if(b.right<r.left-80||b.left>r.right+80)continue;
    const d=Math.max(-1,Math.min(1,(b.left+b.width/2-mid)/span)),a=Math.abs(d);
-   c.style.transform='rotateY('+(-d*34).toFixed(2)+'deg) scale('+(1-a*.14).toFixed(3)+')';c.style.opacity=(1-a*.55).toFixed(3);}};
+   const k=r.width<700?1.5:1;c.style.transform='translateY('+(a*a*16*k).toFixed(1)+'px) rotateY('+(-d*38*k).toFixed(2)+'deg) scale('+(1-a*.16*k).toFixed(3)+')';c.style.opacity=(1-a*.55).toFixed(3);}};
  const wrap=()=>{const h=half();if(pos>=h)pos-=h;else if(pos<=0)pos+=h;else return;belt.scrollLeft=pos;};
  const frame=()=>{if(Math.abs(belt.scrollLeft-pos)>1.5)pos=belt.scrollLeft;if(!hold&&!drag&&!document.hidden){pos+=.45;belt.scrollLeft=pos;}wrap();shape();requestAnimationFrame(frame);};
  belt.scrollLeft=pos=1;
