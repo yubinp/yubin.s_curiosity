@@ -489,3 +489,40 @@ html.dark .fold{--fold-tint:color-mix(in srgb,var(--mint) 7%,var(--bg))}
 @media(max-width:760px){.fold[open]{margin-left:-9px;margin-right:-9px;border-radius:14px}.fold[open]>summary{padding:18px 16px 6px}.fold[open]>.fold-body{padding:6px 16px 24px}}
 /* Korean: break lines between words, not inside them */
 html[lang=ko] body{word-break:keep-all;overflow-wrap:break-word}
+
+/* ===== design trial · second-layer layouts (?flow=…) ===== */
+.flow-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:80;display:flex;gap:3px;max-width:calc(100vw - 20px);overflow-x:auto;padding:5px;border-radius:999px;background:color-mix(in srgb,#242420 90%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);scrollbar-width:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.45)}
+.flow-bar::-webkit-scrollbar{display:none}
+.flow-bar a{flex:none;padding:8px 12px;border-radius:999px;font-size:12.5px;line-height:1.2;color:#f4f3ef;text-decoration:none;white-space:nowrap;opacity:.72}
+.flow-bar a.is-on{background:#f4f3ef;color:#242420;opacity:1;font-weight:600}
+@media print{.flow-bar{display:none}}
+.flow-block{margin:40px 0 0}
+.flow-q{font-size:var(--t2);font-weight:500;line-height:1.35;letter-spacing:-.02em;margin:0 0 14px;color:var(--ink)}
+.flow-block>.chapter-body{margin:0 0 18px}
+.flow-label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#2f6b4f;margin:0 0 12px}
+html.dark .flow-label{color:#8fd0ad}
+.flow-decision{margin:16px 0 22px;padding:clamp(16px,2.4vw,26px);border-radius:18px;background:var(--fold-tint,color-mix(in srgb,var(--mint) 55%,var(--bg)))}
+html.dark .flow-decision{background:color-mix(in srgb,var(--mint) 7%,var(--bg))}
+.flow-decision>aside.v14-proof{margin:0;padding:0;border:0;background:none}
+.flow-decision>.case-tradeoff{margin:0}
+.flow-decision .case-tradeoff>div,.flow-decision .v14-proof-compare>div{background:var(--tile);border-color:transparent}
+.flow-decision .v14-proof-compare>div.v14-selected{box-shadow:inset 0 0 0 1.5px #2f6b4f}
+.flow-limits{margin:40px 0 0;padding:clamp(18px,2.6vw,30px);border-radius:18px;border:1px solid var(--line)}
+.flow-limits .flow-q{font-size:18px}
+.flow-limits .case-tradeoff>div,.flow-limits .v14-next-test{background:color-mix(in srgb,var(--panel) 60%,var(--bg))}
+.fold.is-teaser>.fold-body{max-height:190px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 35%,transparent);mask-image:linear-gradient(#000 35%,transparent);padding-bottom:0}
+.fold.is-teaser>summary{cursor:default}.fold.is-teaser>summary::after{content:none}
+.flow-more{display:block;margin:4px auto 24px;padding:10px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);background:var(--bg);font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
+.flow-margin{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:40px;align-items:start}
+.flow-margin>.chapter-body{max-width:none}
+.flow-note{position:sticky;top:110px;padding:2px 0 2px 16px;border-left:2px solid #2f6b4f;color:var(--muted)}
+html.dark .flow-note{border-color:#8fd0ad}
+.flow-note .flow-q{font-size:15px;font-weight:600;line-height:1.4;margin:0 0 8px}
+.flow-note .chapter-body{max-width:none;margin:0}
+html .flow-note .chapter-body p{font-size:13.5px;line-height:1.65;margin:0 0 10px}
+.flow-note .case-decision-steps{display:grid!important;grid-template-columns:1fr!important;gap:8px;margin:10px 0 0}
+.flow-note .case-decision-steps>div{padding:10px 12px;background:var(--tile);font-size:13px}
+.flow-note .case-decision-steps>span,.flow-note .case-decision-steps>i{display:none}
+@media(max-width:1100px){.flow-margin{display:block}.flow-note{position:static;margin:20px 0 0;padding:16px;border-left:0;border-radius:14px;background:color-mix(in srgb,var(--mint) 55%,var(--bg))}html.dark .flow-note{background:color-mix(in srgb,var(--mint) 7%,var(--bg))}}
+@media(max-width:760px){.flow-decision,.flow-limits{margin-left:-9px;margin-right:-9px;padding:18px 16px}}
+.flow-decision .v14-proof-kicker{display:none}

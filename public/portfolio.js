@@ -174,3 +174,27 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  belt.addEventListener('dragstart',e=>e.preventDefault());
  requestAnimationFrame(frame);
 })();
+
+/* design trial (not for release): ?flow=mix|acc|dec|teaser|margin|body compares ways to show a case's second layer */
+(function(){const folds=[...document.querySelectorAll('details.fold')];if(!folds.length)return;
+ let mode='mix';try{const q=new URLSearchParams(location.search).get('flow');if(q)sessionStorage.setItem('flow-trial',q);mode=sessionStorage.getItem('flow-trial')||'mix';}catch(e){}
+ const modes=[['mix','★ 추천 조합'],['acc','지금 · 접기'],['dec','① 결정 카드'],['teaser','② 이어 읽기'],['margin','③ 여백 메모'],['body','⑦ 펼쳐서 본문']];
+ if(!modes.some(m=>m[0]===mode))mode='mix';
+ const bar=document.createElement('nav');bar.className='flow-bar';bar.innerHTML=modes.map(([k,l])=>'<a href="?flow='+k+'"'+(k===mode?' class="is-on"':'')+'>'+l+'</a>').join('');document.body.appendChild(bar);
+ document.documentElement.classList.add('flow-'+mode);
+ const ko=document.documentElement.lang==='ko';
+ const sec=d=>d.closest('section[id]');
+ const BIG='aside.v14-proof,.case-tradeoff,section.v15-method-case,aside.v14-next-test';
+ const head=d=>{const h=document.createElement('h3');h.className='flow-q';h.appendChild(d.querySelector('summary>span'));return h};
+ const label=(t)=>{const s=document.createElement('span');s.className='flow-label';s.textContent=t;return s};
+ const decisionCard=d=>{const blk=d.querySelector('.fold-body aside.v14-proof,.fold-body .case-tradeoff');if(!blk)return null;const c=document.createElement('div');c.className='flow-decision';c.appendChild(label(ko?'결정':'Decision'));c.appendChild(blk);return c};
+ const unwrap=(d,cls)=>{const w=document.createElement('div');w.className='flow-block'+(cls?' '+cls:'');w.appendChild(head(d));const b=d.querySelector('.fold-body');while(b.firstChild)w.appendChild(b.firstChild);d.replaceWith(w);return w};
+ const isDecision=d=>['first','second'].includes(sec(d).id);
+ if(mode==='dec'){folds.filter(isDecision).forEach(d=>{const c=decisionCard(d);if(c)d.before(c)})}
+ if(mode==='teaser'){folds.forEach(d=>{d.open=true;d.classList.add('is-teaser');d.querySelector('summary').addEventListener('click',e=>e.preventDefault());const btn=document.createElement('button');btn.type='button';btn.className='flow-more';btn.textContent=ko?'계속 읽기 ↓':'Continue reading ↓';btn.addEventListener('click',()=>{d.classList.remove('is-teaser');btn.remove()});d.appendChild(btn)})}
+ if(mode==='body'){folds.forEach(d=>unwrap(d))}
+ if(mode==='margin'){folds.forEach(d=>{const s=sec(d);d.querySelectorAll('.fold-body>'+BIG.split(',').join(',.fold-body>')).forEach(b=>d.before(b));const n=document.createElement('aside');n.className='flow-note';n.appendChild(head(d));const b=d.querySelector('.fold-body');while(b.firstChild)n.appendChild(b.firstChild);d.remove();const body=s.querySelector('.chapter-body');const g=document.createElement('div');g.className='flow-margin';body.before(g);g.appendChild(body);g.appendChild(n)})}
+ bar.addEventListener('click',e=>{if(!e.target.closest('a'))return;let cur='';document.querySelectorAll('.story-content>section[id]').forEach(x=>{if(x.getBoundingClientRect().top<160)cur=x.id});try{sessionStorage.setItem('flow-at',cur)}catch(_){}});
+ addEventListener('load',()=>{try{const at=sessionStorage.getItem('flow-at');sessionStorage.removeItem('flow-at');if(at){const t=document.getElementById(at);if(t)t.scrollIntoView()}}catch(_){}});
+ if(mode==='mix'){folds.forEach(d=>{const id=sec(d).id;if(isDecision(d)){const c=decisionCard(d);const w=unwrap(d,'is-decision');if(c)w.querySelector('.flow-q').after(c)}else if(id==='outcome'){const w=unwrap(d,'flow-limits');w.prepend(label(ko?'한계':'Limits'))}else unwrap(d)})}
+})();
