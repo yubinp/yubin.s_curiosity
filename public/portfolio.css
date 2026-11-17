@@ -387,3 +387,22 @@ html.title-b .chapter-heading h2{font-size:clamp(24px,2.6vw,38px)}
 .q-chip:hover .q-card-case::after,.q-chip:focus-visible .q-card-case::after{opacity:1}
 @media(max-width:760px){.q-belt{overflow-x:auto;-webkit-mask-image:none;mask-image:none;scroll-snap-type:x mandatory;margin-right:-9px}.q-track{animation:none}.q-belt .q-dup{display:none}.q-belt .q-chip{width:236px;min-height:120px;font-size:15.5px;scroll-snap-align:start;border-color:var(--line)}}
 @media(prefers-reduced-motion:reduce){.q-belt{overflow-x:auto}.q-track{animation:none}.q-belt .q-dup{display:none}}
+
+/* ===== v1.7.0 · two-layer case (CTR): short claim + question, the rest behind question buttons ===== */
+.chapter-heading .chapter-q{margin:12px 0 0;font-size:var(--t2);line-height:1.35;letter-spacing:-.02em;color:var(--muted);word-break:keep-all}
+html[lang=en] .chapter-q{word-break:normal}
+.fold{margin:30px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 6px;font-size:var(--t3);line-height:1.4;letter-spacing:-.02em;color:var(--ink);transition:background-color .2s,padding .2s}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::after{content:"+";flex:none;font-size:26px;font-weight:300;line-height:1;transition:transform .25s}
+.fold[open]>summary::after{transform:rotate(45deg)}
+.fold>summary:hover,.fold>summary:focus-visible{background:var(--panel);padding-left:14px;padding-right:14px}
+.fold-body{padding:10px 0 36px}
+.fold-body>.chapter-body{margin:0 0 8px}
+.fold-body>.v15-method-case{margin-top:18px}
+.fold+figure,.fold+.v15-transfer{margin-top:34px}
+.wf-title{margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:.01em;color:var(--ink)}
+.wf-next{display:inline-block;margin-top:14px;padding-bottom:3px;border-bottom:1px solid currentColor;font-size:13px;font-weight:500}
+.wf-next:hover{opacity:.6}
+/* title-font trial: line spacing taken from the old portfolio (1.4, no tracking) */
+html.title-b .chapter-heading h2,html.title-b .case-hero h1,html.title-b .simple-hero h1,html.title-b .work-first .v15-home-intro h1,html.title-b[lang] .work-first .v15-home-intro h1,html.title-b[lang] .chapter-heading h2{line-height:1.4;letter-spacing:0}
