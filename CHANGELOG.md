@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.4 · 휠 원기둥 — 2026-11-16
+- Home wheel: the cards now sit on a gently curved cylinder instead of a flat row with tilted ends. Each card turns and recedes a little the further it is from the middle.
+- Same behaviour in English and Korean, light and dark, desktop and phone.
+
 ## 1.7.3 · 히어로 배경 번짐 — 2026-11-16
 - Home: the colour behind the wheel is now a soft wash behind the whole hero, title included, at about half the strength, fading out with no visible edge.
 - Wheel on phones: stronger curve. Side cards tilt, shrink and drop more.
