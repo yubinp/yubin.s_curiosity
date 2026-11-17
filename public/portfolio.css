@@ -406,3 +406,11 @@ html[lang=en] .chapter-q{word-break:normal}
 .wf-next:hover{opacity:.6}
 /* title-font trial: line spacing taken from the old portfolio (1.4, no tracking) */
 html.title-b .chapter-heading h2,html.title-b .case-hero h1,html.title-b .simple-hero h1,html.title-b .work-first .v15-home-intro h1,html.title-b[lang] .work-first .v15-home-intro h1,html.title-b[lang] .chapter-heading h2{line-height:1.4;letter-spacing:0}
+
+/* ===== v1.7.1 · question wheel ===== */
+.q-belt.is-wheel{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;perspective:1100px;cursor:grab;padding:14px 0}
+.q-belt.is-wheel::-webkit-scrollbar{display:none}
+.q-belt.is-wheel.is-drag{cursor:grabbing;user-select:none}
+.q-belt.is-wheel .q-track{animation:none}
+.q-belt.is-wheel .q-chip{transition:color .25s,border-color .25s;will-change:transform}
+.q-belt.is-wheel .q-chip:hover,.q-belt.is-wheel .q-chip:focus-visible{opacity:1!important}

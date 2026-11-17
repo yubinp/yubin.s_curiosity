@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1 · 질문 휠 — 2026-11-16
+- Home: the question cards now behave like a wheel. The row drifts slowly, loops, can be scrolled sideways or dragged, and the cards curve away and fade toward the edges. It stops while the pointer is on it.
+- Phones and reduced motion keep the plain sideways scroll.
+
 ## 1.7.0 · CTR 두 겹 — 2026-11-16
 - CTR case in two layers. Always visible: a short claim as the section title, a question under it, one lead paragraph and the key image. Behind six question buttons: checks, alternatives, trade-offs, limits.
 - Seven section titles rewritten as short claims with a question sub-line (e.g. "A destination, not a reason." / "What was the banner actually telling shoppers?"). Old sentence titles are in 1.6.8.
