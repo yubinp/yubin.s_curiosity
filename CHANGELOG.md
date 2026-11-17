@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.8 · 질문 컨베이어 — 2026-11-16
+- Home: the nine question chips become cards on a slow belt that passes by. No borders at rest; the card under the pointer gets a border and the belt pauses. Each card names its case and links to it.
+- The one-at-a-time highlight is gone. On phones and with reduced motion the belt is a sideways scroll instead.
+
 ## 1.6.7 · 타이포 대비 — 2026-11-16
 - Case pages and Lab: one type scale with wider gaps. Section title 50px/600, sub-title 24px, lead 21px, body 15px (muted, key phrases in ink), small 14px. CTR goes from 36 text styles to 27; five sub-title sizes become one.
 - Title-font trial: add `?title=b` to any page to see page and section titles in a display font (Boldonse); `?title=a` turns it off. Not on by default.
