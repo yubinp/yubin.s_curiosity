@@ -174,3 +174,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  belt.addEventListener('dragstart',e=>e.preventDefault());
  requestAnimationFrame(frame);
 })();
+
+/* design trial (not for release): ?look=a|b|c previews three colour directions for the case pages; ?look=0 turns it off */
+(function(){try{const q=new URLSearchParams(location.search).get('look');if(q)sessionStorage.setItem('look-trial',q);const v=sessionStorage.getItem('look-trial');if(v&&'abc'.includes(v))document.documentElement.classList.add('look','look-'+v);}catch(e){}})();

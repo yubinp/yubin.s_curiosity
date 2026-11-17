@@ -464,3 +464,42 @@ html:not(.title-a)[lang=en] .case-hero h1{font-size:clamp(24px,3.4vw,50px)}
 html:not(.title-a)[lang=en] .simple-hero h1{font-size:clamp(30px,6vw,88px)}
 html:not(.title-a)[lang=en] .research-intro h1{font-size:clamp(22px,2.6vw,36px)}
 html:not(.title-a)[lang=en] .scraps-head h2{font-size:clamp(20px,2.4vw,34px)}
+
+/* ===== design trial · case colour (?look=a|b|c). Shared: one accent per case, grey only for what was rejected ===== */
+html.look{--acc:#2f6b4f;--acc-ink:#1f3d2f;--acc-soft:#dcebe2;--acc-deep:#1c3329}
+html.look.dark{--acc:#8fd0ad;--acc-ink:#d7efe2;--acc-soft:#22382e;--acc-deep:#14241d}
+html.look .chapter-heading>.eyebrow{color:var(--acc);font-weight:600}
+html.look .chapter-heading .chapter-q{color:var(--acc)}
+html.look .fold>summary::after{color:var(--acc)}
+html.look .fold{border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
+html.look .wf-zone{outline-color:var(--acc)}
+html.look .wf-col.is-chosen .wf-label{color:var(--acc-ink)}
+html.look .growth-summary{color:var(--acc-ink)}
+html.look .growth-row:last-child .growth-track i{background:var(--acc)}
+html.look .growth-track i{background:color-mix(in srgb,var(--acc) 38%,var(--bg))}
+html.look .case-decision-output,html.look .case-tradeoff>div:last-child,html.look .v14-proof-compare>div.v14-selected,html.look .case-decision-steps>div.is-shown{background:var(--acc-soft);border-color:transparent;box-shadow:none}
+html.look .case-decision-output h3,html.look .case-tradeoff>div:last-child strong{color:var(--acc-ink)}
+html.look .case-decision-output .eyebrow,html.look .case-tradeoff>div:last-child .eyebrow{color:var(--acc);opacity:1;font-weight:600}
+html.look .v14-proof-result{color:var(--acc-ink);font-weight:500}
+html.look .wf-next{color:var(--acc)}
+/* A · accent only: boxes stay as they are */
+/* B · white surfaces: panels become white cards with a soft shadow, no grey fills or borders */
+html.look-b .case-decision-map{border:0;padding:0;overflow:visible}
+html.look-b .case-decision-inputs>div,html.look-b .case-decision-steps>div:not(.is-shown),html.look-b .case-tradeoff>div:first-child,html.look-b .v14-proof-compare>div:not(.v14-selected){background:var(--tile);border:0;border-radius:16px;box-shadow:0 1px 2px rgba(36,36,32,.05),0 14px 34px -18px rgba(36,36,32,.22)}
+html.look-b .case-decision-output,html.look-b .case-tradeoff>div:last-child,html.look-b .v14-proof-compare>div.v14-selected{border-radius:16px}
+html.look-b .wf-row,html.look-b .original-figure{background:linear-gradient(160deg,var(--acc-soft),color-mix(in srgb,var(--acc-soft) 40%,var(--bg)));border-radius:20px}
+html.look-b .wf-phone{border-color:transparent;box-shadow:0 18px 40px -20px rgba(28,51,41,.45)}
+html.look-b .story-addition{background:var(--tile);border:0;box-shadow:0 1px 2px rgba(36,36,32,.05),0 14px 34px -18px rgba(36,36,32,.22)}
+/* C · dark stage: evidence (wireframes, screens, the result) sits on the case's deep colour; reading text stays on paper */
+html.look-c .wf-row,html.look-c .original-figure,html.look-c .story-addition{background:var(--acc-deep);border:0;border-radius:20px;color:#eef3ee}
+html.look-c .wf-row .wf-label,html.look-c .wf-row .wf-note,html.look-c .wf-row .wf-arrow,html.look-c .story-addition h3,html.look-c .story-addition p,html.look-c .story-addition .growth-summary,html.look-c .story-addition .growth-row{color:#e4ece6}
+html.look-c .wf-row .wf-note{color:#b9c9bf}
+html.look-c .wf-col.is-chosen .wf-label{color:#fff}
+html.look-c .wf-phone{border-color:transparent}
+html.look-c .wf-zone{outline-color:#8fd0ad}
+html.look-c .growth-track{border-color:#6f8a7c}
+html.look-c .growth-track i{background:#4a6b5b}
+html.look-c .growth-row:last-child .growth-track i{background:#8fd0ad}
+html.look-c .case-decision-output{background:var(--acc-deep)}
+html.look-c .case-decision-output h3{color:#fff}
+html.look-c .case-decision-output p,html.look-c .case-decision-output .eyebrow{color:#b9c9bf}
