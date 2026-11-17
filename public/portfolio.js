@@ -194,6 +194,7 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
    The header is fixed so its size changes never move the page; body keeps its space with --hdr-h. */
 (function(){const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
  const setH=()=>{if(!r.classList.contains('hdr-scrolled'))r.style.setProperty('--hdr-h',h.offsetHeight+'px')};
+ const veil=document.createElement('div');veil.className='hdr-veil';veil.setAttribute('aria-hidden','true');h.after(veil);
  r.classList.add('hdr-js','hdr-init');setH();requestAnimationFrame(()=>requestAnimationFrame(()=>r.classList.remove('hdr-init')));addEventListener('resize',setH);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setH);
  let last=scrollY,ticking=false;
  const on=()=>{ticking=false;const y=scrollY,busy=h.classList.contains('menu-open')||h.contains(document.activeElement);
@@ -202,4 +203,16 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
   if(d<-2){r.classList.remove('hdr-hidden');last=y}else if(d>6){r.classList.toggle('hdr-hidden',y>lim&&!busy);last=y}};
  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(on)}},{passive:true});
  h.addEventListener('focusin',()=>r.classList.remove('hdr-hidden'));on();
+})();
+
+/* v2.0.5 · while the header is see-through, its text checks what is underneath (background colour or image brightness)
+   and switches between light and dark ink, with a short fade. No blending, so no colour shifts. */
+(function(){const r=document.documentElement,h=document.querySelector('header.editorial-header');if(!h)return;
+ const zones=[...h.querySelectorAll('.brand, nav > *, .menu-toggle')];
+ const cache=new WeakMap(),cv=document.createElement('canvas');cv.width=cv.height=8;const cx=cv.getContext('2d',{willReadFrequently:true});
+ const L=(R,G,B)=>(0.2126*R+0.7152*G+0.0722*B)/255;
+ const imgLum=img=>{if(cache.has(img))return cache.get(img);let v=.85;try{if(img.complete&&img.naturalWidth){cx.clearRect(0,0,8,8);cx.drawImage(img,0,0,8,8);const d=cx.getImageData(0,0,8,8).data;let t=0;for(let i=0;i<d.length;i+=4)t+=L(d[i],d[i+1],d[i+2]);v=t/(d.length/4);cache.set(img,v)}}catch(e){cache.set(img,v)}return v};
+ const under=(x,y)=>{for(const e of document.elementsFromPoint(x,y)){if(h.contains(e)||e.classList.contains('hdr-veil'))continue;if(e.tagName==='IMG')return imgLum(e);const m=getComputedStyle(e).backgroundColor.match(/rgba?\(([^)]+)\)/);if(m){const p=m[1].split(/[\s,\/]+/).filter(Boolean).map(parseFloat);const a=p.length>3?p[3]:1;if(a>.4)return L(p[0],p[1],p[2])}}return r.classList.contains('dark')?.05:.95};
+ let q=false;const check=()=>{q=false;const on=r.classList.contains('hdr-scrolled');for(const z of zones){if(!on||!z.getClientRects().length){z.classList.remove('ink-dark','ink-light');continue}const b=z.getBoundingClientRect(),y=b.top+b.height/2;let s=0,n=0;for(const f of [.2,.5,.8]){s+=under(b.left+b.width*f,y);n++}const lum=s/n;z.classList.toggle('ink-dark',lum>.55);z.classList.toggle('ink-light',lum<=.55)}};
+ const ask=()=>{if(!q){q=true;requestAnimationFrame(check)}};addEventListener('scroll',ask,{passive:true});addEventListener('resize',ask);addEventListener('load',ask);new MutationObserver(ask).observe(r,{attributes:true,attributeFilter:['class']});ask();
 })();
