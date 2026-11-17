@@ -189,3 +189,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  const reveal=()=>{const t=location.hash&&document.getElementById(location.hash.slice(1));const f=t&&t.closest('details.fold');if(f&&f._expand){f._expand();t.scrollIntoView()}};
  reveal();addEventListener('hashchange',reveal);addEventListener('beforeprint',()=>folds.forEach(f=>f._expand&&f._expand()));
 })();
+
+/* design trial (not for release): ?glass=light|dark puts the site on a coloured backdrop with frosted-glass surfaces; ?glass=0 turns it off */
+(function(){try{const q=new URLSearchParams(location.search).get('glass');if(q)sessionStorage.setItem('glass-trial',q);const v=sessionStorage.getItem('glass-trial');if(v!=='light'&&v!=='dark')return;const h=document.documentElement;h.classList.add('glass','glass-'+v);if(v==='dark')h.classList.add('dark');else h.classList.remove('dark');const p=(location.pathname.split('/').pop()||'index').replace('.html','');h.dataset.gpage=['ctr','krust','system','research','info'].includes(p)?p:'home';}catch(e){}})();
