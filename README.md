@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.3 · 좌우 끝선 통일** (2026-11-17). Previous: 2.0.2 · 메뉴 뒤 상자 제거.
+Current version: **2.1.0 · 연락처와 방문 기록** (2026-11-17). Previous: 2.0.3 · 좌우 끝선 통일.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -20,6 +20,28 @@ Before 1.0.0, numbers (up to "version 19") were ChatGPT Sites save counts, not r
 
 ## Layout rule
 Every page-level block uses the same edge: `--page` (max content width, 1440px) and `--gutter` (smallest side margin) in `portfolio.css`. Do not give a section its own side margin. Before every PR, run `node scripts/check-edges.js` with the local server on port 8765; it must print `blocks off the edge: 0`. Check wide screens (1920, 2560) as well as phone and laptop.
+
+## Contact and visits
+Both are set in one file, `public/site-config.js`. An empty value keeps that part off; nothing breaks.
+
+**Contact.** Fill `email`, `linkedin` (full address) and `cv` (a PDF in `public/`, e.g. `assets/Yubin-Park-CV.pdf`). The links then appear in every footer and in a "Get in touch" row on About.
+
+**Visits.** Uses [Umami Cloud](https://cloud.umami.is) (free plan, no cookies).
+1. Sign up, add a website with the live address, and copy its Website ID into `umamiWebsiteId`.
+2. Check `hosts` lists the live address. Previews and localhost are never counted.
+3. On your own browser, open any page once with `?me=1` so your visits are not counted (`?me=0` undoes it). The edit view (`?versions=1`) is never counted either.
+
+**Company codes.** Send each company the link with a short code that means nothing to them, e.g. `…/?ref=k3`, and keep the code ↔ company list in the Target Board. The code stays on every link inside the site during the visit. Visits without a code show as `ref: none`.
+
+**Reading it in Umami.** Events › filter by `ref`:
+- `visit` — pages opened, language, phone/desktop
+- `read` — `section` and `title` read for `secs` 10 / 30 / 60 (time counts only while the tab is visible and someone scrolled or moved in the last 45 seconds)
+- `open` — which fold, "Continue reading" or design rationale was opened
+- `question` — which Home question card was clicked
+- `contact` — Email / LinkedIn / CV clicked
+- `next` — next-project card clicked
+
+One company is usually one or two visits, so reading time per company is a hint, not a pattern. Patterns across all visits are what to use for portfolio changes.
 
 ## Edit
 All current page content and styles are in `public/`.

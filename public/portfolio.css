@@ -581,3 +581,12 @@ html main>.v14-build-section{width:auto;max-width:none!important}
 :root{--box-pad:clamp(20px,4.4vw,72px)}
 html .case-hero,html .next-case{padding-left:var(--box-pad);padding-right:var(--box-pad)}
 html main>.case-overview{margin-left:0;margin-right:0;padding-left:var(--box-pad);padding-right:var(--box-pad);max-width:none}
+/* 2.1.0 · contact links in the footer and on About; one case card per row on phones */
+.footer-contact{display:flex;flex:none;flex-wrap:nowrap;white-space:nowrap;gap:6px 18px;align-items:flex-start;font-size:11px}
+.footer-contact a,.contact-links a{border-bottom:1px solid currentColor;padding-bottom:2px}
+.footer-contact a:hover,.contact-links a:hover{opacity:.65}
+.contact-row{display:grid;gap:12px;border-top:1px solid var(--line);margin-top:30px;padding-top:20px}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px 24px;font-size:14px}
+html .footer-contact a{align-self:flex-start}
+.footer-contact[hidden],.contact-row[hidden]{display:none}
+@media(max-width:760px){html .work-first .projects{grid-template-columns:minmax(0,1fr);gap:44px}html footer{flex-wrap:wrap}html .footer-contact{order:9;flex-basis:100%;flex-wrap:wrap;font-size:13px;gap:10px 22px}}

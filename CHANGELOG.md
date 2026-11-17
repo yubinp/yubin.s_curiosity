@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0 · 연락처와 방문 기록 — 2026-11-17
+- Contact links: Email, LinkedIn and CV in the footer of every page, and a "Get in touch" row on About that shows the address itself. Before, the site had no way to reach Yubin. The links appear once their values are filled in `public/site-config.js`; until then nothing shows.
+- Visit tracking with Umami Cloud (free, no cookies), off until a Website ID is set in `public/site-config.js`. Each visit is tagged with the company code from `?ref=` (or "none"), and the code is kept on every link inside the site, so the whole visit and forwarded links carry it. Records: pages visited; reading time per section at 10, 30 and 60 seconds (counted only while the tab is visible and someone scrolled or moved in the last 45 seconds, so a tab left open does not count); opened folds, "Continue reading" and design rationale; Home question cards; contact clicks; next-project clicks. Not counted: the edit view, previews, localhost, and a browser opened once with `?me=1`. See README › Contact and visits.
+- Phones: Home case cards one per row instead of two squeezed side by side. Footer links get their own row on phones.
+
 ## 2.0.3 · 좌우 끝선 통일 — 2026-11-17
 - One page edge for everything: header content, case boxes, lines, the next-project card and the footer start and end at the same left and right edge on every page and screen width. Content tops out at 1440px wide; the side margin is 16–48px.
 - Before, the header capped at 1600px, the footer and case pages ran full width, the home page capped at 1600px, and sections set their own 5vw or 2vw margins. On screens wider than 1600px the edges drifted apart; the glass header made it visible.
