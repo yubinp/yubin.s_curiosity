@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.2 · 메뉴 뒤 상자 제거 — 2026-11-17
+- Desktop header: the menu (Work · Lab · About · language · theme) no longer has its own glass box on top of the glass header. The phone menu panel keeps its glass.
+
 ## 2.0.1 · 섹션 첫머리 타이포 — 2026-11-17
 - Section titles larger: 37 → 48px on desktop, 21 → 28px on phones (English); Korean up to 52px.
 - Question line smaller: 24 → 19px desktop, 17 → 16px phones; line spacing 1.35.
