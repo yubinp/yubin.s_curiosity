@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.11 · 한글 Pretendard — 2026-11-18
+- Load Pretendard Variable v1.3.9 using the official dynamic-subset CDN stylesheet.
+- Use Pretendard before Noto Sans KR for Korean glyphs in both live styles and the typography comparison. Keep Geist and Boldonse for Latin, all approved size/weight/spacing values and case background palettes.
+
 ## 2.0.10 · 선택한 타이포 적용 — 2026-11-18
 - Apply the full configuration from Yubin’s approved type-preview link to all live pages, matching the preview’s selectors and responsive breakpoint.
 - Boldonse large titles: 77px desktop / 30px phone, weight 400, line 1.85, tracking -0.07em. Page/section titles: 54/32px, weight 400, line 1.6, tracking -0.07em.
