@@ -638,3 +638,29 @@ html.hdr-js.hdr-scrolled .editorial-header .ink-light,html.hdr-js.hdr-scrolled .
 html.hdr-js.hdr-scrolled .editorial-header .ink-dark,html.hdr-js.hdr-scrolled .editorial-header .ink-dark :is(a,button,.lang-code){color:#0e1014!important;--ink:#0e1014}
 html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-dark span{background:#0e1014}
 html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-light span{background:#f3f4f8}
+
+/* ===== 2.0.7 · whole-card folds ===== */
+.fold.is-teaser{cursor:pointer}
+@media(hover:hover) and (pointer:fine){.fold.is-enhanced:not(.is-plain):not(.is-teaser)>.fold-body{cursor:pointer}}
+.fold-close{display:none;align-items:center;gap:8px;margin:6px auto 22px;padding:9px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);background:none;font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
+.fold-close:hover,.fold-close:focus-visible{border-color:var(--ink)}
+.fold.is-enhanced:not(.is-plain):not(.is-teaser)>.fold-close{display:flex}
+html:not([lang=ko]) .fold-close .ko,html[lang=ko] .fold-close .en{display:none}
+@media print{.fold-close{display:none!important}}
+
+/* ===== 2.0.7 · glass cursor (cursor.js) =====
+   Layers are fixed and the wrapper is display:contents, so the lens and the light blend with the page itself. */
+html.cur-on,html.cur-on *{cursor:none!important}
+html.cur-on :is(input,textarea,[contenteditable=true]){cursor:text!important}
+.cur{display:contents}
+.cur>*{position:fixed;left:0;top:0;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .2s;will-change:transform}
+html.cur-in .cur>*{opacity:1}
+.cur-ring{z-index:2147483000;width:26px;height:26px;background:var(--glass);border:1px solid var(--glass-edge);-webkit-backdrop-filter:blur(6px) saturate(1.8);backdrop-filter:blur(6px) saturate(1.8);box-shadow:0 6px 18px -8px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.cur.is-solid .cur-ring{background:#fff;mix-blend-mode:difference;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+/* the light sits above the lens, so the lens stays white instead of turning the light's opposite colour */
+.cur-glow{z-index:2147483001;width:420px;height:420px;margin:-210px 0 0 -210px;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 34%,transparent) 0,color-mix(in srgb,var(--g2) 14%,transparent) 38%,transparent 70%);mix-blend-mode:soft-light}
+html.dark .cur-glow{mix-blend-mode:screen;background:radial-gradient(circle,color-mix(in srgb,var(--g1) 22%,transparent) 0,color-mix(in srgb,var(--g2) 9%,transparent) 40%,transparent 70%)}
+.cur-label{z-index:2147483002;border-radius:0;color:#fff;mix-blend-mode:difference;font:700 10px/1 var(--font);letter-spacing:.14em;white-space:nowrap}
+html.cur-in .cur:not(.has-label) .cur-label{opacity:0}
+@media(prefers-reduced-motion:reduce){.cur-glow{display:none}}
+@media print{.cur{display:none}}
