@@ -109,8 +109,8 @@
  .cur-g .cur-glow,.cur-h .cur-glow{z-index:2147483001}
  /* H · G, but at rest a small glass circle. Over links and text it turns into G's lens; OPEN / CLOSE is cut into the lens. */
  .cur-h .cur-ring{background:var(--glass,rgba(255,255,255,.35));border:1px solid var(--glass-edge,rgba(255,255,255,.6));-webkit-backdrop-filter:blur(6px) saturate(1.8);backdrop-filter:blur(6px) saturate(1.8);box-shadow:0 6px 18px -8px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
- .cur-h:is(.is-hover,.is-text) .cur-ring{background:#fff;mix-blend-mode:difference;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
- .cur-h.is-text .cur-ring{border-radius:2px}
+ /* is-solid is set by the script: at once for the lens, but over text only once the glass has shrunk into a bar, so it never flashes as a white square */
+ .cur-h.is-solid .cur-ring{background:#fff;mix-blend-mode:difference;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
  .cur-h .cur-label{color:#fff;mix-blend-mode:difference;font:700 10px/1 var(--font);letter-spacing:.14em;z-index:2147483002}
  .cur:not(.cur-d):not(.cur-f):not(.cur-g):not(.cur-h) .cur-glow{display:none}
  .cur-d .cur-ring{display:none}
@@ -239,7 +239,9 @@
   const press = down ? 0.88 : 1;
   ring.style.width = R.w + 'px';
   ring.style.height = R.h + 'px';
-  ring.style.borderRadius = R.r >= 999 ? '50%' : R.r + 'px';
+  // corners follow the size (a circle shrinks into a pill, then a bar), so a size change never shows a square; only A wraps elements with their own corners
+  ring.style.borderRadius = (look === 'a' ? (R.r >= 999 ? Math.min(R.w, R.h) / 2 : R.r) : Math.min(R.w, R.h) / 2) + 'px';
+  if (look === 'h') cur.classList.toggle('is-solid', !!hit || (overText && R.w < 8));
   ring.style.transform = `translate3d(${R.x - R.w / 2}px,${R.y - R.h / 2}px,0) scale(${press})`;
   dot.style.transform = `translate3d(${P.x}px,${P.y}px,0)`;
   glow.style.transform = `translate3d(${G.x}px,${G.y}px,0)`;
