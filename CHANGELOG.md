@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.10 · 선택한 타이포 적용 — 2026-11-18
+- Apply the full configuration from Yubin’s approved type-preview link to all live pages, matching the preview’s selectors and responsive breakpoint.
+- Boldonse large titles: 77px desktop / 30px phone, weight 400, line 1.85, tracking -0.07em. Page/section titles: 54/32px, weight 400, line 1.6, tracking -0.07em.
+- Lead weight 550; retain the selected seven-role text scale, About heading 32/22px, Korean body line 1.7, and English-only uppercase labels.
+- Keep the comparison tool and per-case background colours.
+
 ## 2.0.9 · 케이스 색 복원·타이포 비교 — 2026-11-18
 - Set the selected colour background to size 54 and light 100; keep saturation 32, amplitude 100, stars 100, speed 100, hue 0 and tone 74.
 - Fix 2.0.8’s hardcoded home palette: read each page’s existing four colour tokens, restoring CTR teal/blue/green, Catalina violet/pink and Admin amber/coral.
@@ -238,5 +244,6 @@ Logic pass 1, spine line: "Where people get stuck, I get curious."
 First version on GitHub + Vercel (migrated from ChatGPT Sites, where it was "version 19").
 - Three cases: CTR, Catalina AI, DoubleNC Admin; Lab; About
 - KR/EN toggle, review mode with design-rationale and TODO notes
+
 
 

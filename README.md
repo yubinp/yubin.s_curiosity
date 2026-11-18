@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.9 · 케이스 색 복원·타이포 비교** (2026-11-18). Previous: 2.0.8 · 임시 컬러 배경.
+Current version: **2.0.10 · 선택한 타이포 적용** (2026-11-18). Previous: 2.0.9 · 케이스 색 복원·타이포 비교.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -58,3 +58,6 @@ The comparison page `public/space-preview.html` keeps all alternatives and URL c
 
 
 Typography comparison: `type-preview.html` lets Yubin adjust the seven Geist roles, two Boldonse title sizes and the About subheading in actual pages. Desktop/mobile sizes are separate. Save locally or share URL parameters; these values do not change live typography. The canvas now reads each page’s existing `--g1`–`--g4` palette.
+
+
+Selected typography from the shared URL is now live. Large title 77/30px, line 1.85, tracking -0.07em; page/section title 54/32px, line 1.6, tracking -0.07em; lead weight 550. Other seven-role proposal values and About 32/22px are included; Korean body line 1.7. The comparison page remains available for future adjustments.

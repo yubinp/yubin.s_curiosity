@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='2.0.9';
+const SITE_VERSION='2.0.10';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -258,4 +258,5 @@ if(mode==='edge'||mode==='shadow'){const layer=planet;const lc=layer.getContext(
 for(const s of stars){const z=.15+s.z*s.z,x=((s.x*w+t*(1+z)*5+px*z*16)%w+w)%w,y=((s.y*h+py*z*12-wnd.scrollY*.012*z)%h+h)%h;ctx.globalAlpha=(['color','edge','shadow'].includes(mode)?extra.stars/100:1)*light/100*(.18+z*.55)*(moving?.84+Math.sin(t*.65+s.p)*.16:1);ctx.fillStyle='#c1d0e8';ctx.beginPath();ctx.arc(x,y,.25+s.z*.85,0,6.283);ctx.fill()}ctx.globalAlpha=1;raf=wnd.requestAnimationFrame(render)}resize();measure();const onResize=()=>{resize();measure()};wnd.addEventListener('resize',onResize);wnd.addEventListener('pointermove',pointer,{passive:true});raf=wnd.requestAnimationFrame(render);dispose=()=>{wnd.cancelAnimationFrame(raf);wnd.removeEventListener('scroll',measure);wnd.removeEventListener('resize',onResize);wnd.removeEventListener('pointermove',pointer);c.remove();style.remove()}}
 build();addEventListener('pagehide',()=>dispose());
 })();
+
 
