@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.7 · 유리 커서** (2026-11-18). Previous: 2.0.5 · 헤더 숨김.
+Current version: **2.0.8 · 임시 컬러 배경** (2026-11-18). Previous: 2.0.7 · 유리 커서.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -51,3 +51,7 @@ The approved Home Hero now begins **“What we see is only part of the story.”
 
 ### Additional v1.5 working changes
 The Home now joins the three cases with an explicit **observation → question → decision** rationale (a retrospective synthesis, not a named historical framework). CTR, Catalina, Admin and Lab each include a concise **why this method → how used → effect/limitations → transferable principle** explanation, with eight explicit source gaps visible **only** under `?versions=1`. The version-review selection persists across internal navigation, including new tabs. Case-specific evidence remains unverified where documented. Merged to `main` as PR #5 on 2026-11-09.
+
+
+## Background studies
+The comparison page `public/space-preview.html` keeps all alternatives and URL controls. Temporary live dark-mode choice: `space=color&saturation=32&size=75&amplitude=100&stars=100&light=53&speed=100&hue=0&tone=74`. The original backdrop remains for light mode and the comparison frame. PR #35 is not merged by this change. Typography remains unchanged.

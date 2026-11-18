@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.8 · 임시 컬러 배경 — 2026-11-18
+- Apply the selected colour background to dark-mode portfolio pages: saturation 32, size 75, amplitude 100, stars 100, light 53, speed 100, hue 0, tone 74.
+- Preserve every alternative and control at `space-preview.html`; no saved browser preference overrides the live selection.
+- Disable the former background layers in dark mode to prevent overlap. Respect reduced motion. Light mode and typography remain unchanged; pending PR #35 is not merged.
+
 ## 2.0.7 · 유리 커서 — 2026-11-18
 - Cursor (mouse and trackpad only, `cursor.js`): a small glass circle at rest. Over links and buttons it becomes a white lens that inverts what is under it, with OPEN, CLOSE or DRAG cut into it where a click opens or closes something. Over text it becomes a thin bar. A soft light in the page's colour trails behind it.
 - The corners follow the size (circle → pill → bar) and the glass turns white only once it is thin, so moving onto text never flashes a white square.
@@ -228,3 +233,4 @@ Logic pass 1, spine line: "Where people get stuck, I get curious."
 First version on GitHub + Vercel (migrated from ChatGPT Sites, where it was "version 19").
 - Three cases: CTR, Catalina AI, DoubleNC Admin; Lab; About
 - KR/EN toggle, review mode with design-rationale and TODO notes
+
