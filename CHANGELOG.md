@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.9 · 케이스 색 복원·타이포 비교 — 2026-11-18
+- Set the selected colour background to size 54 and light 100; keep saturation 32, amplitude 100, stars 100, speed 100, hue 0 and tone 74.
+- Fix 2.0.8’s hardcoded home palette: read each page’s existing four colour tokens, restoring CTR teal/blue/green, Catalina violet/pink and Admin amber/coral.
+- Add `type-preview.html`: actual page and language switching, desktop/phone sizes, seven text roles, two display title roles, About 28/32 comparison, original toggle, selected-role outlines, save and share. Typography is preview-only.
+
 ## 2.0.8 · 임시 컬러 배경 — 2026-11-18
 - Apply the selected colour background to dark-mode portfolio pages: saturation 32, size 75, amplitude 100, stars 100, light 53, speed 100, hue 0, tone 74.
 - Preserve every alternative and control at `space-preview.html`; no saved browser preference overrides the live selection.
@@ -233,4 +238,5 @@ Logic pass 1, spine line: "Where people get stuck, I get curious."
 First version on GitHub + Vercel (migrated from ChatGPT Sites, where it was "version 19").
 - Three cases: CTR, Catalina AI, DoubleNC Admin; Lab; About
 - KR/EN toggle, review mode with design-rationale and TODO notes
+
 

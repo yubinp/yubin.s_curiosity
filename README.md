@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.8 · 임시 컬러 배경** (2026-11-18). Previous: 2.0.7 · 유리 커서.
+Current version: **2.0.9 · 케이스 색 복원·타이포 비교** (2026-11-18). Previous: 2.0.8 · 임시 컬러 배경.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -54,4 +54,7 @@ The Home now joins the three cases with an explicit **observation → question �
 
 
 ## Background studies
-The comparison page `public/space-preview.html` keeps all alternatives and URL controls. Temporary live dark-mode choice: `space=color&saturation=32&size=75&amplitude=100&stars=100&light=53&speed=100&hue=0&tone=74`. The original backdrop remains for light mode and the comparison frame. PR #35 is not merged by this change. Typography remains unchanged.
+The comparison page `public/space-preview.html` keeps all alternatives and URL controls. Temporary live dark-mode choice: `space=color&saturation=32&size=54&amplitude=100&stars=100&light=100&speed=100&hue=0&tone=74`. The original backdrop remains for light mode and the comparison frame. PR #35 is not merged by this change. Typography remains unchanged.
+
+
+Typography comparison: `type-preview.html` lets Yubin adjust the seven Geist roles, two Boldonse title sizes and the About subheading in actual pages. Desktop/mobile sizes are separate. Save locally or share URL parameters; these values do not change live typography. The canvas now reads each page’s existing `--g1`–`--g4` palette.
