@@ -1,5 +1,5 @@
 /* Design trial (not for release): circle cursor candidates + whole-card folds.
-   Cursor: ?cursor=a|b|c|d|e|f|g picks one, ?cursor=0 turns it off; the choice is kept for this tab.
+   Cursor: ?cursor=a|b|c|d|e|f|g|h picks one, ?cursor=0 turns it off; the choice is kept for this tab.
    Folds: a folded card opens from anywhere on it; an open card closes from its question, from "Close" at the bottom,
    and, while ?foldclose=1 (default), from anywhere on the card. ?foldclose=0 compares without that.
    A small switcher sits bottom-left on desktop. Touch screens keep the normal cursor; reduced motion: no trailing. */
@@ -15,7 +15,8 @@
   d: { en: 'Light', ko: '빛' },
   e: { en: 'Glass + light', ko: '유리 + 빛' },
   f: { en: 'Glass + room light', ko: '유리 + 주변 빛' },
-  g: { en: 'Lens + light', ko: '렌즈 + 빛' }
+  g: { en: 'Lens + light', ko: '렌즈 + 빛' },
+  h: { en: 'Glass idle', ko: '평소엔 유리' }
  };
  let look = 'e', wholeClose = true;
  try {
@@ -105,10 +106,15 @@
  .cur:not(.cur-a):not(.cur-c):not(.cur-d) .cur-dot{display:none}
  /* G · B's lens with D's light trailing slowly behind it */
  /* the light sits over the lens, so the lens is lit in the page's colour instead of inverting the light into its opposite colour */
- .cur-g .cur-glow{z-index:2147483001}
- .cur:not(.cur-d):not(.cur-f):not(.cur-g) .cur-glow{display:none}
+ .cur-g .cur-glow,.cur-h .cur-glow{z-index:2147483001}
+ /* H · G, but at rest a small glass circle. Over links and text it turns into G's lens; OPEN / CLOSE is cut into the lens. */
+ .cur-h .cur-ring{background:var(--glass,rgba(255,255,255,.35));border:1px solid var(--glass-edge,rgba(255,255,255,.6));-webkit-backdrop-filter:blur(6px) saturate(1.8);backdrop-filter:blur(6px) saturate(1.8);box-shadow:0 6px 18px -8px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+ .cur-h:is(.is-hover,.is-text) .cur-ring{background:#fff;mix-blend-mode:difference;border-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+ .cur-h.is-text .cur-ring{border-radius:2px}
+ .cur-h .cur-label{color:#fff;mix-blend-mode:difference;font:700 10px/1 var(--font);letter-spacing:.14em;z-index:2147483002}
+ .cur:not(.cur-d):not(.cur-f):not(.cur-g):not(.cur-h) .cur-glow{display:none}
  .cur-d .cur-ring{display:none}
- .cur:not(.cur-c):not(.cur-e):not(.cur-f) .cur-label{display:none}
+ .cur:not(.cur-c):not(.cur-e):not(.cur-f):not(.cur-h) .cur-label{display:none}
 
  .cur-switch{position:fixed;left:16px;bottom:16px;z-index:2147483001;display:flex;flex-wrap:wrap;align-items:center;gap:4px;max-width:calc(100vw - 32px);padding:6px;border-radius:22px;background:var(--glass-solid,#fff);border:1px solid var(--glass-edge,#ddd);box-shadow:0 10px 30px -12px rgba(0,0,0,.35);font:500 12px/1 var(--font);color:var(--ink)}
  .cur-switch span{padding:0 6px 0 8px;color:var(--muted)}
@@ -131,7 +137,7 @@
  const drawSwitch = () => {
   const l = lang();
   sw.innerHTML = `<span>${L('Cursor', '커서')}</span>`
-   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()}${'efg'.includes(k) ? ' · ' + LOOKS[k][l] : ''}</button>`).join('')
+   + Object.keys(LOOKS).map(k => `<button type="button" data-look="${k}" aria-pressed="${look === k}" title="${LOOKS[k][l]}">${k.toUpperCase()}${'efgh'.includes(k) ? ' · ' + LOOKS[k][l] : ''}</button>`).join('')
    + `<button type="button" data-look="0" aria-pressed="${!LOOKS[look]}">${L('Off', '끄기')}</button>`
    + (folds.length ? `<i></i><span>${L('Close an open card from anywhere', '펼친 카드 아무 데나 눌러 접기')}</span>`
      + `<button type="button" data-fold="1" aria-pressed="${wholeClose}">${L('On', '켬')}</button>`
@@ -192,7 +198,7 @@
  const R = { x: -100, y: -100, w: 28, h: 28, r: 999 };
  const G = { x: -100, y: -100 }; // the light trails on its own, slower than the cursor
  let hit = null, overText = false, down = false, raf = 0, lastEl = null, last = 0;
- const base = () => ({ a: [34, 34], b: [18, 18], c: [30, 30], e: [28, 28], f: [28, 28], g: [18, 18] }[look] || [0, 0]);
+ const base = () => ({ a: [34, 34], b: [18, 18], c: [30, 30], e: [28, 28], f: [28, 28], g: [18, 18], h: [26, 26] }[look] || [0, 0]);
 
  function goal() {
   const [bw, bh] = base();
@@ -205,14 +211,14 @@
     }
     return { x: P.x, y: P.y, w: 64, h: 64, r: 999 };
    }
-   if (look === 'b' || look === 'g') return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
+   if (look === 'b' || look === 'g' || look === 'h') return { x: P.x, y: P.y, w: 58, h: 58, r: 999 };
    if (look === 'c') return hit.label ? { x: P.x, y: P.y, w: Math.max(76, hit.label.length * 7.5 + 30), h: 76, r: 999 } : { x: P.x, y: P.y, w: 52, h: 52, r: 999 };
    if (look === 'e' || look === 'f') {
     if (hit.soft) return { x: P.x, y: P.y, w: 48, h: 48, r: 999 }; // anywhere on an open card: a quieter "Close"
     return { x: P.x, y: P.y, w: hit.label ? Math.max(58, hit.label.length * 7.5 + 30) : 58, h: 58, r: 999 };
    }
   }
-  if (overText && 'befg'.includes(look)) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
+  if (overText && 'befgh'.includes(look)) return { x: P.x, y: P.y, w: 3, h: 26, r: 2 };
   return { x: P.x, y: P.y, w: bw, h: bh, r: 999 };
  }
 
@@ -223,7 +229,7 @@
   last = now;
   const g = goal();
   const ease = k => (reduced ? 1 : 1 - Math.pow(1 - k, dt));
-  const k = ease({ b: 0.35, d: 0.12, e: 0.16, f: 0.16, g: 0.35 }[look] || 0.2);
+  const k = ease({ b: 0.35, d: 0.12, e: 0.16, f: 0.16, g: 0.35, h: 0.3 }[look] || 0.2);
   const kg = ease(0.1);
   G.x += (P.x - G.x) * kg; G.y += (P.y - G.y) * kg;
   const ks = ease(0.22);
@@ -244,9 +250,17 @@
  }
  const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
 
+ // H: short English caps, only where a click opens or closes something
+ function capLabel(h) {
+  const el = h.el;
+  if (el.matches('summary,.fold-close') || (el.matches('details.fold') && isOpenFold(el))) return 'CLOSE';
+  if (el.matches('.q-track')) return 'DRAG';
+  if (el.matches('a[href],.fold-more,.q-card') || el.matches('details.fold')) return 'OPEN';
+  return '';
+ }
  function refresh(el) {
   hit = hitFor(el);
-  const t = hit && 'cef'.includes(look) ? hit.label : '';
+  const t = !hit ? '' : look === 'h' ? capLabel(hit) : 'cef'.includes(look) ? hit.label : '';
   label.textContent = t;
   cur.classList.toggle('has-label', !!t);
   cur.classList.toggle('is-hover', !!hit);
