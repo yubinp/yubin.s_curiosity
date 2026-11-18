@@ -638,3 +638,18 @@ html.hdr-js.hdr-scrolled .editorial-header .ink-light,html.hdr-js.hdr-scrolled .
 html.hdr-js.hdr-scrolled .editorial-header .ink-dark,html.hdr-js.hdr-scrolled .editorial-header .ink-dark :is(a,button,.lang-code){color:#0e1014!important;--ink:#0e1014}
 html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-dark span{background:#0e1014}
 html.hdr-js.hdr-scrolled .editorial-header .menu-toggle.ink-light span{background:#f3f4f8}
+
+/* ===== v2.0.6 · backdrop light that breathes and drifts =====
+   Replaces the still backdrop. Colours are the page's lights, toned down toward grey (72%). Movement is in vmax so phones move as visibly as desktops. */
+html.has-bg-field body::before{content:none}
+html{--mute:72%;--grey:#8b909a;--amp:7vmax}
+html.dark{--grey:#5a5f6b}
+.bg-field{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+html.dark .bg-field{opacity:.8}
+.bg-field i{position:absolute;border-radius:50%;will-change:transform;background:radial-gradient(circle,color-mix(in srgb,color-mix(in oklab,var(--c) var(--mute),var(--grey)) var(--wash),transparent) 0%,transparent 68%);animation:bg-mix 17s ease-in-out infinite}
+.bg-field i:nth-child(1){--c:var(--g1);width:80vw;height:80vw;left:calc(10% - 40vw);top:calc(16% - 40vw);--dx:var(--amp);--dy:calc(var(--amp)*.8)}
+.bg-field i:nth-child(2){--c:var(--g2);width:74vw;height:74vw;left:calc(92% - 37vw);top:calc(26% - 37vw);--dx:calc(var(--amp)*-1);--dy:calc(var(--amp)*.7);animation-duration:21s;animation-delay:-6s}
+.bg-field i:nth-child(3){--c:var(--g3);width:82vw;height:82vw;left:calc(72% - 41vw);top:calc(94% - 41vw);--dx:calc(var(--amp)*-.8);--dy:calc(var(--amp)*-.9);animation-duration:19s;animation-delay:-11s}
+.bg-field i:nth-child(4){--c:var(--g4);width:62vw;height:62vw;left:calc(16% - 31vw);top:calc(86% - 31vw);--dx:calc(var(--amp)*.9);--dy:calc(var(--amp)*-.7);animation-duration:15s;animation-delay:-3s}
+@keyframes bg-mix{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(var(--dx),calc(var(--dy)*.5)) scale(1.1)}50%{transform:translate(calc(var(--dx)*.25),var(--dy)) scale(.93)}75%{transform:translate(calc(var(--dx)*-.7),calc(var(--dy)*.35)) scale(1.1)}}
+@media(prefers-reduced-motion:reduce){.bg-field i{animation:none}}

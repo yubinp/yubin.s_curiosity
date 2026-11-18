@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='2.0.5';
+const SITE_VERSION='2.0.6';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -216,3 +216,6 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  let q=false;const check=()=>{q=false;const on=r.classList.contains('hdr-scrolled');for(const z of zones){if(!on||!z.getClientRects().length){z.classList.remove('ink-dark','ink-light');continue}const b=z.getBoundingClientRect(),y=b.top+b.height/2;let s=0,n=0;for(const f of [.2,.5,.8]){s+=under(b.left+b.width*f,y);n++}const lum=s/n;z.classList.toggle('ink-dark',lum>.55);z.classList.toggle('ink-light',lum<=.55)}};
  const ask=()=>{if(!q){q=true;requestAnimationFrame(check)}};addEventListener('scroll',ask,{passive:true});addEventListener('resize',ask);addEventListener('load',ask);new MutationObserver(ask).observe(r,{attributes:true,attributeFilter:['class']});ask();
 })();
+
+/* v2.0.6 · backdrop light: four soft lights that breathe and drift slowly. Transform-only, so it stays smooth on phones */
+(function(){if(!document.body||document.querySelector('.bg-field'))return;const f=document.createElement('div');f.className='bg-field';f.setAttribute('aria-hidden','true');f.innerHTML='<i></i><i></i><i></i><i></i>';document.body.prepend(f);document.documentElement.classList.add('has-bg-field');})();

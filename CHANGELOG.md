@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.6 · 숨쉬는 배경 — 2026-11-18
+- The backdrop lights now breathe and drift: each of the four lights slowly swells, settles and wanders around its spot (15–21 seconds a loop, out of step with each other).
+- Colours are toned down toward grey (about 72% of the original saturation).
+- Movement scales with the screen, so phones move as visibly as desktops. With "reduce motion" turned on, the lights stay still.
+
 ## 2.0.5 · 헤더 숨김 — 2026-11-17
 - Header is compact by default (logo 18px, menu 12px, slimmer bar) and is glass at the top instead of near-black.
 - Once you scroll, it becomes smaller (logo 16px) with no box and no dark band. A soft blur sits behind the top edge, and each item (logo, each menu link, language, theme) checks what is underneath — background colour or image brightness — and switches between light and dark text with a short fade.
