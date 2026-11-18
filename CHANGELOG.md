@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.7 · 유리 커서 — 2026-11-18
+- Cursor (mouse and trackpad only, `cursor.js`): a small glass circle at rest. Over links and buttons it becomes a white lens that inverts what is under it, with OPEN, CLOSE or DRAG cut into it where a click opens or closes something. Over text it becomes a thin bar. A soft light in the page's colour trails behind it.
+- The corners follow the size (circle → pill → bar) and the glass turns white only once it is thin, so moving onto text never flashes a white square.
+- Folds: a folded card opens from anywhere on it. An open card closes from its question, from a new Close button at its end, and with a mouse or trackpad from anywhere on the card. Dragging or selecting text never opens or closes a card.
+- Touch screens keep their normal behaviour; reduced motion turns off the trailing and the light.
+- Numbered 2.0.7 because 2.0.6 (PR #35) is still waiting.
+
 ## 2.0.5 · 헤더 숨김 — 2026-11-17
 - Header is compact by default (logo 18px, menu 12px, slimmer bar) and is glass at the top instead of near-black.
 - Once you scroll, it becomes smaller (logo 16px) with no box and no dark band. A soft blur sits behind the top edge, and each item (logo, each menu link, language, theme) checks what is underneath — background colour or image brightness — and switches between light and dark text with a short fade.

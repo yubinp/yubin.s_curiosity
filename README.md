@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.5 · 헤더 숨김** (2026-11-17). Previous: 2.0.4 · 행간 좁히기.
+Current version: **2.0.7 · 유리 커서** (2026-11-18). Previous: 2.0.5 · 헤더 숨김.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 

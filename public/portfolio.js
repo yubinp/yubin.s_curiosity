@@ -1,5 +1,5 @@
 // Site version shown in the footer. Bump it with every release (see README › Versioning).
-const SITE_VERSION='2.0.5';
+const SITE_VERSION='2.0.7';
 document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'+SITE_VERSION;});
 (()=>{
  const root=document.documentElement,theme=document.querySelector('.theme'),review=document.querySelector('.review-toggle');
@@ -216,3 +216,23 @@ document.querySelectorAll('[data-site-version]').forEach(el=>{el.textContent='v'
  let q=false;const check=()=>{q=false;const on=r.classList.contains('hdr-scrolled');for(const z of zones){if(!on||!z.getClientRects().length){z.classList.remove('ink-dark','ink-light');continue}const b=z.getBoundingClientRect(),y=b.top+b.height/2;let s=0,n=0;for(const f of [.2,.5,.8]){s+=under(b.left+b.width*f,y);n++}const lum=s/n;z.classList.toggle('ink-dark',lum>.55);z.classList.toggle('ink-light',lum<=.55)}};
  const ask=()=>{if(!q){q=true;requestAnimationFrame(check)}};addEventListener('scroll',ask,{passive:true});addEventListener('resize',ask);addEventListener('load',ask);new MutationObserver(ask).observe(r,{attributes:true,attributeFilter:['class']});ask();
 })();
+
+/* 2.0.7 · whole-card folds: a folded card opens from anywhere on it. An open card closes from its question or the Close button at its end,
+   and with a mouse or trackpad from anywhere on it. A drag or a text selection never toggles a card. */
+(function(){const folds=[...document.querySelectorAll('details.fold.is-enhanced:not(.is-plain)')];if(!folds.length)return;
+ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const skip=t=>t.closest('a,button,input,textarea,select,label,video,audio,[role=button]');
+ folds.forEach(d=>{const sum=d.querySelector('summary');
+  const close=document.createElement('button');close.type='button';close.className='fold-close';
+  close.innerHTML='<span class="en">Close</span><span class="ko">접기</span><span aria-hidden="true">↑</span>';
+  close.addEventListener('click',()=>{if(!d.classList.contains('is-teaser'))sum.click()});d.appendChild(close);
+  let at=null;d.addEventListener('pointerdown',e=>{at={x:e.clientX,y:e.clientY}});
+  d.addEventListener('click',e=>{const t=e.target;if(t.closest('summary')||skip(t))return;
+   if((at&&Math.hypot(e.clientX-at.x,e.clientY-at.y)>6)||String(getSelection()).length)return;
+   if(d.classList.contains('is-teaser')){d._expand&&d._expand();return}
+   if(fine)sum.click();});
+ });
+})();
+
+/* 2.0.7 · glass cursor (mouse and trackpad only), see cursor.js */
+(()=>{if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;const s=document.createElement('script');s.src='cursor.js';s.defer=true;document.head.append(s)})();
