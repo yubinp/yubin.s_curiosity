@@ -679,7 +679,7 @@ html[data-gpage=info] .simple-hero{padding-left:0;padding-right:0}
  html .work-first .home-intro.v15-home-intro{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:start;justify-items:stretch;gap:18px clamp(32px,4vw,64px);padding:48px 0 24px;text-align:left}
  html .work-first .v15-home-intro>.eyebrow{grid-column:1;grid-row:1;justify-self:start;margin:0}
  html .work-first .v15-home-intro .hero-head{grid-column:1;grid-row:2;align-items:flex-start;gap:18px}
- html body .work-first .v15-home-intro h1{font-size:clamp(40px,4.1vw,60px)!important;line-height:1.35!important;max-width:none;margin:0;text-align:left;text-wrap:balance}
+ html body.work-first .v15-home-intro h1{font-size:clamp(40px,4.1vw,60px)!important;line-height:1.35!important;max-width:none;margin:0;text-align:left;text-wrap:balance}
  html .work-first .v15-home-intro .v15-hero-copy{display:contents}
  html .work-first .v15-home-intro .hero-summary{display:flex;grid-column:2;grid-row:2;flex-direction:column;gap:20px;min-width:0;padding-top:4px}
  html .work-first .v15-home-intro .hero-summary p{max-width:none;margin:0}
