@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.12 · PC 첫 화면·About 정렬 — 2026-11-18
+- Desktop homepage: align title left and the existing two intro paragraphs right; put the full-width question wheel beneath both. Reduce only the desktop home title size/leading and hero padding to reveal work earlier.
+- Preserve the mobile homepage and all content while mobile concepts await selection.
+- Align About hero horizontal padding with Lab and the shared page edge.
+
 ## 2.0.11 · 한글 Pretendard — 2026-11-18
 - Load Pretendard Variable v1.3.9 using the official dynamic-subset CDN stylesheet.
 - Use Pretendard before Noto Sans KR for Korean glyphs in both live styles and the typography comparison. Keep Geist and Boldonse for Latin, all approved size/weight/spacing values and case background palettes.
@@ -248,6 +253,7 @@ Logic pass 1, spine line: "Where people get stuck, I get curious."
 First version on GitHub + Vercel (migrated from ChatGPT Sites, where it was "version 19").
 - Three cases: CTR, Catalina AI, DoubleNC Admin; Lab; About
 - KR/EN toggle, review mode with design-rationale and TODO notes
+
 
 
 

@@ -1,6 +1,6 @@
 # Yubin Park — Product Design
 
-Current version: **2.0.11 · 한글 Pretendard** (2026-11-18). Previous: 2.0.10 · 선택한 타이포 적용.
+Current version: **2.0.12 · PC 첫 화면·About 정렬** (2026-11-18). Previous: 2.0.11 · 한글 Pretendard.
 
 Hidden door: on the About page in Korean, drag the footer name onto the logo to open `versions.html` (desktop only). The page lists the major versions first, with every version under a fold. History in [CHANGELOG.md](CHANGELOG.md).
 
@@ -63,3 +63,6 @@ Typography comparison: `type-preview.html` lets Yubin adjust the seven Geist rol
 Selected typography from the shared URL is now live. Large title 77/30px, line 1.85, tracking -0.07em; page/section title 54/32px, line 1.6, tracking -0.07em; lead weight 550. Other seven-role proposal values and About 32/22px are included; Korean body line 1.7. The comparison page remains available for future adjustments.
 
 Korean glyphs now use Pretendard Variable v1.3.9 (dynamic subset, official CDN); Geist/Boldonse remain first for Latin. The type comparison uses the same Korean fallback. Typography values and per-case background palettes remain unchanged.
+
+
+Desktop hero (761px+): title left, both existing intro paragraphs right, full-width question belt below; compact home-only title leading and size. Phone homepage remains unchanged pending mobile concept selection. About hero now uses the same horizontal page edge as Lab.
